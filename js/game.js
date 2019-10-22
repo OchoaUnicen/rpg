@@ -130,6 +130,9 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     const mapa = crearMatriz(100, 50);
 
+    var laserTotal = 2, lasers = [];
+
+
 
     function crearMatriz(w, h) {
         const matriz = [];
@@ -179,6 +182,10 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
             //letra S - Abajo
             posicion_jugador_y+=30;
+        }
+        else if (event.keyCode == 32 && lasers.length <= laserTotal) // space
+        {
+            lasers.push([posicion_jugador_x + 40, posicion_jugador_y + 50, 20, 4]);
         }
     
 
@@ -269,12 +276,35 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         
 
     }
+    
 //###############################FIN##GRAVEDAD#########################
+//##
+    function drawLaser() {
+        if (lasers.length)
+        for (var i = 0; i < lasers.length; i++) {
+            context.fillStyle = '#f00';
+            context.fillRect(lasers[i][0],lasers[i][1],lasers[i][2],lasers[i][3])
+        }
+    }
 
+    function moveLaser() {
+        for (var i = 0; i < lasers.length; i++) {
+          if (lasers[i][0] < canvas.width) {
+            lasers[i][0] += 10;
+            console.log(lasers[i][0]);
+          } else if (lasers[i][0] > canvas.width-1) {
+            lasers.splice(i, 1);
+          }
+        }
+      }
+      
+  
+//
     function tiempo() {
         //hace ejecutar 60 veces por segundo
         frame(tiempo);    
          gravedad(); 
+         moveLaser();
         
             //drawImage tiene 4 parametros: Imagen a ser invocada en la funcion,inicio eje x,inicio eje y, tamaño.widht, tamaño.heigh 
             context.clearRect(0,0, canvas.width, canvas.heigh);
@@ -284,7 +314,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             // console.log("posicion_jugador_y : " + posicion_jugador_y);
             // console.log(tiempo);
 
-        
+            drawLaser();
+
 
 
 
