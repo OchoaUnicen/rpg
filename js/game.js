@@ -310,6 +310,12 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             context.clearRect(0,0, canvas.width, canvas.heigh);
             context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
             context.drawImage(arquero, posicion_jugador_x, posicion_jugador_y, arquero.naturalWidth, arquero.naturalHeight);
+            context.drawImage(Guerrero.imagen, 600, 360, Guerrero.imagen.naturalWidth, Guerrero.imagen.naturalHeight);
+            
+            
+            
+            
+            
             // console.log("posicion_jugador_x : " + posicion_jugador_x);
             // console.log("posicion_jugador_y : " + posicion_jugador_y);
             // console.log(tiempo);
