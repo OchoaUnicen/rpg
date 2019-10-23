@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-    
+
     let direccion = "ninguna";
 
     document.addEventListener('keydown', event => {
@@ -200,19 +200,39 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
        // console.log(event);
     });
 
+    let limite_aceleracion = 5;
 
+    
     function acelerar(event){
+
+
+        
+
        
         if (event.keyCode==65) {
             //letra A - izquierda
-            velocidad = velocidad+2;
+           
+           
+            if (velocidad < limite_aceleracion) {
+
+                velocidad = velocidad+2;
+            }
+           
+           
             
             posicion_jugador_x-=velocidad;
         }
 
         if (event.keyCode==68) {
              //letra D - derecha
+
+             if (velocidad < limite_aceleracion) {
+
              velocidad = velocidad+2;
+
+             }
+
+
              posicion_jugador_x+=velocidad;
 
 
@@ -234,6 +254,14 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
         posicion_jugador_y-=50;
+
+        if (velocidad < limite_aceleracion) {
+
+
+            velocidad = velocidad +8;
+        }
+
+        
     }
 
     // document.addEventListener('keypress', event => {
@@ -299,7 +327,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         for (var i = 0; i < lasers.length; i++) {
           if (lasers[i][0] < canvas.width) {
             lasers[i][0] += 10;
-            console.log(lasers[i][0]);
+            //console.log(lasers[i][0]);
           } else if (lasers[i][0] > canvas.width-1) {
             lasers.splice(i, 1);
           }
