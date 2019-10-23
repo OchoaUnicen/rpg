@@ -144,15 +144,23 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
     }
 
 
+
+
+
+    
+    let direccion = "ninguna";
+
     document.addEventListener('keydown', event => {
 
 
+        
 
         if (event.keyCode === 65) {
             //letra A - izquierda
 
            // velocidad = velocidad + 2;
             acelerar(event);
+            direccion = "izquierda";
             // posicion_jugador_x-=velocidad;
         }
         else if (event.keyCode === 68) {
@@ -161,7 +169,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
            // velocidad = velocidad + 2;
            acelerar(event);
-
+            direccion = "derecha";
            // posicion_jugador_x+=velocidad;
         }
         else if (event.keyCode === 87) {
@@ -328,6 +336,40 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
         if (velocidad>0) {
             velocidad = velocidad-0.4;
+
+
+            if (direccion == "izquierda") {
+
+
+                posicion_jugador_x-=velocidad;
+
+            }
+
+
+            if (direccion == "derecha") {
+
+                posicion_jugador_x+=velocidad;
+            }
+           
+
+            // if (event.keyCode==65) {
+            //     //letra A - izquierda
+                
+                
+            //     posicion_jugador_x-=velocidad;
+            // }
+    
+            // if (event.keyCode==68) {
+            //      //letra D - derecha
+                 
+            //      
+    
+    
+            // }
+
+
+
+
         }
         
 

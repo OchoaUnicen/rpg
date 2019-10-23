@@ -35,6 +35,7 @@ let personaje = {
     "clase": "clase",
     "img":function (){
         let imagen_arquero = new Image();
+        imagen_arquero.src = "./img/arquero.png";
         return imagen_arquero;
     }
 
