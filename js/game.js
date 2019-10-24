@@ -44,6 +44,11 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     let posicion_jugador_x = 20;
     let posicion_jugador_y = 320;
+
+
+    let arqueroIzquierda = new Image();
+    arqueroIzquierda.src = "./img/arqueroiz.png";
+
     let arquero = new Image();
     arquero.src = "./img/arquero.png";
     let fondo = new Image();
@@ -148,7 +153,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-    let direccion = "ninguna";
+    let direccion = "derecha";
 
     document.addEventListener('keydown', event => {
 
@@ -336,21 +341,69 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
       
   
 //
+
+
+
+ function arrowCollision() {
+
+
+
+
+
+
+ }
+
+
+
+
+
+
     function tiempo() {
         //hace ejecutar 60 veces por segundo
         frame(tiempo);    
          gravedad(); 
          moveLaser();
         
+
+
+         //arrowCollision();
+
+
+
+
+
+
+
+
+
+
+
+
             //drawImage tiene 4 parametros: Imagen a ser invocada en la funcion,inicio eje x,inicio eje y, tamaño.widht, tamaño.heigh 
             context.clearRect(0,0, canvas.width, canvas.heigh);
             context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
-            context.drawImage(arquero, posicion_jugador_x, posicion_jugador_y, arquero.naturalWidth, arquero.naturalHeight);
-            context.drawImage(Guerrero.imagen, 600, 360, Guerrero.imagen.naturalWidth, Guerrero.imagen.naturalHeight);
+
+            if (direccion == "izquierda") {
+
+                context.drawImage(arqueroIzquierda, posicion_jugador_x, posicion_jugador_y, arqueroIzquierda.naturalWidth, arqueroIzquierda.naturalHeight);
+                
+
+            }
+
+            if (direccion == "derecha") {
+
+                context.drawImage(arquero, posicion_jugador_x, posicion_jugador_y, arquero.naturalWidth, arquero.naturalHeight);
+
+            }
+
+
+            
+            context.drawImage(Guerrero.imagen, 650, 360, Guerrero.imagen.naturalWidth, Guerrero.imagen.naturalHeight);
             
             
             
-            
+            //context.font("60px");
+            context.fillText("Guerrero Hp: "+ Guerrero.vida, 800, 50);
             
             // console.log("posicion_jugador_x : " + posicion_jugador_x);
             // console.log("posicion_jugador_y : " + posicion_jugador_y);

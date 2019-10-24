@@ -14,7 +14,8 @@ let Guerrero = {
 
     "nombre": "Guerrero",
     "imagen" : imagen_guerrero,
-    "vida" : 100
+    "vida" : 100,
+    
     
     
 }
