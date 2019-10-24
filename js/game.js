@@ -627,6 +627,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             //context.font("60px");
             context.fillText("Guerrero Hp: "+ Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y-30);
             
+
+            context.fillText("Arquero Hp: "+ Arquero.vida, Arquero.posicion_x, Arquero.posicion_y-30);
             // console.log("posicion_jugador_x : " + posicion_jugador_x);
             // console.log("posicion_jugador_y : " + posicion_jugador_y);
             // console.log(tiempo);
