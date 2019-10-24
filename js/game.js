@@ -19,8 +19,9 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
        
     const TIEMPO_AL_CUADRADO = contador_tiempo * contador_tiempo;
 
-
-    
+        //********************* */
+    //canvas.appendChild(sonido_disparo_arco);
+    //**************** */
 
 //------------------------------------------
 //VELOCIDAD
@@ -199,8 +200,12 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         }
         else if (event.keyCode == 32 && lasers.length <= laserTotal) // space
         {
-
+            // console.log(sonido_disparo_arco);
             arco.src = arco_disparando.src;
+
+
+
+            sonido_disparo_arco.play();
              
 
 
