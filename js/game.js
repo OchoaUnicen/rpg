@@ -144,6 +144,13 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
     let direccion = "derecha";
     let direccion_guerrero = "izquierda";
 
+
+
+
+
+
+
+
     document.addEventListener('keydown', event => {
 
 
@@ -192,6 +199,11 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         }
         else if (event.keyCode == 32 && lasers.length <= laserTotal) // space
         {
+
+            arco.src = arco_disparando.src;
+             
+
+
             lasers.push([Arquero.posicion_x + 40, Arquero.posicion_y + 50, 20, 4]);
         }
 
@@ -360,12 +372,21 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     // });
 
-    // document.addEventListener('keyup', event => {
+    document.addEventListener('keyup', event => {
+
+        if(event.keyCode==32) {
+
+            //space bar
 
 
+            arco.src = "./img/arqueroarco1.png";
+
+        }
+
+        
 
 
-    // });
+    });
 
 
 
@@ -462,6 +483,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
+ 
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
@@ -487,6 +509,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             //drawImage tiene 4 parametros: Imagen a ser invocada en la funcion,inicio eje x,inicio eje y, tamaño.widht, tamaño.heigh 
             context.clearRect(0,0, canvas.width, canvas.heigh);
             context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
+
+            
 
             if (direccion == "izquierda") {
 
@@ -521,7 +545,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-            
+            context.drawImage(arco, Arquero.posicion_x + 3, Arquero.posicion_y +3, arco.naturalWidth, arco.naturalHeight);
             
             
             //context.font("60px");

@@ -7,6 +7,15 @@ let imagen_arquero_izquierda = new Image ();
 imagen_arquero_izquierda.src = "./img/arqueroiz.png";
 
 
+let arco = new Image ();
+arco.src = "./img/arqueroarco1.png";
+
+
+
+let arco_disparando = new Image();
+arco_disparando.src = "./img/arqueroarco2.png";
+
+
 let Arquero = {
 
 
@@ -20,3 +29,5 @@ let Arquero = {
 
 
 }
+
+
