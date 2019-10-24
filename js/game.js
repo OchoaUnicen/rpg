@@ -431,6 +431,17 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
     function moveLaser() {
+
+        if (direccion== "izquierda") {
+
+
+        }
+        if (direccion== "derecha") {
+
+            
+        }
+
+
         for (var i = 0; i < lasers.length; i++) {
           if (lasers[i][0] < canvas.width) {
             lasers[i][0] += 10;
@@ -439,6 +450,11 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             lasers.splice(i, 1);
           }
         }
+
+
+
+
+
       }
       
   
