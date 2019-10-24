@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     function saltar(event) {
 
-        console.log("anda");
+       // console.log("anda");
         if (event.keyCode==38) {
 
             Guerrero.posicion_y-=50;
@@ -407,7 +407,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         //3* GRAVEDAD * (TIEMPO_AL_CUADRADO);
 
         contador_tiempo ++;
-        console.log("tiempo en caer jugador 1 :"+ contador_tiempo);   
+        //console.log("tiempo en caer jugador 1 :"+ contador_tiempo);   
 
         }
 
@@ -450,10 +450,34 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         }
 
 
+
+
+
+
         for (var i = 0; i < lasers.length; i++) {
           if (lasers[i][0] < canvas.width) {
             lasers[i][0] += 10;
-            console.log(lasers[i][0]);
+            //console.log(lasers[i][0]);
+
+
+
+
+            if (lasers[i][0]== Guerrero.posicion_x) {
+
+                console.log("contacto");
+                
+                console.log("lasers pos pos: "+ lasers[i][0]);
+                
+
+                console.log("posicion X de guerrero: "+Guerrero.posicion_x);
+                console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
+            }
+
+           // console.log("i: "+i);
+
+
+
+
           } else if (lasers[i][0] > canvas.width-1) {
             lasers.splice(i, 1);
           }
@@ -492,7 +516,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
          moveLaser();
         
 
-
+        //console.log(Arquero.posicion_y);
          //arrowCollision();
 
 
