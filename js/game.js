@@ -481,6 +481,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
                 //Guerrero.vida -= Math.random() * (max - min) + min;
                 Guerrero.vida -= getRandomInt(69 /* <- lindo numero */);
 
+                sondio_recibir_flechazo_armadura.play();
+
                 if (Guerrero.vida < 0)
                     Guerrero.vida = 0;
 
@@ -523,9 +525,6 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
  function draw_healthbar(x, y, personaje_hp, width, thickness){
     context.beginPath();
-
-
-
     context.rect(x-width/2, y, width*(personaje_hp/100), thickness);
 
 

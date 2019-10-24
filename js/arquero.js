@@ -20,7 +20,12 @@ arco_disparando.src = "./img/arqueroarco2.png";
  sonido_disparo_arco.volume = 0.4;
  
  sonido_disparo_arco.src = "./sounds/sonido_disparo_arco1.mp3";
+
+
+ let sondio_recibir_flechazo_armadura = document.createElement("audio");
+ sondio_recibir_flechazo_armadura.volume = 0.4;
  
+ sondio_recibir_flechazo_armadura.src = "./sounds/sondio_recibir_flechazo_armadura.mp3";
  
  
  //sonido_disparo_arco.src = "./sounds/test_sound.mp3";
