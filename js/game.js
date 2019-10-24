@@ -434,7 +434,9 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
     }
 
 
-
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+      }
 
 
 
@@ -460,9 +462,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             //console.log(lasers[i][0]);
 
 
-
-
-            if (lasers[i][0]== Guerrero.posicion_x) {
+            if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
+                lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w))) {
 
                 console.log("contacto");
                 
@@ -471,6 +472,15 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
                 console.log("posicion X de guerrero: "+Guerrero.posicion_x);
                 console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
+
+                //Guerrero.vida -= Math.random() * (max - min) + min;
+                Guerrero.vida -= getRandomInt(69 /* <- lindo numero */);
+
+                if (Guerrero.vida < 0)
+                    Guerrero.vida = 0;
+
+                // Borramos el laser.
+                lasers.splice(i, 1);
             }
 
            // console.log("i: "+i);
@@ -553,8 +563,23 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
             if (direccion_guerrero == "izquierda") {
 
+                if (Guerrero.vida <= 0)
+                {
+                    context.save();
+                    
+                    context.translate(Guerrero.posicion_x, Guerrero.posicion_y);
+                    context.rotate(45 * Math.PI / 180);
+                    context.drawImage(Guerrero.imagen_izquierda,Guerrero.imagen_izquierda.width/2,-Guerrero.imagen_izquierda.width/2);
 
-                context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
+                    //context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
+                    // Reset transformation matrix to the identity matrix
+                    context.restore();
+
+                }
+                else
+                {
+                    context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
+                }
             
             } 
 

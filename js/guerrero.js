@@ -19,10 +19,12 @@ let Guerrero = {
     "imagen_izquierda": imagen_guerrero_izquierda,
     "vida" : 100,
     "posicion_x": 650,
-    "posicion_y": 360
+    "posicion_y": 360,
     
+    w: 100,
+    h: 100,
     
-    
+    muerto: false,
 }
 
 
