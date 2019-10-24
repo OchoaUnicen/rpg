@@ -20,11 +20,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
     const TIEMPO_AL_CUADRADO = contador_tiempo * contador_tiempo;
 
 
-    //Personaje("Carlitos", 'arquero', getImagen);
-
-
-    //console.log(Personaje);
-
+    
 
 //------------------------------------------
 //VELOCIDAD
@@ -43,15 +39,15 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-    let posicion_jugador_x = 20;
-    let posicion_jugador_y = 320;
+    // let posicion_jugador_x = 20;
+    // let posicion_jugador_y = 320;
 
 
-    let arqueroIzquierda = new Image();
-    arqueroIzquierda.src = "./img/arqueroiz.png";
+    // let arqueroIzquierda = new Image();
+    // arqueroIzquierda.src = "./img/arqueroiz.png";
 
-    let arquero = new Image();
-    arquero.src = "./img/arquero.png";
+    // let arquero = new Image();
+    // arquero.src = "./img/arquero.png";
     let fondo = new Image();
     fondo.src = "./img/fondo.png";
 
@@ -62,37 +58,28 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     {// ********************************************** EN PROGRESO **************************************************
 
-        // Usuario_Arquero = new Personaje ("Galadar", "Arquero", URL(/img/arquero.png));
-        //  let instancia_arquero = new personaje("Archer", "Clase", arquero);
-
-        
+      
 
 
-        var personaje = {
-            "nombre": "Galandar",
-            "clase": "Arquero",
-            "img": arquero
+        // var personaje = {
+        //     "nombre": "Galandar",
+        //     "clase": "Arquero",
+        //     "img": arquero      
             
-            
-            // function (){
-            //     let imagen_arquero = new Image();
-            //     imagen_arquero.src = "./img/arquero.png";
-            //     return imagen_arquero;}
-            
-
-            ,
-            "posicion_x": posicion_jugador_x,
-            "posicion_y": posicion_jugador_y
+       
+        //     ,
+        //     "posicion_x": posicion_jugador_x,
+        //     "posicion_y": posicion_jugador_y
 
         
         
         
-        }
-        console.log(personaje.nombre);
-        console.log(personaje.clase);
-        console.log(personaje.posicion_x);
-        console.log(personaje.posicion_y);
-        console.log(personaje);
+        // }
+        // console.log(personaje.nombre);
+        // console.log(personaje.clase);
+        // console.log(personaje.posicion_x);
+        // console.log(personaje.posicion_y);
+        // console.log(personaje);
 
         // let pos_x = posicion_jugador_x;
         // let pos_y = posicion_jugador_y;
@@ -201,11 +188,11 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         else if (event.keyCode === 83) {
 
             //letra S - Abajo
-            posicion_jugador_y+=30;
+            Arquero.posicion_y+=30;
         }
         else if (event.keyCode == 32 && lasers.length <= laserTotal) // space
         {
-            lasers.push([posicion_jugador_x + 40, posicion_jugador_y + 50, 20, 4]);
+            lasers.push([Arquero.posicion_x + 40, Arquero.posicion_y + 50, 20, 4]);
         }
 
         // ************************* PLAYER 2 GUERRERO ***********
@@ -255,7 +242,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
         
         if (event.keyCode==37) {
-            //letra A - izquierda
+            //flecha <-
            
            
             if (velocidad_guerrero < limite_aceleracion) {
@@ -294,7 +281,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
            
            
             
-            posicion_jugador_x-=velocidad;
+            Arquero.posicion_x-=velocidad;
         }
 
         if (event.keyCode==68) {
@@ -307,7 +294,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
              }
 
 
-             posicion_jugador_x+=velocidad;
+             Arquero.posicion_x+=velocidad;
 
 
         }
@@ -346,7 +333,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
         if (event.keyCode==87) {
 
-        posicion_jugador_y-=50;
+        Arquero.posicion_y-=50;
 
         if (velocidad < limite_aceleracion) {
 
@@ -391,8 +378,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
        
 
 
-        if(posicion_jugador_y < 370) {
-        posicion_jugador_y += 2;
+        if(Arquero.posicion_y < 370) {
+        Arquero.posicion_y += 2;
         
         
         
@@ -503,14 +490,14 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
             if (direccion == "izquierda") {
 
-                context.drawImage(arqueroIzquierda, posicion_jugador_x, posicion_jugador_y, arqueroIzquierda.naturalWidth, arqueroIzquierda.naturalHeight);
+                context.drawImage(Arquero.imagen_izquierda, Arquero.posicion_x, Arquero.posicion_y, Arquero.imagen_izquierda.naturalWidth, Arquero.imagen_izquierda.naturalHeight);
                 
 
             }
 
             if (direccion == "derecha") {
 
-                context.drawImage(arquero, posicion_jugador_x, posicion_jugador_y, arquero.naturalWidth, arquero.naturalHeight);
+                context.drawImage(Arquero.imagen_derecha, Arquero.posicion_x, Arquero.posicion_y, Arquero.imagen_derecha.naturalWidth, Arquero.imagen_derecha.naturalHeight);
 
             }
 
@@ -586,14 +573,14 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             if (direccion == "izquierda") {
 
 
-                posicion_jugador_x-=velocidad;
+                Arquero.posicion_x-=velocidad;
 
             }
 
 
             if (direccion == "derecha") {
 
-                posicion_jugador_x+=velocidad;
+                Arquero.posicion_x+=velocidad;
             }
            
 
