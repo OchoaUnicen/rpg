@@ -521,7 +521,28 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
+ function draw_healthbar(x, y, personaje_hp, width, thickness){
+    context.beginPath();
 
+
+
+    context.rect(x-width/2, y, width*(personaje_hp/100), thickness);
+
+
+
+
+    if(personaje_hp > 63){
+        context.fillStyle="green"
+    }else if(personaje_hp > 37){
+        context.fillStyle="gold"
+    }else if(personaje_hp > 13){
+        context.fillStyle="orange";
+    }else{
+        context.fillStyle="red";
+    }
+    context.closePath();
+    context.fill();
+  }
  
 
     function tiempo() {
@@ -529,7 +550,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         frame(tiempo);    
          gravedad(); 
          moveLaser();
-        
+         draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y+10, Guerrero.vida, Guerrero.vida);
+
 
         //console.log(Arquero.posicion_y);
          //arrowCollision();
@@ -539,7 +561,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-
+      
 
 
 
@@ -603,7 +625,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             
             
             //context.font("60px");
-            context.fillText("Guerrero Hp: "+ Guerrero.vida, 800, 50);
+            context.fillText("Guerrero Hp: "+ Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y-30);
             
             // console.log("posicion_jugador_x : " + posicion_jugador_x);
             // console.log("posicion_jugador_y : " + posicion_jugador_y);
