@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 //VELOCIDAD
 
         let velocidad = 0;
+        let velocidad_guerrero = 0;
 
 
 
@@ -154,8 +155,12 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
     let direccion = "derecha";
+    let direccion_guerrero = "izquierda";
 
     document.addEventListener('keydown', event => {
+
+
+
 
 
         
@@ -181,7 +186,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
             //letra W - Arriba
 
-            saltar();
+            saltar(event);
             
        
 
@@ -191,6 +196,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
        //console.log("formula magica: " + formula_magica);
        // console.log("posicion_jugador_y: " + posicion_jugador_y);
         }
+
+        
         else if (event.keyCode === 83) {
 
             //letra S - Abajo
@@ -200,6 +207,41 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         {
             lasers.push([posicion_jugador_x + 40, posicion_jugador_y + 50, 20, 4]);
         }
+
+        // ************************* PLAYER 2 GUERRERO ***********
+
+        else if (event.keyCode == 37) {
+
+
+            acelerar(event);
+            direccion_guerrero = "izquierda";
+            //Flecha izquierda <-
+
+
+
+
+        }
+
+        else if (event.keyCode == 39) {
+
+            //Flecha derecha ->
+            direccion_guerrero = "derecha";
+            acelerar(event);
+
+        } 
+
+        else if (event.keyCode == 40) {
+
+            //Flecha abajo v
+            acelerar(event);
+
+        } 
+        else if (event.keyCode == 38) {
+
+            //Flecha arriba
+            saltar(event);
+
+        } 
     
 
        // console.log(event);
@@ -212,6 +254,33 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
         
+        if (event.keyCode==37) {
+            //letra A - izquierda
+           
+           
+            if (velocidad_guerrero < limite_aceleracion) {
+
+                velocidad_guerrero = velocidad_guerrero+2;
+            }
+           
+           
+            
+            Guerrero.posicion_x-=velocidad_guerrero;
+        }
+        if (event.keyCode==39) {
+            //Flecha derecha ->
+           
+           
+            if (velocidad_guerrero < limite_aceleracion) {
+
+                velocidad_guerrero = velocidad_guerrero+2;
+            }
+           
+           
+            
+            Guerrero.posicion_x+=velocidad_guerrero;
+            //console.log("velocidad guerrero: "+velocidad_guerrero);
+        }
 
        
         if (event.keyCode==65) {
@@ -255,8 +324,27 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-    function saltar() {
+    function saltar(event) {
 
+        console.log("anda");
+        if (event.keyCode==38) {
+
+            Guerrero.posicion_y-=50;
+           
+            if (velocidad_guerrero < limite_aceleracion) {
+    
+    
+                velocidad_guerrero = velocidad_guerrero +8;
+            }
+
+
+
+
+        }
+
+
+
+        if (event.keyCode==87) {
 
         posicion_jugador_y-=50;
 
@@ -264,8 +352,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
             velocidad = velocidad +8;
+            }
         }
-
         
     }
 
@@ -311,7 +399,13 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         //3* GRAVEDAD * (TIEMPO_AL_CUADRADO);
 
         contador_tiempo ++;
-        console.log(contador_tiempo);   
+        console.log("tiempo en caer jugador 1 :"+ contador_tiempo);   
+
+        }
+
+        if (Guerrero.posicion_y < 370) {
+
+            Guerrero.posicion_y += 2;
 
         }
         
@@ -320,6 +414,9 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
     
 //###############################FIN##GRAVEDAD#########################
 //##
+
+
+
     function drawLaser() {
         if (lasers.length)
         for (var i = 0; i < lasers.length; i++) {
@@ -328,11 +425,16 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         }
     }
 
+
+
+
+
+
     function moveLaser() {
         for (var i = 0; i < lasers.length; i++) {
           if (lasers[i][0] < canvas.width) {
             lasers[i][0] += 10;
-            //console.log(lasers[i][0]);
+            console.log(lasers[i][0]);
           } else if (lasers[i][0] > canvas.width-1) {
             lasers.splice(i, 1);
           }
@@ -397,8 +499,25 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             }
 
 
+
+            if (direccion_guerrero == "izquierda") {
+
+
+                context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
             
-            context.drawImage(Guerrero.imagen, 650, 360, Guerrero.imagen.naturalWidth, Guerrero.imagen.naturalHeight);
+            } 
+
+            
+            if (direccion_guerrero == "derecha") {
+
+
+                context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
+            
+            } 
+
+
+
+
             
             
             
@@ -410,6 +529,35 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             // console.log(tiempo);
 
             drawLaser();
+
+
+
+
+            if (velocidad_guerrero > 0) {
+
+                velocidad_guerrero = velocidad_guerrero -0.4;
+
+
+                if (direccion_guerrero == "izquierda") {
+
+                    Guerrero.posicion_x-=velocidad_guerrero;
+                }
+
+
+                if (direccion_guerrero == "derecha") {
+
+                    Guerrero.posicion_x += velocidad_guerrero;
+
+                }
+
+
+
+            }
+
+
+
+
+
 
 
 
