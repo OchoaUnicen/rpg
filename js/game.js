@@ -450,63 +450,114 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         if (direccion== "izquierda") {
 
 
+
+
+
         }
+
+
         if (direccion== "derecha") {
 
+
+           
             
         }
 
-
-
-
-
-
         for (var i = 0; i < lasers.length; i++) {
-          if (lasers[i][0] < canvas.width) {
-            lasers[i][0] += 10;
-            //console.log(lasers[i][0]);
+            if (lasers[i][0] < canvas.width) {
+              lasers[i][0] += 10;
+              //console.log(lasers[i][0]);
+  
+  
+              if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
+                  lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w))) {
+  
+                  console.log("contacto");
+                  
+                  console.log("lasers pos pos: "+ lasers[i][0]);
+                  
+  
+                  console.log("posicion X de guerrero: "+Guerrero.posicion_x);
+                  console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
+  
+                  //Guerrero.vida -= Math.random() * (max - min) + min;
 
 
-            if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
-                lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w))) {
+                  let damage = getRandomInt(69);
+                  Guerrero.vida -= damage; 
+                  
+                  
+                  //getRandomInt(69 /* <- lindo numero */);
+  
 
-                console.log("contacto");
+                  sondio_recibir_flechazo_armadura.play();
+
+
+                  //createText(damage.toString(), "#990000", Guerrero);
+
+                    
+                //   context.font = "30px";
+                  // context.fillText(damage, Guerrero.posicion_x, Guerrero.posicion_y-40);
+
                 
-                console.log("lasers pos pos: "+ lasers[i][0]);
-                
+                  
+                    // console.log("llega");
+                     console.log("damage: "+ damage);
 
-                console.log("posicion X de guerrero: "+Guerrero.posicion_x);
-                console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
 
-                //Guerrero.vida -= Math.random() * (max - min) + min;
-                Guerrero.vida -= getRandomInt(69 /* <- lindo numero */);
 
-                sondio_recibir_flechazo_armadura.play();
-
-                if (Guerrero.vida < 0)
-                    Guerrero.vida = 0;
-
-                // Borramos el laser.
-                lasers.splice(i, 1);
+  
+                  if (Guerrero.vida < 0)
+                      Guerrero.vida = 0;
+  
+                  // Borramos el laser.
+                  lasers.splice(i, 1);
+              }
+  
+             // console.log("i: "+i);
+  
+  
+  
+  
+            } else if (lasers[i][0] > canvas.width-1) {
+              lasers.splice(i, 1);
             }
-
-           // console.log("i: "+i);
-
-
-
-
-          } else if (lasers[i][0] > canvas.width-1) {
-            lasers.splice(i, 1);
           }
-        }
-
-
-
-
 
       }
       
+  function createText(text_string, color_string, target) {
+  var text_miss = new createjs.Text(text_string, "48px VT323", color_string);
+
   
+  //delay before the text appears
+  setTimeout(function() {
+    stage.addChild(text_miss);
+  }, 400); //# of frames when parry happens
+  
+  displayTextArray.push(text_miss);
+
+  
+  text_miss.x = target.x - 25;
+}
+
+//==TextUpdate==========
+//tweens each text from the array and animates and once complete will delete
+function updateText(textArray) {
+  if (textArray.length > 0) {
+    for (var i = 0; i < textArray.length; i++) {
+          createjs.Tween.get(textArray[i])
+            .wait(400)
+          
+            .to({scaleX:1.2, scaleY:1.2}, 400)
+            .to({alpha:0, visible:false}, 800)
+            .call(handleComplete);
+          function handleComplete() {
+              textArray.splice(i, 1); //removes the text from the array
+          }
+      }
+    }
+  }
 //
 
 
@@ -594,7 +645,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
                     context.save();
                     
                     context.translate(Guerrero.posicion_x, Guerrero.posicion_y);
-                    context.rotate(45 * Math.PI / 180);
+                    context.rotate(60 * Math.PI / 180);
                     context.drawImage(Guerrero.imagen_izquierda,Guerrero.imagen_izquierda.width/2,-Guerrero.imagen_izquierda.width/2);
 
                     //context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
@@ -631,7 +682,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             // console.log("posicion_jugador_x : " + posicion_jugador_x);
             // console.log("posicion_jugador_y : " + posicion_jugador_y);
             // console.log(tiempo);
-
+            
             drawLaser();
 
 
