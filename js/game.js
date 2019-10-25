@@ -690,6 +690,37 @@ function updateText(textArray) {
 
     //console.log("estado de la tecla D:  " + Teclas[68]);
     //console.log("estado de la tecla A:  " + Teclas[65]);
+    
+    if (Teclas[32]==true&& lasers.length <= laserTotal){
+        //Space espacio
+
+
+ 
+        if (disparo_cooldown == 0) {
+
+            arco.src = arco_disparando.src;
+
+
+
+            sonido_disparo_arco.play();
+             
+
+
+            lasers.push([Arquero.posicion_x + 40, Arquero.posicion_y + 50, 20, 4]);
+
+            disparo_cooldown = 300;
+        }
+    
+    // space
+    //     {
+    //         // console.log(sonido_disparo_arco);
+            
+    }
+
+
+
+    
+    
     if  (Teclas[68]== true){
          // Derecha
 
@@ -763,14 +794,50 @@ function updateText(textArray) {
          }
        
          
-     }
-     
+     }    
 
 
     }
 
+    if  (Teclas[37]== true){
+        //Flecha Izquierda
+
+        direccion_guerrero == "izquierda";
+        console.log(direccion);
+
+         if (velocidad < limite_aceleracion) {
+
+                velocidad = velocidad+1;
+
+             }
+
+
+        Guerrero.posicion_x-=velocidad;        
+
+   }
+
+   if  (Teclas[39]== true){
+    //Flecha derecha
+
+    direccion_guerrero == "derecha";
+    console.log(direccion);
+
+     if (velocidad < limite_aceleracion) {
+
+            velocidad = velocidad+1;
+
+         }
+
+
+    Guerrero.posicion_x+=velocidad;        
 
 }
+
+}
+
+
+
+let disparo_cooldown = 0;
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
@@ -784,9 +851,13 @@ function updateText(textArray) {
 
 
 
+        if (disparo_cooldown > 0 ) {
+            disparo_cooldown = disparo_cooldown-10;
+        
+            console.log(disparo_cooldown);
+        }
 
-
-
+        
 
         //console.log(Arquero.posicion_y);
          //arrowCollision();
