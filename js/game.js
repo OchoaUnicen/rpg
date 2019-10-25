@@ -40,6 +40,27 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
+
+
+    let Teclas = new Array(255);
+
+    cargarTeclas();
+
+    function cargarTeclas () {
+
+        for (var i = 0 ; i < Teclas.length; i++) {
+            Teclas[i] = false;
+            
+        }
+    }
+
+
+
+
+
+
+
+
     // let posicion_jugador_x = 20;
     // let posicion_jugador_y = 320;
 
@@ -51,73 +72,6 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
     // arquero.src = "./img/arquero.png";
     let fondo = new Image();
     fondo.src = "./img/fondo.png";
-
-
-
-
-
-
-    {// ********************************************** EN PROGRESO **************************************************
-
-      
-
-
-        // var personaje = {
-        //     "nombre": "Galandar",
-        //     "clase": "Arquero",
-        //     "img": arquero      
-            
-       
-        //     ,
-        //     "posicion_x": posicion_jugador_x,
-        //     "posicion_y": posicion_jugador_y
-
-        
-        
-        
-        // }
-        // console.log(personaje.nombre);
-        // console.log(personaje.clase);
-        // console.log(personaje.posicion_x);
-        // console.log(personaje.posicion_y);
-        // console.log(personaje);
-
-        // let pos_x = posicion_jugador_x;
-        // let pos_y = posicion_jugador_y;
-        // let personaje_imagen = "\".img/arquero.png\"";
-        // let personaje_objeto = {
-
-        //     posicion_x: pos_x,
-        //     posicion_y: pos_y,
-        //     img:URL          
-
-
-
-        // }
-
-
-
-        //console.log(personaje.posicion);
-        // let posicion_jugador_x = 20;
-        // let posicion_jugador_y = 320;
-        // let arquero = new Image();
-        // arquero.src = "./img/arquero.png";
-
-
-
-
-        
-        // let instancia_arquero = new personaje("Archer", "Clase", arquero);
-        
-        
-        
-        
-        
-        // ********************************************** FIN EN PROGRESO **************************************************
-    }
-
-
-
 
 
 
@@ -150,9 +104,15 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
+    
 
 
     document.addEventListener('keydown', event => {
+
+
+
+
+
 
 
 
@@ -164,7 +124,26 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             //letra A - izquierda
 
            // velocidad = velocidad + 2;
-            acelerar(event);
+
+
+
+
+
+
+           Teclas[event.keyCode] = true;
+
+            // if (Teclas[event.keyCode] = true) {
+
+            //     acelerar(event);
+            // }
+
+
+           acelerar(event);
+
+
+
+
+
             direccion = "izquierda";
             // posicion_jugador_x-=velocidad;
         }
@@ -172,14 +151,38 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
             //letra D - derecha
 
+
+            Teclas[event.keyCode] = true;
+
+
+            // if (Teclas[event.keyCode] = true) {
+
+            //     acelerar(event);
+            // }
+
+
+            acelerar(event);
+
+
+
+
            // velocidad = velocidad + 2;
-           acelerar(event);
+           
+
+
+
+
             direccion = "derecha";
            // posicion_jugador_x+=velocidad;
         }
         else if (event.keyCode === 87) {
 
             //letra W - Arriba
+
+
+
+            
+
 
             saltar(event);
             
@@ -210,6 +213,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
             lasers.push([Arquero.posicion_x + 40, Arquero.posicion_y + 50, 20, 4]);
+            console.log(Arquero.posicion_y);
         }
 
         // ************************* PLAYER 2 GUERRERO ***********
@@ -258,6 +262,10 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
         
+
+
+
+
         if (event.keyCode==37) {
             //flecha <-
            
@@ -287,19 +295,39 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         }
 
        
-        if (event.keyCode==65) {
-            //letra A - izquierda
+
+
+        // if (Teclas[event.keyCode]==true) {
+
+        //     if (velocidad < limite_aceleracion) {
+
+        //         velocidad = velocidad+2;
+        //         }    
            
-           
-            if (velocidad < limite_aceleracion) {
+            
+        //     Arquero.posicion_x-=velocidad;
+
+        // }
+
+
+
+        if (event.keyCode==65) {     //letra A - izquierda
+                if (velocidad < limite_aceleracion) {
 
                 velocidad = velocidad+2;
-            }
-           
+                }    
            
             
             Arquero.posicion_x-=velocidad;
         }
+
+
+
+
+
+
+
+
 
         if (event.keyCode==68) {
              //letra D - derecha
@@ -388,8 +416,21 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
         }
 
+
+
+        if (event.keyCode==68) {
+
+
+            Teclas[event.keyCode] = false;
+        }
+
         
 
+        if (event.keyCode === 65) { 
+
+
+            Teclas[event.keyCode] = false;
+        }
 
     });
 
@@ -450,7 +491,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
         if (direccion== "izquierda") {
 
 
-
+           
 
 
         }
@@ -458,7 +499,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
         if (direccion== "derecha") {
 
-
+           
            
             
         }
@@ -470,8 +511,22 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
   
   
               if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
-                  lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w))) {
-  
+                  lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && Arquero.posicion_y == Guerrero.posicion_y) {
+                       //*****************EN PROGRESO********************** */
+                    //verificar la altura del arquero respecto al guerrero para delimitar hit
+
+
+
+
+
+
+
+
+
+
+
+
+ 
                   console.log("contacto");
                   
                   console.log("lasers pos pos: "+ lasers[i][0]);
@@ -479,7 +534,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
   
                   console.log("posicion X de guerrero: "+Guerrero.posicion_x);
                   console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
-  
+                  console.log("posicion X de arquero: "+Arquero.posicion_x);
+                  console.log("posicion Y de arquero: "+Arquero.posicion_y);
                   //Guerrero.vida -= Math.random() * (max - min) + min;
 
 
@@ -523,6 +579,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
               lasers.splice(i, 1);
             }
           }
+
+        
 
       }
       
@@ -603,6 +661,14 @@ function updateText(textArray) {
          draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y+10, Guerrero.vida, Guerrero.vida);
 
 
+        //  if () {}
+
+
+
+
+
+
+
         //console.log(Arquero.posicion_y);
          //arrowCollision();
 
@@ -611,7 +677,13 @@ function updateText(textArray) {
 
 
 
-      
+         //***********--*-*--*-**--*-***--*--**--*-**-*-*-*--* *-***-**--*-*-*----**--*-*/
+
+        //  console.log("derecha estado: "+ Teclas[68]);
+        //  console.log("izquierda estado: "+Teclas[65]);
+
+
+        
 
 
 
@@ -619,6 +691,10 @@ function updateText(textArray) {
 
             //drawImage tiene 4 parametros: Imagen a ser invocada en la funcion,inicio eje x,inicio eje y, tamaño.widht, tamaño.heigh 
             context.clearRect(0,0, canvas.width, canvas.heigh);
+
+
+
+
             context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
 
             
