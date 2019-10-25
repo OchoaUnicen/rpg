@@ -436,18 +436,18 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-    // document.addEventListener('keyup', event => {
+    document.addEventListener('keyup', event => {
 
-    //     if(event.keyCode==32) {
+        if(event.keyCode==32) {
 
-    //         //space bar
-
-
-    //         arco.src = "./img/arqueroarco1.png";
-
-    //     }
+            //space bar
 
 
+            arco.src = "./img/arqueroarco1.png";
+
+        }
+
+    });
 
     //     if (event.keyCode==68) {
 
