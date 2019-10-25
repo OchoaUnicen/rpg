@@ -14,7 +14,9 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     let canvas = document.getElementById('lienzo');
     let context = canvas.getContext('2d');
-    const GRAVEDAD = 3.8;
+    
+      //  const GRAVEDAD = 20;
+    // const GRAVEDAD = 3.8;
     let contador_tiempo = 1;
        
     const TIEMPO_AL_CUADRADO = contador_tiempo * contador_tiempo;
@@ -104,10 +106,16 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
+    //#########################EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
+
+
+    document.addEventListener('keydown', (e) => { Teclas[e.keyCode] = true
     
+        //console.log("tecla apretada");
+        //console.log(Teclas[e.keyCode]);
+    });
 
-
-    document.addEventListener('keydown', event => {
+    // document.addEventListener('keydown', event => {
 
 
 
@@ -120,140 +128,144 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
         
 
-        if (event.keyCode === 65) {
-            //letra A - izquierda
+    //     if (event.keyCode === 65) {
+    //         //letra A - izquierda
 
-           // velocidad = velocidad + 2;
-
-
-
-
-
-
-           Teclas[event.keyCode] = true;
-
-            // if (Teclas[event.keyCode] = true) {
-
-            //     acelerar(event);
-            // }
-
-
-           acelerar(event);
+    //        // velocidad = velocidad + 2;
 
 
 
 
 
-            direccion = "izquierda";
-            // posicion_jugador_x-=velocidad;
-        }
-        else if (event.keyCode === 68) {
 
-            //letra D - derecha
+    //        Teclas[event.keyCode] = true;
 
+    //         // if (Teclas[event.keyCode] = true) {
 
-            Teclas[event.keyCode] = true;
+    //         //     acelerar(event);
+    //         // }
 
 
-            // if (Teclas[event.keyCode] = true) {
-
-            //     acelerar(event);
-            // }
-
-
-            acelerar(event);
+    //        acelerar(event);
 
 
 
 
-           // velocidad = velocidad + 2;
+
+    //         direccion = "izquierda";
+    //         // posicion_jugador_x-=velocidad;
+    //     }
+    //     else if (event.keyCode === 68) {
+
+    //         //letra D - derecha
+
+
+    //         Teclas[event.keyCode] = true;
+
+
+    //         // if (Teclas[event.keyCode] = true) {
+
+    //         //     acelerar(event);
+    //         // }
+
+
+    //         acelerar(event);
+
+
+
+
+    //        // velocidad = velocidad + 2;
            
 
 
 
 
-            direccion = "derecha";
-           // posicion_jugador_x+=velocidad;
-        }
-        else if (event.keyCode === 87) {
+    //         direccion = "derecha";
+    //        // posicion_jugador_x+=velocidad;
+    //     }
+    //     else if (event.keyCode === 87) {
 
-            //letra W - Arriba
+    //         //letra W - Arriba
 
 
 
             
 
 
-            saltar(event);
+    //         saltar(event);
             
        
 
-       // let formula_magica =3* GRAVEDAD / (TIEMPO_AL_CUADRADO) ;
-       // posicion_jugador_y -=formula_magica;
-       // console.log("keydown W ");
-       //console.log("formula magica: " + formula_magica);
-       // console.log("posicion_jugador_y: " + posicion_jugador_y);
-        }
+    //    // let formula_magica =3* GRAVEDAD / (TIEMPO_AL_CUADRADO) ;
+    //    // posicion_jugador_y -=formula_magica;
+    //    // console.log("keydown W ");
+    //    //console.log("formula magica: " + formula_magica);
+    //    // console.log("posicion_jugador_y: " + posicion_jugador_y);
+    //     }
 
         
-        else if (event.keyCode === 83) {
+    //     else if (event.keyCode === 83) {
 
-            //letra S - Abajo
-            Arquero.posicion_y+=30;
-        }
-        else if (event.keyCode == 32 && lasers.length <= laserTotal) // space
-        {
-            // console.log(sonido_disparo_arco);
-            arco.src = arco_disparando.src;
+    //         //letra S - Abajo
+    //         Arquero.posicion_y+=30;
+    //     }
+    //     else if (event.keyCode == 32 && lasers.length <= laserTotal) // space
+    //     {
+    //         // console.log(sonido_disparo_arco);
+    //         arco.src = arco_disparando.src;
 
 
 
-            sonido_disparo_arco.play();
+    //         sonido_disparo_arco.play();
              
 
 
-            lasers.push([Arquero.posicion_x + 40, Arquero.posicion_y + 50, 20, 4]);
-            console.log(Arquero.posicion_y);
-        }
+    //         lasers.push([Arquero.posicion_x + 40, Arquero.posicion_y + 50, 20, 4]);
+    //         console.log(Arquero.posicion_y);
+    //     }
 
-        // ************************* PLAYER 2 GUERRERO ***********
+    //     // ************************* PLAYER 2 GUERRERO ***********
 
-        else if (event.keyCode == 37) {
-
-
-            acelerar(event);
-            direccion_guerrero = "izquierda";
-            //Flecha izquierda <-
+    //     else if (event.keyCode == 37) {
 
 
+    //         acelerar(event);
+    //         direccion_guerrero = "izquierda";
+    //         //Flecha izquierda <-
 
 
-        }
 
-        else if (event.keyCode == 39) {
 
-            //Flecha derecha ->
-            direccion_guerrero = "derecha";
-            acelerar(event);
+    //     }
 
-        } 
+    //     else if (event.keyCode == 39) {
 
-        else if (event.keyCode == 40) {
+    //         //Flecha derecha ->
+    //         direccion_guerrero = "derecha";
+    //         acelerar(event);
 
-            //Flecha abajo v
-            acelerar(event);
+    //     } 
 
-        } 
-        else if (event.keyCode == 38) {
+    //     else if (event.keyCode == 40) {
 
-            //Flecha arriba
-            saltar(event);
+    //         //Flecha abajo v
+    //         acelerar(event);
 
-        } 
+    //     } 
+    //     else if (event.keyCode == 38) {
+
+    //         //Flecha arriba
+    //         saltar(event);
+
+    //     } 
     
 
-       // console.log(event);
-    });
+    //    // console.log(event);
+    // });
+
+
+
+      //###############FIN#######EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
 
     let limite_aceleracion = 5;
 
@@ -311,15 +323,15 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-        if (event.keyCode==65) {     //letra A - izquierda
-                if (velocidad < limite_aceleracion) {
+        // if (event.keyCode==65) {     //letra A - izquierda
+        //         if (velocidad < limite_aceleracion) {
 
-                velocidad = velocidad+2;
-                }    
+        //         velocidad = velocidad+2;
+        //         }    
            
             
-            Arquero.posicion_x-=velocidad;
-        }
+        //     Arquero.posicion_x-=velocidad;
+        // }
 
 
 
@@ -329,20 +341,20 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-        if (event.keyCode==68) {
-             //letra D - derecha
+        // if (event.keyCode==68) {
+        //      //letra D - derecha
 
-             if (velocidad < limite_aceleracion) {
+        //      if (velocidad < limite_aceleracion) {
 
-             velocidad = velocidad+2;
+        //      velocidad = velocidad+2;
 
-             }
-
-
-             Arquero.posicion_x+=velocidad;
+        //      }
 
 
-        }
+        //      Arquero.posicion_x+=velocidad;
+
+
+        // }
 
 
 
@@ -405,36 +417,55 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     // });
 
-    document.addEventListener('keyup', event => {
 
-        if(event.keyCode==32) {
-
-            //space bar
-
-
-            arco.src = "./img/arqueroarco1.png";
-
-        }
+ //#########################EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
 
 
 
-        if (event.keyCode==68) {
 
 
-            Teclas[event.keyCode] = false;
-        }
+ document.addEventListener('keyup', (e) => { Teclas[e.keyCode] = false
+
+
+  //  console.log(Teclas[e.keyCode]);
+
+});
+
+
+
+
+
+
+    // document.addEventListener('keyup', event => {
+
+    //     if(event.keyCode==32) {
+
+    //         //space bar
+
+
+    //         arco.src = "./img/arqueroarco1.png";
+
+    //     }
+
+
+
+    //     if (event.keyCode==68) {
+
+
+    //         Teclas[event.keyCode] = false;
+    //     }
 
         
 
-        if (event.keyCode === 65) { 
+    //     if (event.keyCode === 65) { 
 
 
-            Teclas[event.keyCode] = false;
-        }
+    //         Teclas[event.keyCode] = false;
+    //     }
 
-    });
+    // });
 
-
+ //###############FIN#######EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
 
 
     //###############################GRAVEDAD#########################
@@ -652,6 +683,94 @@ function updateText(textArray) {
     context.fill();
   }
  
+  function actualizarMovimientosPesronajes() {
+
+
+    
+
+    //console.log("estado de la tecla D:  " + Teclas[68]);
+    //console.log("estado de la tecla A:  " + Teclas[65]);
+    if  (Teclas[68]== true){
+         // Derecha
+
+         direccion == "derecha";
+        console.log("derecha true");
+        if (velocidad < limite_aceleracion) {
+
+            velocidad = velocidad+1;
+
+            }
+
+
+            Arquero.posicion_x+=velocidad;        
+
+       }
+        if  (Teclas[65]== true){
+            //Izquierda
+
+            direccion == "izquierda";
+            console.log(direccion);
+
+             if (velocidad < limite_aceleracion) {
+
+                    velocidad = velocidad+1;
+
+                 }
+
+
+            Arquero.posicion_x-=velocidad;        
+
+       }
+
+
+       if (Teclas[87]== true) {
+           //Tecla W - Saltar
+           if (Arquero.posicion_y == 370) {
+
+          
+
+            Arquero.posicion_y-=50;
+            if(direccion == "derecha"){
+                Arquero.posicion_x +=8
+            }
+
+            if (direccion == "izquierda") {
+                Arquero.posicion_x -=8;
+            }
+          
+            
+        }
+        
+
+
+       }
+
+       if (Teclas[38]== true) {
+        //Tecla Flecha arriba - Saltar guerrero
+        if (Guerrero.posicion_y == 370) {
+
+       
+
+         Guerrero.posicion_y-=50;
+
+
+         if(direccion == "derecha"){
+            Guerrero.posicion_x +=8
+         }
+
+         if (direccion == "izquierda") {
+            Guerrero.posicion_x -=8;
+         }
+       
+         
+     }
+     
+
+
+    }
+
+
+}
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
@@ -660,7 +779,7 @@ function updateText(textArray) {
          moveLaser();
          draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y+10, Guerrero.vida, Guerrero.vida);
 
-
+         actualizarMovimientosPesronajes()
         //  if () {}
 
 
@@ -797,20 +916,24 @@ function updateText(textArray) {
         if (velocidad>0) {
             velocidad = velocidad-0.4;
 
+            //*****************REVISAR */
 
-            if (direccion == "izquierda") {
-
-
-                Arquero.posicion_x-=velocidad;
-
-            }
+            // if (direccion == "izquierda") {
 
 
-            if (direccion == "derecha") {
+            //     Arquero.posicion_x-=velocidad;
 
-                Arquero.posicion_x+=velocidad;
-            }
-           
+            // }
+
+
+            // if (direccion == "derecha") {
+
+            //     Arquero.posicion_x+=velocidad;
+            // }
+           //*****************REVISAR */
+
+
+
 
             // if (event.keyCode==65) {
             //     //letra A - izquierda
