@@ -551,15 +551,19 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
  
-                  console.log("contacto");
+                //   console.log("contacto");
                   
-                  console.log("lasers pos pos: "+ lasers[i][0]);
+                //   console.log("lasers pos pos: "+ lasers[i][0]);
                   
   
-                  console.log("posicion X de guerrero: "+Guerrero.posicion_x);
-                  console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
-                  console.log("posicion X de arquero: "+Arquero.posicion_x);
-                  console.log("posicion Y de arquero: "+Arquero.posicion_y);
+                //   console.log("posicion X de guerrero: "+Guerrero.posicion_x);
+                //   console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
+                //   console.log("posicion X de arquero: "+Arquero.posicion_x);
+                //   console.log("posicion Y de arquero: "+Arquero.posicion_y);
+
+
+
+                  
                   //Guerrero.vida -= Math.random() * (max - min) + min;
 
 
@@ -681,9 +685,7 @@ function updateText(textArray) {
 
     
 
-    //console.log("estado de la tecla D:  " + Teclas[68]);
-    //console.log("estado de la tecla A:  " + Teclas[65]);
-    
+   
     if (Teclas[tecla.letra_j]==true&& lasers.length <= laserTotal){
         //letra j
 
@@ -704,12 +706,8 @@ function updateText(textArray) {
             disparo_cooldown = 300;
         }
     
-    // space
-    //     {
-    //         // console.log(sonido_disparo_arco);
-            
+   
     }
-
 
 
     
@@ -828,6 +826,13 @@ function updateText(textArray) {
 
 }
 
+
+    if (Teclas[tecla.numpad1]) {
+
+        atacarHacha();
+
+    }
+
 }
 
 
@@ -844,6 +849,8 @@ let disparo_cooldown = 0;
          actualizarMovimientosPesronajes()
         //  if () {}
 
+
+        
 
 
         if (disparo_cooldown > 0 ) {

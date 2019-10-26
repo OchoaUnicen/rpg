@@ -28,6 +28,41 @@ let Guerrero = {
 }
 
 
+
+
+function atacarHacha () {
+
+    let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
+    let distancia_arquero_guerrero_y = Math.abs(Guerrero.posicion_y - Arquero.posicion_y);
+
+
+
+
+   
+    // console.log("distancia en X: " +distancia_arquero_guerrero_x);
+    // console.log("distancia en Y: " +distancia_arquero_guerrero_y);
+
+
+
+         if (Arquero.vida > 0 && (distancia_arquero_guerrero_x >= Arquero.posicion_x &&
+            distancia_arquero_guerrero_x <= (Arquero.posicion_x + Arquero.w))
+             && Guerrero.posicion_y == Arquero.posicion_y) {
+
+
+                console.log("atacar");
+
+
+            }       
+
+else  {
+
+    console.log("demasiado lejos del objetivo");
+
+}
+
+    
+}
+
 //console.log(Guerrero.imagen.naturalWidth);
 
 

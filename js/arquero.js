@@ -59,9 +59,15 @@ let Arquero = {
     "imagen_izquierda": imagen_arquero_izquierda,
     "vida" : 100,
     "posicion_x": 20,
-    "posicion_y": 320 
+    "posicion_y": 320 ,
 
 
+    w: 100,
+    h: 100,
+    
+
+    "muerto": false
+    
 
 }
 
