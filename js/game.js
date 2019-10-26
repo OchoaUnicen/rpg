@@ -938,9 +938,19 @@ let disparo_cooldown = 0;
 
 
 
-
+            //dibuja el arco
             context.drawImage(arco, Arquero.posicion_x + 3, Arquero.posicion_y +3, arco.naturalWidth, arco.naturalHeight);
             
+
+
+            //dibuja el hacha
+            
+            //context.scale(-1, 1);
+           context.drawImage(hacha, Guerrero.posicion_x + 3, Guerrero.posicion_y + 3, hacha.naturalWidth, hacha.naturalHeight);
+
+           
+
+
             
             //context.font("60px");
             context.fillText("Guerrero Hp: "+ Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y-30);

@@ -8,6 +8,12 @@
 
 
 
+
+   let hacha = new Image();
+   hacha.src = "./anim/golpe_hacha_guerrero/guerrerohacha1.png";
+
+
+
 let Guerrero = {
 
 
