@@ -431,9 +431,9 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     document.addEventListener('keyup', event => {
 
-        if(event.keyCode==32) {
+        if(event.keyCode==74) {
 
-            //space bar
+            //j
 
 
             arco.src = "./img/arqueroarco1.png";
