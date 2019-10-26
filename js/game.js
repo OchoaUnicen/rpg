@@ -44,18 +44,11 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-    let Teclas = new Array(255);
+    
 
     cargarTeclas();
 
-    function cargarTeclas () {
-
-        for (var i = 0 ; i < Teclas.length; i++) {
-            Teclas[i] = false;
-            
-        }
-    }
-
+   
 
 
 
@@ -691,8 +684,8 @@ function updateText(textArray) {
     //console.log("estado de la tecla D:  " + Teclas[68]);
     //console.log("estado de la tecla A:  " + Teclas[65]);
     
-    if (Teclas[32]==true&& lasers.length <= laserTotal){
-        //Space espacio
+    if (Teclas[tecla.letra_j]==true&& lasers.length <= laserTotal){
+        //letra j
 
 
  
@@ -721,10 +714,10 @@ function updateText(textArray) {
 
     
     
-    if  (Teclas[68]== true){
+    if  (Teclas[tecla.letra_d]== true){
          // Derecha
 
-         direccion == "derecha";
+         direccion = "derecha";
         console.log("derecha true");
         if (velocidad < limite_aceleracion) {
 
@@ -736,10 +729,12 @@ function updateText(textArray) {
             Arquero.posicion_x+=velocidad;        
 
        }
-        if  (Teclas[65]== true){
+
+
+        if  (Teclas[tecla.letra_a]== true){
             //Izquierda
 
-            direccion == "izquierda";
+            direccion = "izquierda";
             console.log(direccion);
 
              if (velocidad < limite_aceleracion) {
@@ -754,7 +749,7 @@ function updateText(textArray) {
        }
 
 
-       if (Teclas[87]== true) {
+       if (Teclas[tecla.letra_w]== true) {
            //Tecla W - Saltar
            if (Arquero.posicion_y == 370) {
 
@@ -762,11 +757,11 @@ function updateText(textArray) {
 
             Arquero.posicion_y-=50;
             if(direccion == "derecha"){
-                Arquero.posicion_x +=8
+                Arquero.posicion_x +=15
             }
 
             if (direccion == "izquierda") {
-                Arquero.posicion_x -=8;
+                Arquero.posicion_x -=15;
             }
           
             
@@ -776,7 +771,7 @@ function updateText(textArray) {
 
        }
 
-       if (Teclas[38]== true) {
+       if (Teclas[tecla.flecha_arriba]== true) {
         //Tecla Flecha arriba - Saltar guerrero
         if (Guerrero.posicion_y == 370) {
 
@@ -785,12 +780,12 @@ function updateText(textArray) {
          Guerrero.posicion_y-=50;
 
 
-         if(direccion == "derecha"){
-            Guerrero.posicion_x +=8
+         if(direccion_guerrero == "derecha"){
+            Guerrero.posicion_x +=15
          }
 
-         if (direccion == "izquierda") {
-            Guerrero.posicion_x -=8;
+         if (direccion_guerrero == "izquierda") {
+            Guerrero.posicion_x -=15;
          }
        
          
@@ -799,11 +794,11 @@ function updateText(textArray) {
 
     }
 
-    if  (Teclas[37]== true){
+    if  (Teclas[tecla.flecha_izq]== true){
         //Flecha Izquierda
 
-        direccion_guerrero == "izquierda";
-        console.log(direccion);
+        direccion_guerrero = "izquierda";
+        console.log("direccion guerrero: "+ direccion_guerrero);
 
          if (velocidad < limite_aceleracion) {
 
@@ -816,11 +811,11 @@ function updateText(textArray) {
 
    }
 
-   if  (Teclas[39]== true){
+   if  (Teclas[tecla.flecha_der]== true){
     //Flecha derecha
 
-    direccion_guerrero == "derecha";
-    console.log(direccion);
+    direccion_guerrero = "derecha";
+    console.log("direccion guerrero: "+ direccion_guerrero);
 
      if (velocidad < limite_aceleracion) {
 
@@ -977,49 +972,10 @@ let disparo_cooldown = 0;
 
 
 
-
-
-
-
-
-
-
         if (velocidad>0) {
             velocidad = velocidad-0.4;
 
-            //*****************REVISAR */
-
-            // if (direccion == "izquierda") {
-
-
-            //     Arquero.posicion_x-=velocidad;
-
-            // }
-
-
-            // if (direccion == "derecha") {
-
-            //     Arquero.posicion_x+=velocidad;
-            // }
-           //*****************REVISAR */
-
-
-
-
-            // if (event.keyCode==65) {
-            //     //letra A - izquierda
-                
-                
-            //     posicion_jugador_x-=velocidad;
-            // }
-    
-            // if (event.keyCode==68) {
-            //      //letra D - derecha
-                 
-            //      
-    
-    
-            // }
+          
 
 
 
