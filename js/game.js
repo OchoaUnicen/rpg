@@ -695,7 +695,7 @@ function updateText(textArray) {
 
             arco.src = arco_disparando.src;
 
-
+            
 
             sonido_disparo_arco.play();
              

@@ -20,6 +20,8 @@ let Guerrero = {
     "vida" : 100,
     "posicion_x": 650,
     "posicion_y": 360,
+
+
     
     w: 100,
     h: 100,
@@ -35,7 +37,7 @@ function atacarHacha () {
     let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
     let distancia_arquero_guerrero_y = Math.abs(Guerrero.posicion_y - Arquero.posicion_y);
 
-
+    	console.log(Arquero.posicion_x + Arquero.w);
 
 
    
@@ -44,15 +46,22 @@ function atacarHacha () {
 
 
 
-         if (Arquero.vida > 0 && (distancia_arquero_guerrero_x >= Arquero.posicion_x &&
-            distancia_arquero_guerrero_x <= (Arquero.posicion_x + Arquero.w))
-             && Guerrero.posicion_y == Arquero.posicion_y) {
+        //  if (Arquero.vida > 0 && (distancia_arquero_guerrero_x >= (Arquero.posicion_x - Arquero.w) &&
+        //     distancia_arquero_guerrero_x <= (Arquero.posicion_x + Arquero.w))
+        //      && Guerrero.posicion_y == Arquero.posicion_y) {
 
 
-                console.log("atacar");
+        //         console.log("atacar");
 
 
-            }       
+        //     }       
+
+
+         if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50)) {
+
+            console.log("atacar");
+
+         }
 
 else  {
 
