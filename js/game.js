@@ -944,10 +944,18 @@ let disparo_cooldown = 0;
 
 
             //dibuja el hacha
+            context.save();
             
-            //context.scale(-1, 1);
-           context.drawImage(hacha, Guerrero.posicion_x + 3, Guerrero.posicion_y + 3, hacha.naturalWidth, hacha.naturalHeight);
-
+            if (direccion_guerrero == "izquierda") 
+            {
+                context.translate(Guerrero.posicion_x + (Guerrero.w - 10), Guerrero.posicion_y - 3);
+                context.scale(-1, 1);
+            } else {
+               context.translate(Guerrero.posicion_x + 3, Guerrero.posicion_y + 3);
+            }
+            //context.drawImage(hacha, Guerrero.posicion_x + 3, Guerrero.posicion_y + 3, hacha.naturalWidth, hacha.naturalHeight);
+            context.drawImage(hacha, 0, 0);
+            context.restore();
            
 
 
