@@ -820,6 +820,14 @@ function updateText(textArray) {
 function atacarHacha () {
     //console.log(cooldown_ataquebasico_hacha);
     cooldown_ataquebasico_hacha = 300;
+
+
+
+
+
+
+
+
     console.log(cooldown_ataquebasico_hacha);
     
 
@@ -893,12 +901,71 @@ let cooldown_ataquebasico_hacha = 0;
         //  if () {}
 
 
-        
+       
+
+
+     
+ //ANIMACION ATAQUE HACHA GUERRERO
+
+        if (cooldown_ataquebasico_hacha == 300){
+
+            //console.log("activo animacion: "+ cooldown_ataquebasico_hacha);
+
+            hacha.src = ataque_hacha_mov_1.src;
+
+        }
+
+
+        if (cooldown_ataquebasico_hacha == 240){
+
+            //console.log("activo animacion: "+ cooldown_ataquebasico_hacha);
+
+            hacha.src = ataque_hacha_mov_2.src;
+        }
+
+        if (cooldown_ataquebasico_hacha == 180){
+
+            hacha.src = ataque_hacha_mov_3.src;
+            //console.log("activo animacion: "+ cooldown_ataquebasico_hacha);
+        }
+        if (cooldown_ataquebasico_hacha == 120){
+            hacha.src = ataque_hacha_mov_4.src;
+
+           // console.log("activo animacion: "+cooldown_ataquebasico_hacha );
+        }
+
+
+        if (cooldown_ataquebasico_hacha == 60){
+            hacha.src = ataque_hacha_mov_3.src;
+
+           // console.log("activo animacion: "+cooldown_ataquebasico_hacha );
+        }
+
+        if (cooldown_ataquebasico_hacha == 10) {
+
+            hacha.src = ataque_hacha_mov_0.src;
+
+        }
+
+
+
+
+
+        //reduccion de cds de ataque hacha guerrero
+          
+ 
         if (cooldown_ataquebasico_hacha > 0 ) {
             cooldown_ataquebasico_hacha = cooldown_ataquebasico_hacha-10;
+
         
-            //console.log(cooldown_ataquebasico_hacha);
+            console.log(cooldown_ataquebasico_hacha);
         }
+
+
+
+        
+
+
 
         //console.log(cooldown_ataquebasico_hacha);
 

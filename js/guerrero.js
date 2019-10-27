@@ -37,8 +37,20 @@ let Guerrero = {
 
 
 
+let ataque_hacha_mov_0 = new Image();
+ataque_hacha_mov_0. src = "./anim/golpe_hacha_guerrero/guerrerohacha1.png";
 
 
+
+let ataque_hacha_mov_1 = new Image();
+ataque_hacha_mov_1. src = "./anim/golpe_hacha_guerrero/guerrerohacha2.png";
+
+let ataque_hacha_mov_2 = new Image();
+ataque_hacha_mov_2. src = "./anim/golpe_hacha_guerrero/guerrerohacha3.png";
+let ataque_hacha_mov_3 = new Image();
+ataque_hacha_mov_3. src = "./anim/golpe_hacha_guerrero/guerrerohacha4.png";
+let ataque_hacha_mov_4 = new Image();
+ataque_hacha_mov_4. src = "./anim/golpe_hacha_guerrero/guerrerohacha5.png";
 
 //console.log(Guerrero.imagen.naturalWidth);
 
