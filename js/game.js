@@ -442,25 +442,6 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     });
 
-    //     if (event.keyCode==68) {
-
-
-    //         Teclas[event.keyCode] = false;
-    //     }
-
-        
-
-    //     if (event.keyCode === 65) { 
-
-
-    //         Teclas[event.keyCode] = false;
-    //     }
-
-    // });
-
- //###############FIN#######EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
-
-
     //###############################GRAVEDAD#########################
 
     function gravedad() {
@@ -571,6 +552,12 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
                   Guerrero.vida -= damage; 
                   
                   
+
+                  
+
+
+
+
                   //getRandomInt(69 /* <- lindo numero */);
   
 
@@ -648,14 +635,7 @@ function updateText(textArray) {
 
 
 
- function arrowCollision() {
 
-
-
-
-
-
- }
 
 
 
@@ -827,17 +807,80 @@ function updateText(textArray) {
 }
 
 
-    if (Teclas[tecla.numpad1]) {
+    if (Teclas[tecla.numpad1]== true) {
 
-        atacarHacha();
+       if (cooldown_ataquebasico_hacha == 0){
 
+
+                    atacarHacha();
+            }
     }
 
+}
+function atacarHacha () {
+    //console.log(cooldown_ataquebasico_hacha);
+    cooldown_ataquebasico_hacha = 300;
+    console.log(cooldown_ataquebasico_hacha);
+    
+
+    let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
+    let distancia_arquero_guerrero_y = Math.abs(Guerrero.posicion_y - Arquero.posicion_y);
+
+    	//console.log(Arquero.posicion_x + Arquero.w);
+
+
+      
+    
+      //  console.log("cd hacha: "+cooldown_ataquebasico_hacha);
+    // console.log("distancia en X: " +distancia_arquero_guerrero_x);
+    // console.log("distancia en Y: " +distancia_arquero_guerrero_y);
+
+
+
+        //  if (Arquero.vida > 0 && (distancia_arquero_guerrero_x >= (Arquero.posicion_x - Arquero.w) &&
+        //     distancia_arquero_guerrero_x <= (Arquero.posicion_x + Arquero.w))
+        //      && Guerrero.posicion_y == Arquero.posicion_y) {
+
+
+        //         console.log("atacar");
+
+
+        //     }       
+
+
+         if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50)) {
+
+
+            
+            let damage_hacha = getRandomInt(69);
+            Arquero.vida -= damage_hacha; 
+            
+            console.log("distancia cercana");
+
+
+
+            if (Arquero.vida < 0){
+            Arquero.vida = 0;
+
+       
+                    }
+
+         }
+
+else  {
+
+    console.log("demasiado lejos del objetivo");
+
+}
+
+    
 }
 
 
 
+
 let disparo_cooldown = 0;
+let cooldown_ataquebasico_hacha = 0;
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
@@ -851,6 +894,13 @@ let disparo_cooldown = 0;
 
 
         
+        if (cooldown_ataquebasico_hacha > 0 ) {
+            cooldown_ataquebasico_hacha = cooldown_ataquebasico_hacha-10;
+        
+            //console.log(cooldown_ataquebasico_hacha);
+        }
+
+        //console.log(cooldown_ataquebasico_hacha);
 
 
         if (disparo_cooldown > 0 ) {
@@ -893,15 +943,58 @@ let disparo_cooldown = 0;
 
             if (direccion == "izquierda") {
 
+               
+               
+                if (Arquero.vida <= 0)
+                {
+                    context.save();
+                    
+                    context.translate(Arquero.posicion_x, Arquero.posicion_y);
+                    context.rotate(60 * Math.PI / 180);
+                    context.drawImage(Arquero.imagen_izquierda,Arquero.imagen_izquierda.width/2,-Arquero.imagen_izquierda.width/2);
+
+                    //context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
+                    // Reset transformation matrix to the identity matrix
+                    context.restore();
+
+                }
+               
+               
+               else {           
+               
+                        
+               
+               
                 context.drawImage(Arquero.imagen_izquierda, Arquero.posicion_x, Arquero.posicion_y, Arquero.imagen_izquierda.naturalWidth, Arquero.imagen_izquierda.naturalHeight);
-                
+                      
+
+            }
+                             
 
             }
 
             if (direccion == "derecha") {
 
-                context.drawImage(Arquero.imagen_derecha, Arquero.posicion_x, Arquero.posicion_y, Arquero.imagen_derecha.naturalWidth, Arquero.imagen_derecha.naturalHeight);
 
+                if (Arquero.vida <= 0)
+                {
+                    context.save();
+                    
+                    context.translate(Arquero.posicion_x, Arquero.posicion_y);
+                    context.rotate(60 * Math.PI / 180);
+                    context.drawImage(Arquero.imagen_derecha,Arquero.imagen_derecha.width/2,-Arquero.imagen_derecha.width/2);
+
+                    //context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
+                    // Reset transformation matrix to the identity matrix
+                    context.restore();
+
+                }
+                
+                            
+                else {
+                
+                context.drawImage(Arquero.imagen_derecha, Arquero.posicion_x, Arquero.posicion_y, Arquero.imagen_derecha.naturalWidth, Arquero.imagen_derecha.naturalHeight);
+            }
             }
 
 
@@ -914,8 +1007,8 @@ let disparo_cooldown = 0;
             
              if (direccion == "izquierda") 
              {
-                 context.translate(Arquero.posicion_x + (Arquero.w - 15), Arquero.posicion_y+3);
-                 context.scale(-1, 1);
+                  context.translate(Arquero.posicion_x + (Arquero.w - 15), Arquero.posicion_y+3);
+                  context.scale(-1, 1);
              } else {
                 context.translate(Arquero.posicion_x + 3, Arquero.posicion_y + 3);
              }
@@ -994,20 +1087,77 @@ let disparo_cooldown = 0;
                 {
                     context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
                 }
-
-
-
-
-
-
-
-
-
-
-
-                //context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
+               //context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
             
             } 
+
+
+
+                //*****************************EN MODIFICACION */
+
+
+
+            // if (direccion == "derecha") {
+
+
+            //     if (Guerrero.vida <= 0)
+            //     {
+            //         context.save();
+                    
+            //         context.translate(Arquero.posicion_x, Arquero.posicion_y);
+            //         context.rotate(60 * Math.PI / 180);
+            //         context.drawImage(Arquero.imagen_derecha,Arquero.imagen_derecha.width/2,-Arquero.imagen_derecha.width/2);
+
+
+                   
+            //         //context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
+            //         // Reset transformation matrix to the identity matrix
+            //         context.restore();
+
+            //     }
+            //     else
+            //     {
+            //         context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
+            //     }
+            //    //context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
+            
+            // } 
+
+
+
+    //*****************************EN MODIFICACION */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -38,15 +38,22 @@ let Guerrero = {
 
 
 
+
 function atacarHacha () {
+    //console.log(cooldown_ataquebasico_hacha);
+    cooldown_ataquebasico_hacha = 300;
+    console.log(cooldown_ataquebasico_hacha);
+    
 
     let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
     let distancia_arquero_guerrero_y = Math.abs(Guerrero.posicion_y - Arquero.posicion_y);
 
-    	console.log(Arquero.posicion_x + Arquero.w);
+    	//console.log(Arquero.posicion_x + Arquero.w);
 
 
-   
+      
+    
+      //  console.log("cd hacha: "+cooldown_ataquebasico_hacha);
     // console.log("distancia en X: " +distancia_arquero_guerrero_x);
     // console.log("distancia en Y: " +distancia_arquero_guerrero_y);
 
@@ -65,13 +72,13 @@ function atacarHacha () {
 
          if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50)) {
 
-            console.log("atacar");
+           // console.log("distancia cercana");
 
          }
 
 else  {
 
-    console.log("demasiado lejos del objetivo");
+   // console.log("demasiado lejos del objetivo");
 
 }
 
