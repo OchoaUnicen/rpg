@@ -905,6 +905,49 @@ let disparo_cooldown = 0;
             }
 
 
+             //dibuja el arco
+             //context.drawImage(arco, Arquero.posicion_x + 3, Arquero.posicion_y +3, arco.naturalWidth, arco.naturalHeight);
+            
+
+
+             context.save();
+            
+             if (direccion == "izquierda") 
+             {
+                 context.translate(Arquero.posicion_x + (Arquero.w - 15), Arquero.posicion_y+3);
+                 context.scale(-1, 1);
+             } else {
+                context.translate(Arquero.posicion_x + 3, Arquero.posicion_y + 3);
+             }
+             //context.drawImage(hacha, Guerrero.posicion_x + 3, Guerrero.posicion_y + 3, hacha.naturalWidth, hacha.naturalHeight);
+             context.drawImage(arco, 0, 0);
+             context.restore();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             if (direccion_guerrero == "izquierda") {
 
@@ -932,16 +975,43 @@ let disparo_cooldown = 0;
             if (direccion_guerrero == "derecha") {
 
 
-                context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
+                if (Guerrero.vida <= 0)
+                {
+                    context.save();
+                    
+                    context.translate(Guerrero.posicion_x, Guerrero.posicion_y);
+                    context.rotate(60 * Math.PI / 180);
+                    context.drawImage(Guerrero.imagen_derecha,Guerrero.imagen_derecha.width/2,-Guerrero.imagen_derecha.width/2);
+
+
+                   
+                    //context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
+                    // Reset transformation matrix to the identity matrix
+                    context.restore();
+
+                }
+                else
+                {
+                    context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
+                }
+
+
+
+
+
+
+
+
+
+
+
+                //context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
             
             } 
 
 
 
-            //dibuja el arco
-            context.drawImage(arco, Arquero.posicion_x + 3, Arquero.posicion_y +3, arco.naturalWidth, arco.naturalHeight);
-            
-
+           
 
             //dibuja el hacha
             context.save();
@@ -957,6 +1027,13 @@ let disparo_cooldown = 0;
             context.drawImage(hacha, 0, 0);
             context.restore();
            
+
+
+
+
+
+
+
 
 
             
