@@ -578,8 +578,12 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
   
-                  if (Guerrero.vida < 0)
+                  if (Guerrero.vida < 0){
                       Guerrero.vida = 0;
+
+                        Guerrero.muerto = true;
+                    }
+
   
                   // Borramos el laser.
                   lasers.splice(i, 1);
@@ -666,7 +670,7 @@ function updateText(textArray) {
     
 
    
-    if (Teclas[tecla.letra_j]==true&& lasers.length <= laserTotal){
+    if (Teclas[tecla.letra_j]==true&& lasers.length <= laserTotal && Arquero.muerto == false){
         //letra j
 
 
@@ -692,7 +696,7 @@ function updateText(textArray) {
 
     
     
-    if  (Teclas[tecla.letra_d]== true){
+    if  (Teclas[tecla.letra_d]== true && Arquero.muerto == false){
          // Derecha
 
          direccion = "derecha";
@@ -709,7 +713,7 @@ function updateText(textArray) {
        }
 
 
-        if  (Teclas[tecla.letra_a]== true){
+        if  (Teclas[tecla.letra_a]== true && Arquero.muerto == false){
             //Izquierda
 
             direccion = "izquierda";
@@ -727,7 +731,7 @@ function updateText(textArray) {
        }
 
 
-       if (Teclas[tecla.letra_w]== true) {
+       if (Teclas[tecla.letra_w]== true && Arquero.muerto == false) {
            //Tecla W - Saltar
            if (Arquero.posicion_y == 370) {
 
@@ -749,7 +753,7 @@ function updateText(textArray) {
 
        }
 
-       if (Teclas[tecla.flecha_arriba]== true) {
+       if (Teclas[tecla.flecha_arriba]== true && Guerrero.muerto == false) {
         //Tecla Flecha arriba - Saltar guerrero
         if (Guerrero.posicion_y == 370) {
 
@@ -772,7 +776,7 @@ function updateText(textArray) {
 
     }
 
-    if  (Teclas[tecla.flecha_izq]== true){
+    if  (Teclas[tecla.flecha_izq]== true && Guerrero.muerto == false){
         //Flecha Izquierda
 
         direccion_guerrero = "izquierda";
@@ -789,7 +793,7 @@ function updateText(textArray) {
 
    }
 
-   if  (Teclas[tecla.flecha_der]== true){
+   if  (Teclas[tecla.flecha_der]== true && Guerrero.muerto == false){
     //Flecha derecha
 
     direccion_guerrero = "derecha";
@@ -807,7 +811,7 @@ function updateText(textArray) {
 }
 
 
-    if (Teclas[tecla.numpad1]== true) {
+    if (Teclas[tecla.numpad1]== true && Guerrero.muerto == false) {
 
        if (cooldown_ataquebasico_hacha == 0){
 
@@ -867,11 +871,13 @@ function atacarHacha () {
 
 
 
-            if (Arquero.vida < 0){
-            Arquero.vida = 0;
+             if (Arquero.vida <= 0) {
+                 Arquero.vida = 0;
 
-       
-                    }
+                 Arquero.muerto = true;
+
+
+             }
 
          }
 
