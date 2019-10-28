@@ -1248,10 +1248,10 @@ let cooldown_ataquebasico_hacha = 0;
             
             if (direccion_guerrero == "izquierda") 
             {
-                context.translate(Guerrero.posicion_x + (Guerrero.w - 10), Guerrero.posicion_y - 3);
+                context.translate(Guerrero.posicion_x + (Guerrero.w - 20), Guerrero.posicion_y - 3);
                 context.scale(-1, 1);
             } else {
-               context.translate(Guerrero.posicion_x + 3, Guerrero.posicion_y + 3);
+               context.translate(Guerrero.posicion_x + 9, Guerrero.posicion_y + 3);
             }
             //context.drawImage(hacha, Guerrero.posicion_x + 3, Guerrero.posicion_y + 3, hacha.naturalWidth, hacha.naturalHeight);
             context.drawImage(hacha, 0, 0);
