@@ -866,6 +866,11 @@ function atacarHacha () {
             
             let damage_hacha = getRandomInt(69);
             Arquero.vida -= damage_hacha; 
+
+
+
+
+            sonido_recibir_hachazo1.play();
             
             console.log("distancia cercana");
 
@@ -918,6 +923,8 @@ let cooldown_ataquebasico_hacha = 0;
             //console.log("activo animacion: "+ cooldown_ataquebasico_hacha);
 
             hacha.src = ataque_hacha_mov_1.src;
+
+            sonido_ataque_hacha.play();
 
         }
 

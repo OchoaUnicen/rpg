@@ -37,6 +37,24 @@ let Guerrero = {
 
 
 
+
+let sonido_ataque_hacha = document.createElement("audio");
+sonido_ataque_hacha.volume = 0.4;
+
+sonido_ataque_hacha.src = "./sounds/sonido_hacha_ataque.mp3";
+
+
+let sonido_recibir_hachazo1 = document.createElement("audio");
+sonido_recibir_hachazo1.volume = 0.4;
+
+sonido_recibir_hachazo1.src = "./sounds/sonido_recibir_hachazo1.mp3";
+
+
+
+
+
+
+
 let ataque_hacha_mov_0 = new Image();
 ataque_hacha_mov_0. src = "./anim/golpe_hacha_guerrero/guerrerohacha1.png";
 
