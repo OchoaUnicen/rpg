@@ -51,6 +51,12 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
    
 
 
+    const LIMITE_IZQUIERDO = 0;
+    const LIMITE_DERECHO = 910;
+    const LIMITE_INFERIOR = 370;
+        
+
+
 
 
 
@@ -450,7 +456,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
        
 
 
-        if(Arquero.posicion_y < 370) {
+        if(Arquero.posicion_y < LIMITE_INFERIOR) {
         Arquero.posicion_y += 2;
         
         
@@ -462,7 +468,7 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
         }
 
-        if (Guerrero.posicion_y < 370) {
+        if (Guerrero.posicion_y < LIMITE_INFERIOR) {
 
             Guerrero.posicion_y += 2;
 
@@ -696,11 +702,13 @@ function updateText(textArray) {
 
     
     
-    if  (Teclas[tecla.letra_d]== true && Arquero.muerto == false){
+    if  (Teclas[tecla.letra_d]== true && Arquero.muerto == false  && Arquero.posicion_x < LIMITE_DERECHO){
          // Derecha
 
          direccion = "derecha";
-        console.log("derecha true");
+        //console.log("derecha true");
+
+        console.log(Arquero.posicion_x);
         if (velocidad < limite_aceleracion) {
 
             velocidad = velocidad+1;
@@ -713,7 +721,7 @@ function updateText(textArray) {
        }
 
 
-        if  (Teclas[tecla.letra_a]== true && Arquero.muerto == false){
+        if  (Teclas[tecla.letra_a]== true && Arquero.muerto == false && Arquero.posicion_x > LIMITE_IZQUIERDO){
             //Izquierda
 
             direccion = "izquierda";
@@ -733,16 +741,16 @@ function updateText(textArray) {
 
        if (Teclas[tecla.letra_w]== true && Arquero.muerto == false) {
            //Tecla W - Saltar
-           if (Arquero.posicion_y == 370) {
+           if (Arquero.posicion_y == LIMITE_INFERIOR) {
 
           
 
             Arquero.posicion_y-=50;
-            if(direccion == "derecha"){
+            if(direccion == "derecha" && Arquero.posicion_x < LIMITE_DERECHO-15){
                 Arquero.posicion_x +=15
             }
 
-            if (direccion == "izquierda") {
+            if (direccion == "izquierda" && Arquero.posicion_x > LIMITE_IZQUIERDO+15) {
                 Arquero.posicion_x -=15;
             }
           
@@ -755,7 +763,7 @@ function updateText(textArray) {
 
        if (Teclas[tecla.flecha_arriba]== true && Guerrero.muerto == false) {
         //Tecla Flecha arriba - Saltar guerrero
-        if (Guerrero.posicion_y == 370) {
+        if (Guerrero.posicion_y == LIMITE_INFERIOR) {
 
        
 
