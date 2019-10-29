@@ -519,12 +519,15 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
             if (lasers[i][0] < canvas.width) {
               lasers[i][0] += 10;
               //console.log(lasers[i][0]);
-  
+                console.log(laser_posicion_y);
+                console.log("guerrero y: "+Guerrero.posicion_y);
+                console.log("arquero y: "+ Arquero.posicion_y);
+                console.log("laser y pos - compensacion: " + (laser_posicion_y-50));
   
               if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
-                  lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && Arquero.posicion_y == Guerrero.posicion_y) {
+                  lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && laser_posicion_y-50 == Guerrero.posicion_y) {
                        //*****************EN PROGRESO********************** */
-                    //verificar la altura del arquero respecto al guerrero para delimitar hit
+                    //verificar la altura de laser_posicion_y respecto al guerrero para delimitar hit
 
 
 
@@ -669,6 +672,11 @@ function updateText(textArray) {
     context.closePath();
     context.fill();
   }
+
+
+
+
+  let laser_posicion_y;
  
   function actualizarMovimientosPesronajes() {
 
@@ -679,7 +687,7 @@ function updateText(textArray) {
     if (Teclas[tecla.letra_j]==true&& lasers.length <= laserTotal && Arquero.muerto == false){
         //letra j
 
-
+        
  
         if (disparo_cooldown == 0) {
 
@@ -688,10 +696,13 @@ function updateText(textArray) {
             
 
             sonido_disparo_arco.play();
+
+
+            laser_posicion_y = Arquero.posicion_y + 50;
              
-
-
-            lasers.push([Arquero.posicion_x + 40, Arquero.posicion_y + 50, 20, 4]);
+            console.log(laser_posicion_y);
+            //posicion Y de laser disparado
+            lasers.push([Arquero.posicion_x + 40, laser_posicion_y, 20, 4]);
 
             disparo_cooldown = 300;
         }
@@ -921,7 +932,7 @@ let cooldown_ataquebasico_hacha = 0;
 
 
        
-
+       // console.log(laser_posicion_y);
 
      
  //ANIMACION ATAQUE HACHA GUERRERO
@@ -994,7 +1005,7 @@ let cooldown_ataquebasico_hacha = 0;
         if (disparo_cooldown > 0 ) {
             disparo_cooldown = disparo_cooldown-10;
         
-            console.log(disparo_cooldown);
+            //console.log(disparo_cooldown);
         }
 
         
