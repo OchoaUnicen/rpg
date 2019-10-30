@@ -483,10 +483,9 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
     function drawLaser() {
-        if (lasers.length)
         for (var i = 0; i < lasers.length; i++) {
             context.fillStyle = '#f00';
-            context.fillRect(lasers[i][0],lasers[i][1],lasers[i][2],lasers[i][3])
+            context.fillRect(lasers[i].x,lasers[i].y,lasers[i].w,lasers[i].h)
         }
     }
 
@@ -499,90 +498,76 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     function moveLaser() {
 
+        for (var i = 0; i < lasers.length; i++) 
+        {
+            let borrar = false;
+
+            if (lasers[i].dir == "izquierda")
+            {
+                if (lasers[i].x > LIMITE_IZQUIERDO) {
+                    lasers[i].x -= 10;
+      
+                  if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x &&
+                    lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) && lasers[i].y-50 == Guerrero.posicion_y) {
+
+                    const damage = getRandomInt(69);
+                    Guerrero.vida -= damage;      
+    
+
+                    sondio_recibir_flechazo_armadura.play();
+
+                    console.log("damage: "+ damage);
+    
+                    if (Guerrero.vida < 0){
+                        Guerrero.vida = 0;
+                        Guerrero.muerto = true;
+                    }
+
+                    // Borramos el laser.
+                    borrar = true;
+                  }
+                } else if (lasers[i].x < LIMITE_IZQUIERDO+1) {
+                  borrar = true;
+                }
+            } else {
+                if (lasers[i].x < LIMITE_DERECHO) {
+                    lasers[i].x  += 10;
+      
+                  if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x && 
+                    lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) && lasers[i].y-50 == Guerrero.posicion_y) {
+
+                    const damage = getRandomInt(69);
+                    Guerrero.vida -= damage;      
+    
+
+                    sondio_recibir_flechazo_armadura.play();
+
+                    console.log("damage: "+ damage);
+    
+                    if (Guerrero.vida < 0){
+                        Guerrero.vida = 0;
+                        Guerrero.muerto = true;
+                    }
+
+                    // Borramos el laser.
+                    borrar = true;
+                  }
+                } else if (lasers[i].x > LIMITE_DERECHO+1) {
+                  borrar = true;
+                }
+            }
+
+            if (borrar)
+                lasers.splice(i, 1);
+        }
+
+        
+
         if (direccion_disparo== "izquierda") {
 
 
             for (var i = 0; i < lasers.length; i++) {
-                if (lasers[i][0] > LIMITE_IZQUIERDO) {
-                  lasers[i][0] -= 10;
-                  //console.log(lasers[i][0]);
-                    // console.log(laser_posicion_y);
-                    // console.log("guerrero y: "+Guerrero.posicion_y);
-                    // console.log("arquero y: "+ Arquero.posicion_y);
-                    // console.log("laser y pos - compensacion: " + (laser_posicion_y-50));
-      
-                  if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
-                      lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && laser_posicion_y-50 == Guerrero.posicion_y) {
-                           //*****************EN PROGRESO********************** */
-                        //verificar la altura de laser_posicion_y respecto al guerrero para delimitar hit
-    
-    
-    
-    
-                        
-    
-     
-                    //   console.log("contacto");
-                      
-                    //   console.log("lasers pos pos: "+ lasers[i][0]);
-                      
-      
-                    //   console.log("posicion X de guerrero: "+Guerrero.posicion_x);
-                    //   console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
-                    //   console.log("posicion X de arquero: "+Arquero.posicion_x);
-                    //   console.log("posicion Y de arquero: "+Arquero.posicion_y);
-                      
-                      //Guerrero.vida -= Math.random() * (max - min) + min;
-    
-    
-                      let damage = getRandomInt(69);
-                      Guerrero.vida -= damage;      
-                      
-    
-                      
-    
-    
-    
-    
-                      //getRandomInt(69 /* <- lindo numero */);
-      
-    
-                      sondio_recibir_flechazo_armadura.play();
-    
-    
-                      //createText(damage.toString(), "#990000", Guerrero);
-    
-                        
-                    //   context.font = "30px";
-                      // context.fillText(damage, Guerrero.posicion_x, Guerrero.posicion_y-40);
-    
-                    
-                      
-                        // console.log("llega");
-                         console.log("damage: "+ damage);
-    
-    
-    
-      
-                      if (Guerrero.vida < 0){
-                          Guerrero.vida = 0;
-    
-                            Guerrero.muerto = true;
-                        }
-    
-      
-                      // Borramos el laser.
-                      lasers.splice(i, 1);
-                  }
-      
-                 // console.log("i: "+i);
-      
-      
-      
-      
-                } else if (lasers[i][0] < LIMITE_IZQUIERDO+1) {
-                  lasers.splice(i, 1);
-                }
+
               }
            
 
@@ -786,17 +771,24 @@ function updateText(textArray) {
 
             if (direccion_disparo == "derecha") {
 
-                lasers.push([Arquero.posicion_x + 40, laser_posicion_y, 20, 4]);
+                lasers.push({
+                    x: Arquero.posicion_x + 40, 
+                    y: laser_posicion_y, 
+                    w: 20, 
+                    h: 4,
+                    dir: "derecha"});
 
 
             }
 
             else if (direccion_disparo == "izquierda") {
                 
-                
-                lasers.push([Arquero.posicion_x -40, laser_posicion_y, 20, 4]);
-
-
+                lasers.push({
+                    x: Arquero.posicion_x - 40, 
+                    y: laser_posicion_y, 
+                    w: 20, 
+                    h: 4,
+                    dir: "izquierda"});
             }
 
 
