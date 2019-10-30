@@ -499,114 +499,186 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
     function moveLaser() {
 
-        if (direccion== "izquierda") {
+        if (direccion_disparo== "izquierda") {
 
 
+            for (var i = 0; i < lasers.length; i++) {
+                if (lasers[i][0] > LIMITE_IZQUIERDO) {
+                  lasers[i][0] -= 10;
+                  //console.log(lasers[i][0]);
+                    // console.log(laser_posicion_y);
+                    // console.log("guerrero y: "+Guerrero.posicion_y);
+                    // console.log("arquero y: "+ Arquero.posicion_y);
+                    // console.log("laser y pos - compensacion: " + (laser_posicion_y-50));
+      
+                  if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
+                      lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && laser_posicion_y-50 == Guerrero.posicion_y) {
+                           //*****************EN PROGRESO********************** */
+                        //verificar la altura de laser_posicion_y respecto al guerrero para delimitar hit
+    
+    
+    
+    
+                        
+    
+     
+                    //   console.log("contacto");
+                      
+                    //   console.log("lasers pos pos: "+ lasers[i][0]);
+                      
+      
+                    //   console.log("posicion X de guerrero: "+Guerrero.posicion_x);
+                    //   console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
+                    //   console.log("posicion X de arquero: "+Arquero.posicion_x);
+                    //   console.log("posicion Y de arquero: "+Arquero.posicion_y);
+                      
+                      //Guerrero.vida -= Math.random() * (max - min) + min;
+    
+    
+                      let damage = getRandomInt(69);
+                      Guerrero.vida -= damage;      
+                      
+    
+                      
+    
+    
+    
+    
+                      //getRandomInt(69 /* <- lindo numero */);
+      
+    
+                      sondio_recibir_flechazo_armadura.play();
+    
+    
+                      //createText(damage.toString(), "#990000", Guerrero);
+    
+                        
+                    //   context.font = "30px";
+                      // context.fillText(damage, Guerrero.posicion_x, Guerrero.posicion_y-40);
+    
+                    
+                      
+                        // console.log("llega");
+                         console.log("damage: "+ damage);
+    
+    
+    
+      
+                      if (Guerrero.vida < 0){
+                          Guerrero.vida = 0;
+    
+                            Guerrero.muerto = true;
+                        }
+    
+      
+                      // Borramos el laser.
+                      lasers.splice(i, 1);
+                  }
+      
+                 // console.log("i: "+i);
+      
+      
+      
+      
+                } else if (lasers[i][0] < LIMITE_IZQUIERDO+1) {
+                  lasers.splice(i, 1);
+                }
+              }
            
 
 
         }
 
 
-        if (direccion== "derecha") {
+        if (direccion_disparo== "derecha") {
 
-           
+            for (var i = 0; i < lasers.length; i++) {
+                if (lasers[i][0] < canvas.width) {
+                  lasers[i][0] += 10;
+                  //console.log(lasers[i][0]);
+                    // console.log(laser_posicion_y);
+                    // console.log("guerrero y: "+Guerrero.posicion_y);
+                    // console.log("arquero y: "+ Arquero.posicion_y);
+                    // console.log("laser y pos - compensacion: " + (laser_posicion_y-50));
+      
+                  if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
+                      lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && laser_posicion_y-50 == Guerrero.posicion_y) {
+                           //*****************EN PROGRESO********************** */
+                        //verificar la altura de laser_posicion_y respecto al guerrero para delimitar hit
+    
+    
+    
+    
+                        
+    
+     
+                    //   console.log("contacto");
+                      
+                    //   console.log("lasers pos pos: "+ lasers[i][0]);
+                      
+      
+                    //   console.log("posicion X de guerrero: "+Guerrero.posicion_x);
+                    //   console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
+                    //   console.log("posicion X de arquero: "+Arquero.posicion_x);
+                    //   console.log("posicion Y de arquero: "+Arquero.posicion_y);
+                      
+                      //Guerrero.vida -= Math.random() * (max - min) + min;
+    
+    
+                      let damage = getRandomInt(69);
+                      Guerrero.vida -= damage;      
+                      
+    
+                      
+    
+    
+    
+    
+                      //getRandomInt(69 /* <- lindo numero */);
+      
+    
+                      sondio_recibir_flechazo_armadura.play();
+    
+    
+                      //createText(damage.toString(), "#990000", Guerrero);
+    
+                        
+                    //   context.font = "30px";
+                      // context.fillText(damage, Guerrero.posicion_x, Guerrero.posicion_y-40);
+    
+                    
+                      
+                        // console.log("llega");
+                         console.log("damage: "+ damage);
+    
+    
+    
+      
+                      if (Guerrero.vida < 0){
+                          Guerrero.vida = 0;
+    
+                            Guerrero.muerto = true;
+                        }
+    
+      
+                      // Borramos el laser.
+                      lasers.splice(i, 1);
+                  }
+      
+                 // console.log("i: "+i);
+      
+      
+      
+      
+                } else if (lasers[i][0] > canvas.width-1) {
+                  lasers.splice(i, 1);
+                }
+              }
            
             
         }
 
-        for (var i = 0; i < lasers.length; i++) {
-            if (lasers[i][0] < canvas.width) {
-              lasers[i][0] += 10;
-              //console.log(lasers[i][0]);
-                console.log(laser_posicion_y);
-                console.log("guerrero y: "+Guerrero.posicion_y);
-                console.log("arquero y: "+ Arquero.posicion_y);
-                console.log("laser y pos - compensacion: " + (laser_posicion_y-50));
-  
-              if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
-                  lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && laser_posicion_y-50 == Guerrero.posicion_y) {
-                       //*****************EN PROGRESO********************** */
-                    //verificar la altura de laser_posicion_y respecto al guerrero para delimitar hit
-
-
-
-
-
-
-
-
-
-
-
-
- 
-                //   console.log("contacto");
-                  
-                //   console.log("lasers pos pos: "+ lasers[i][0]);
-                  
-  
-                //   console.log("posicion X de guerrero: "+Guerrero.posicion_x);
-                //   console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
-                //   console.log("posicion X de arquero: "+Arquero.posicion_x);
-                //   console.log("posicion Y de arquero: "+Arquero.posicion_y);
-
-
-
-                  
-                  //Guerrero.vida -= Math.random() * (max - min) + min;
-
-
-                  let damage = getRandomInt(69);
-                  Guerrero.vida -= damage; 
-                  
-                  
-
-                  
-
-
-
-
-                  //getRandomInt(69 /* <- lindo numero */);
-  
-
-                  sondio_recibir_flechazo_armadura.play();
-
-
-                  //createText(damage.toString(), "#990000", Guerrero);
-
-                    
-                //   context.font = "30px";
-                  // context.fillText(damage, Guerrero.posicion_x, Guerrero.posicion_y-40);
-
-                
-                  
-                    // console.log("llega");
-                     console.log("damage: "+ damage);
-
-
-
-  
-                  if (Guerrero.vida < 0){
-                      Guerrero.vida = 0;
-
-                        Guerrero.muerto = true;
-                    }
-
-  
-                  // Borramos el laser.
-                  lasers.splice(i, 1);
-              }
-  
-             // console.log("i: "+i);
-  
-  
-  
-  
-            } else if (lasers[i][0] > canvas.width-1) {
-              lasers.splice(i, 1);
-            }
-          }
+       
 
         
 
@@ -677,6 +749,7 @@ function updateText(textArray) {
 
 
   let laser_posicion_y;
+  let direccion_disparo;
  
   function actualizarMovimientosPesronajes() {
 
@@ -691,6 +764,12 @@ function updateText(textArray) {
  
         if (disparo_cooldown == 0) {
 
+
+
+            direccion_disparo = direccion;
+            console.log(direccion_disparo);
+
+
             arco.src = arco_disparando.src;
 
             
@@ -700,9 +779,30 @@ function updateText(textArray) {
 
             laser_posicion_y = Arquero.posicion_y + 50;
              
-            console.log(laser_posicion_y);
+            //console.log(laser_posicion_y);
             //posicion Y de laser disparado
-            lasers.push([Arquero.posicion_x + 40, laser_posicion_y, 20, 4]);
+
+
+
+            if (direccion_disparo == "derecha") {
+
+                lasers.push([Arquero.posicion_x + 40, laser_posicion_y, 20, 4]);
+
+
+            }
+
+            else if (direccion_disparo == "izquierda") {
+                
+                
+                lasers.push([Arquero.posicion_x -40, laser_posicion_y, 20, 4]);
+
+
+            }
+
+
+            
+
+
 
             disparo_cooldown = 300;
         }
@@ -719,7 +819,7 @@ function updateText(textArray) {
          direccion = "derecha";
         //console.log("derecha true");
 
-        console.log(Arquero.posicion_x);
+        //console.log(Arquero.posicion_x);
         if (velocidad < limite_aceleracion) {
 
             velocidad = velocidad+1;
@@ -736,7 +836,7 @@ function updateText(textArray) {
             //Izquierda
 
             direccion = "izquierda";
-            console.log(direccion);
+            //console.log(direccion);
 
              if (velocidad < limite_aceleracion) {
 
@@ -799,7 +899,7 @@ function updateText(textArray) {
         //Flecha Izquierda
 
         direccion_guerrero = "izquierda";
-        console.log("direccion guerrero: "+ direccion_guerrero);
+        //console.log("direccion guerrero: "+ direccion_guerrero);
 
          if (velocidad < limite_aceleracion) {
 
@@ -816,7 +916,7 @@ function updateText(textArray) {
     //Flecha derecha
 
     direccion_guerrero = "derecha";
-    console.log("direccion guerrero: "+ direccion_guerrero);
+    //console.log("direccion guerrero: "+ direccion_guerrero);
 
      if (velocidad < limite_aceleracion) {
 
@@ -891,7 +991,7 @@ function atacarHacha () {
 
             sonido_recibir_hachazo1.play();
             
-            console.log("distancia cercana");
+            //console.log("distancia cercana");
 
 
 
@@ -907,7 +1007,7 @@ function atacarHacha () {
 
 else  {
 
-    console.log("demasiado lejos del objetivo");
+    //console.log("demasiado lejos del objetivo");
 
 }
 
