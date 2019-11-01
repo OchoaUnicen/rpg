@@ -624,11 +624,11 @@ function cargar_game_js() {
                 Guerrero.posicion_y -= 50;
 
 
-                if (direccion_guerrero == "derecha") {
+                if (direccion_guerrero == "derecha" && Guerrero.posicion_x < LIMITE_DERECHO -15) {
                     Guerrero.posicion_x += 15
                 }
 
-                if (direccion_guerrero == "izquierda") {
+                if (direccion_guerrero == "izquierda" && Guerrero.posicion_x > LIMITE_IZQUIERDO + 15) {
                     Guerrero.posicion_x -= 15;
                 }
 
@@ -638,7 +638,7 @@ function cargar_game_js() {
 
         }
 
-        if (Teclas[tecla.flecha_izq] == true && Guerrero.muerto == false) {
+        if (Teclas[tecla.flecha_izq] == true && Guerrero.muerto == false && Guerrero.posicion_x > LIMITE_IZQUIERDO) {
             //Flecha Izquierda
 
             direccion_guerrero = "izquierda";
@@ -655,7 +655,7 @@ function cargar_game_js() {
 
         }
 
-        if (Teclas[tecla.flecha_der] == true && Guerrero.muerto == false) {
+        if (Teclas[tecla.flecha_der] == true && Guerrero.muerto == false && Guerrero.posicion_x < LIMITE_DERECHO) {
             //Flecha derecha
 
             direccion_guerrero = "derecha";
