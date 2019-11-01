@@ -58,19 +58,6 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-
-
-
-
-    // let posicion_jugador_x = 20;
-    // let posicion_jugador_y = 320;
-
-
-    // let arqueroIzquierda = new Image();
-    // arqueroIzquierda.src = "./img/arqueroiz.png";
-
-    // let arquero = new Image();
-    // arquero.src = "./img/arquero.png";
     let fondo = new Image();
     fondo.src = "./img/fondo.png";
 
@@ -122,148 +109,6 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-
-
-
-        
-
-    //     if (event.keyCode === 65) {
-    //         //letra A - izquierda
-
-    //        // velocidad = velocidad + 2;
-
-
-
-
-
-
-    //        Teclas[event.keyCode] = true;
-
-    //         // if (Teclas[event.keyCode] = true) {
-
-    //         //     acelerar(event);
-    //         // }
-
-
-    //        acelerar(event);
-
-
-
-
-
-    //         direccion = "izquierda";
-    //         // posicion_jugador_x-=velocidad;
-    //     }
-    //     else if (event.keyCode === 68) {
-
-    //         //letra D - derecha
-
-
-    //         Teclas[event.keyCode] = true;
-
-
-    //         // if (Teclas[event.keyCode] = true) {
-
-    //         //     acelerar(event);
-    //         // }
-
-
-    //         acelerar(event);
-
-
-
-
-    //        // velocidad = velocidad + 2;
-           
-
-
-
-
-    //         direccion = "derecha";
-    //        // posicion_jugador_x+=velocidad;
-    //     }
-    //     else if (event.keyCode === 87) {
-
-    //         //letra W - Arriba
-
-
-
-            
-
-
-    //         saltar(event);
-            
-       
-
-    //    // let formula_magica =3* GRAVEDAD / (TIEMPO_AL_CUADRADO) ;
-    //    // posicion_jugador_y -=formula_magica;
-    //    // console.log("keydown W ");
-    //    //console.log("formula magica: " + formula_magica);
-    //    // console.log("posicion_jugador_y: " + posicion_jugador_y);
-    //     }
-
-        
-    //     else if (event.keyCode === 83) {
-
-    //         //letra S - Abajo
-    //         Arquero.posicion_y+=30;
-    //     }
-    //     else if (event.keyCode == 32 && lasers.length <= laserTotal) // space
-    //     {
-    //         // console.log(sonido_disparo_arco);
-    //         arco.src = arco_disparando.src;
-
-
-
-    //         sonido_disparo_arco.play();
-             
-
-
-    //         lasers.push([Arquero.posicion_x + 40, Arquero.posicion_y + 50, 20, 4]);
-    //         console.log(Arquero.posicion_y);
-    //     }
-
-    //     // ************************* PLAYER 2 GUERRERO ***********
-
-    //     else if (event.keyCode == 37) {
-
-
-    //         acelerar(event);
-    //         direccion_guerrero = "izquierda";
-    //         //Flecha izquierda <-
-
-
-
-
-    //     }
-
-    //     else if (event.keyCode == 39) {
-
-    //         //Flecha derecha ->
-    //         direccion_guerrero = "derecha";
-    //         acelerar(event);
-
-    //     } 
-
-    //     else if (event.keyCode == 40) {
-
-    //         //Flecha abajo v
-    //         acelerar(event);
-
-    //     } 
-    //     else if (event.keyCode == 38) {
-
-    //         //Flecha arriba
-    //         saltar(event);
-
-    //     } 
-    
-
-    //    // console.log(event);
-    // });
-
-
-
       //###############FIN#######EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
 
     let limite_aceleracion = 5;
@@ -308,54 +153,6 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
        
 
 
-        // if (Teclas[event.keyCode]==true) {
-
-        //     if (velocidad < limite_aceleracion) {
-
-        //         velocidad = velocidad+2;
-        //         }    
-           
-            
-        //     Arquero.posicion_x-=velocidad;
-
-        // }
-
-
-
-        // if (event.keyCode==65) {     //letra A - izquierda
-        //         if (velocidad < limite_aceleracion) {
-
-        //         velocidad = velocidad+2;
-        //         }    
-           
-            
-        //     Arquero.posicion_x-=velocidad;
-        // }
-
-
-
-
-
-
-
-
-
-        // if (event.keyCode==68) {
-        //      //letra D - derecha
-
-        //      if (velocidad < limite_aceleracion) {
-
-        //      velocidad = velocidad+2;
-
-        //      }
-
-
-        //      Arquero.posicion_x+=velocidad;
-
-
-        // }
-
-
 
        
 
@@ -364,57 +161,6 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 
 
-
-
-
-    function saltar(event) {
-
-       // console.log("anda");
-        if (event.keyCode==38) {
-
-            Guerrero.posicion_y-=50;
-           
-            if (velocidad_guerrero < limite_aceleracion) {
-    
-    
-                velocidad_guerrero = velocidad_guerrero +8;
-            }
-
-
-
-
-        }
-
-
-
-        if (event.keyCode==87) {
-
-        Arquero.posicion_y-=50;
-
-        if (velocidad < limite_aceleracion) {
-
-
-            velocidad = velocidad +8;
-            }
-        }
-        
-    }
-
-    // document.addEventListener('keypress', event => {
-
-    //     if (event.keyCode === 87) {
-
-    //         //letra W - Arriba
-    //     posicion_jugador_y-=50;
-
-
-    //         console.log("apreta W");
-
-    //     }
-
-
-
-    // });
 
 
  //#########################EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
@@ -534,7 +280,8 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
                     lasers[i].x  += 10;
       
                   if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x && 
-                    lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) && lasers[i].y-50 == Guerrero.posicion_y) {
+                    lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) &&
+                     lasers[i].y-50 == Guerrero.posicion_y) {
 
                     const damage = getRandomInt(69);
                     Guerrero.vida -= damage;      
@@ -552,7 +299,9 @@ document.addEventListener('DOMContentLoaded', cargar_game_js);
                     // Borramos el laser.
                     borrar = true;
                   }
-                } else if (lasers[i].x > LIMITE_DERECHO+1) {
+                } 
+                else if (lasers[i].x > LIMITE_DERECHO+1) {
+                     //console.log(lasers[i].x);
                   borrar = true;
                 }
             }
@@ -1024,6 +773,8 @@ let cooldown_ataquebasico_hacha = 0;
 
 
        
+
+        
        // console.log(laser_posicion_y);
 
      
@@ -1281,77 +1032,6 @@ let cooldown_ataquebasico_hacha = 0;
                //context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
             
             } 
-
-
-
-                //*****************************EN MODIFICACION */
-
-
-
-            // if (direccion == "derecha") {
-
-
-            //     if (Guerrero.vida <= 0)
-            //     {
-            //         context.save();
-                    
-            //         context.translate(Arquero.posicion_x, Arquero.posicion_y);
-            //         context.rotate(60 * Math.PI / 180);
-            //         context.drawImage(Arquero.imagen_derecha,Arquero.imagen_derecha.width/2,-Arquero.imagen_derecha.width/2);
-
-
-                   
-            //         //context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
-            //         // Reset transformation matrix to the identity matrix
-            //         context.restore();
-
-            //     }
-            //     else
-            //     {
-            //         context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
-            //     }
-            //    //context.drawImage(Guerrero.imagen_derecha, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_derecha.naturalWidth, Guerrero.imagen_derecha.naturalHeight);
-            
-            // } 
-
-
-
-    //*****************************EN MODIFICACION */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
            
 
             //dibuja el hacha
