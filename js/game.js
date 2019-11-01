@@ -276,7 +276,7 @@ function cargar_game_js() {
                     borrar = true;
                 }
             } else {
-                if (lasers[i].x < LIMITE_DERECHO) {
+                if (lasers[i].x < canvas.width) {
                     lasers[i].x += 10;
 
                     if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x &&
@@ -300,7 +300,7 @@ function cargar_game_js() {
                         borrar = true;
                     }
                 }
-                else if (lasers[i].x > LIMITE_DERECHO + 1) {
+                else if (lasers[i].x > canvas.width -1) {
                     //console.log(lasers[i].x);
                     borrar = true;
                 }
