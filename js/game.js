@@ -628,12 +628,7 @@ function cargar_game_js() {
 
            
 
-            
             if (cooldown_habilidad_arco == 0) {
-
-
-
-
 
 
                 console.log("anda");
@@ -641,15 +636,7 @@ function cargar_game_js() {
 
 
 
-
-
-
-
-
-
-
-
-                cooldown_habilidad_arco = 600;
+                cooldown_habilidad_arco = 1900;
 
 
             }
@@ -831,6 +818,14 @@ function cargar_game_js() {
     let disparo_cooldown = 0;
     let cooldown_ataquebasico_hacha = 0;
 
+
+
+
+
+    let imagen_alas_1 = new Image();
+imagen_alas_1.src = "./anim/alas/alas1.png";
+
+
     function tiempo() {
         //hace ejecutar 60 veces por segundo
         frame(tiempo);
@@ -840,6 +835,21 @@ function cargar_game_js() {
 
         actualizarMovimientosPesronajes()
         //  if () {}
+
+
+
+
+
+
+
+
+       
+
+       
+
+
+
+
 
 
 
@@ -978,6 +988,55 @@ function cargar_game_js() {
 
 
         context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
+
+       
+
+
+         
+        if (cooldown_habilidad_arco == 1890) {
+
+            
+            context.drawImage(imagen_alas_1, Arquero.posicion_x, Arquero.posicion_y, imagen_alas_1.naturalWidth, imagen_alas_1.naturalHeight);
+
+             
+            
+
+        }
+
+        if (cooldown_habilidad_arco == 1880) {
+
+            
+            context.drawImage(imagen_alas_2, Arquero.posicion_x, Arquero.posicion_y, imagen_alas_1.naturalWidth, imagen_alas_1.naturalHeight);
+
+             
+           
+
+        }
+
+        if (cooldown_habilidad_arco == 1870) {
+
+            
+            context.drawImage(imagen_alas_3, Arquero.posicion_x, Arquero.posicion_y, imagen_alas_1.naturalWidth, imagen_alas_1.naturalHeight);
+
+             
+          
+
+        }
+
+        if (cooldown_habilidad_arco == 1860) {
+
+            
+            context.drawImage(imagen_alas_4, Arquero.posicion_x, Arquero.posicion_y, imagen_alas_1.naturalWidth, imagen_alas_1.naturalHeight);
+
+             
+            
+
+        }
+        
+        
+
+
+        
 
 
 

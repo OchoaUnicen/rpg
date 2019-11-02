@@ -12,6 +12,39 @@ arco.src = "./img/arqueroarco1.png";
 
 
 
+
+
+
+// let imagen_alas_1 = new Image();
+// imagen_alas_1.src = "./anim/alas/alas1.png";
+
+let imagen_alas_2 = new Image();
+imagen_alas_2.src = "./anim/alas/alas2.png";
+let imagen_alas_3 = new Image();
+imagen_alas_3.src = "./anim/alas/alas3.png";
+let imagen_alas_4 = new Image();
+imagen_alas_4.src = "./anim/alas/alas4.png";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 let arco_disparando = new Image();
 arco_disparando.src = "./img/arqueroarco2.png";
 
