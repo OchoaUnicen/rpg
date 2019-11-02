@@ -996,42 +996,54 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         if (cooldown_habilidad_arco == 1890) {
 
             
-            context.drawImage(imagen_alas_1, Arquero.posicion_x, Arquero.posicion_y, imagen_alas_1.naturalWidth, imagen_alas_1.naturalHeight);
-
+            imagen_arquero_derecha.src = imagen_alas_1.src;
              
             
 
         }
 
-        if (cooldown_habilidad_arco == 1880) {
+        if (cooldown_habilidad_arco == 1830) {
 
+            imagen_arquero_derecha.src = imagen_alas_2.src;
+             
             
-            context.drawImage(imagen_alas_2, Arquero.posicion_x, Arquero.posicion_y, imagen_alas_1.naturalWidth, imagen_alas_1.naturalHeight);
-
              
            
 
         }
 
-        if (cooldown_habilidad_arco == 1870) {
+        if (cooldown_habilidad_arco == 1770) {
 
             
-            context.drawImage(imagen_alas_3, Arquero.posicion_x, Arquero.posicion_y, imagen_alas_1.naturalWidth, imagen_alas_1.naturalHeight);
-
+            imagen_arquero_derecha.src = imagen_alas_3.src;
+             
+            
              
           
 
         }
 
-        if (cooldown_habilidad_arco == 1860) {
+        if (cooldown_habilidad_arco == 1710) {
 
             
-            context.drawImage(imagen_alas_4, Arquero.posicion_x, Arquero.posicion_y, imagen_alas_1.naturalWidth, imagen_alas_1.naturalHeight);
-
+            imagen_arquero_derecha.src = imagen_alas_4.src;
              
+            
             
 
         }
+
+        if (cooldown_habilidad_arco == 1650) {
+
+            
+            imagen_arquero_derecha.src = "./img/arquero.png";
+             
+            
+            
+
+        }
+
+        
         
         
 
