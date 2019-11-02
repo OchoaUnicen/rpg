@@ -66,7 +66,7 @@ function cargar_game_js() {
 
     const mapa = crearMatriz(100, 50);
 
-    var laserTotal = 2, lasers = [];
+    var laserTotal = 6, lasers = [];
 
 
 
@@ -552,9 +552,23 @@ function cargar_game_js() {
 
 
 
+                if (habilidad_arquero_activada == true) {
+
+                    disparo_cooldown = 150;
 
 
-                disparo_cooldown = 300;
+                }
+
+
+                else if (habilidad_arquero_activada == false) {
+
+                    disparo_cooldown = 300;
+
+
+                }
+
+
+                
             }
 
 
@@ -633,7 +647,7 @@ function cargar_game_js() {
 
                 console.log("anda");
 
-
+                habilidad_arquero_activada = true;
 
 
                 cooldown_habilidad_arco = 1900;
@@ -738,6 +752,21 @@ function cargar_game_js() {
         }
 
     }
+
+
+
+
+    let habilidad_arquero_activada = false;
+
+
+
+
+
+
+
+
+
+
     function atacarHacha() {
         //console.log(cooldown_ataquebasico_hacha);
         cooldown_ataquebasico_hacha = 300;
@@ -1033,13 +1062,16 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
         }
 
-        if (cooldown_habilidad_arco == 1650) {
+        if (cooldown_habilidad_arco == 450) {
 
             
             imagen_arquero_derecha.src = "./img/arquero.png";
-             
+            habilidad_arquero_activada = false; 
             
             
+
+
+
 
         }
 
