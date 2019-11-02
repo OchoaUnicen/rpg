@@ -485,6 +485,13 @@ function cargar_game_js() {
     let laser_posicion_y;
     let direccion_disparo;
 
+
+
+
+
+
+    let cooldown_habilidad_arco = 0;
+
     function actualizarMovimientosPesronajes() {
 
 
@@ -614,6 +621,67 @@ function cargar_game_js() {
 
 
         }
+
+
+
+        if (Teclas[tecla.letra_k] == true && Arquero.muerto == false) {
+
+           
+
+            
+            if (cooldown_habilidad_arco == 0) {
+
+
+
+
+
+
+                console.log("anda");
+
+
+
+
+
+
+
+
+
+
+
+
+                cooldown_habilidad_arco = 600;
+
+
+            }
+
+
+
+
+
+            
+
+
+
+       
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         if (Teclas[tecla.flecha_arriba] == true && Guerrero.muerto == false) {
             //Tecla Flecha arriba - Saltar guerrero
@@ -852,6 +920,34 @@ function cargar_game_js() {
 
             //console.log(disparo_cooldown);
         }
+
+
+
+
+
+
+
+        if (cooldown_habilidad_arco > 0) {
+
+
+            cooldown_habilidad_arco = cooldown_habilidad_arco -10;
+
+            
+        }
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
