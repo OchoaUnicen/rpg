@@ -855,6 +855,18 @@ function cargar_game_js() {
 imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
+
+
+
+
+
+
+
+
+
+
+
+
     function tiempo() {
         //hace ejecutar 60 veces por segundo
         frame(tiempo);
@@ -1078,6 +1090,8 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         
         
         
+
+
 
 
         
