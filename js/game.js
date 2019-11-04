@@ -1237,6 +1237,18 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         // console.log("posicion_jugador_y : " + posicion_jugador_y);
         // console.log(tiempo);
 
+
+
+
+
+
+        context.drawImage(Mago.imagen_derecha, Mago.posicion_x, Mago.posicion_y, Mago.imagen_derecha.naturalWidth, Mago.imagen_derecha.naturalHeight);
+
+
+
+
+
+
         drawLaser();
 
 
