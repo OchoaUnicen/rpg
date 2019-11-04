@@ -1256,7 +1256,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
-        context.drawImage(Mago.imagen_derecha, Mago.posicion_x, Mago.posicion_y, Mago.imagen_derecha.naturalWidth, Mago.imagen_derecha.naturalHeight);
+       // context.drawImage(Mago.imagen_derecha, Mago.posicion_x, Mago.posicion_y, Mago.imagen_derecha.naturalWidth, Mago.imagen_derecha.naturalHeight);
 
 
 
