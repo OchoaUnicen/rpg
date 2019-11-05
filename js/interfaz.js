@@ -18,8 +18,8 @@ Interfaz = {
 
 
     "imagen_1vs1": imagen_1vs1,
-    "imagen_coop": imagen_coop
-
+    "imagen_coop": imagen_coop,
+    "mod":"pendiente"
 
 
 

@@ -858,12 +858,59 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
+    // function elegirMododeJuego() {
+
+
+
+
+
+    //     if () {
+
+    //         Interfaz.mod  = "1vs1";
+
+
+
+    //     }
+
+
+
+
+    //     else if () {
+
+
+    //         Interfaz.mod  = "coop";
+
+
+    //     }       
+
+
+
+    // }
+
+
+
+
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
         frame(tiempo);
         gravedad();
         moveLaser();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
 
         actualizarMovimientosPesronajes();
