@@ -15,18 +15,10 @@ function cargar_game_js() {
     let canvas = document.getElementById('lienzo');
     let context = canvas.getContext('2d');
 
-    //  const GRAVEDAD = 20;
-    // const GRAVEDAD = 3.8;
+   
     let contador_tiempo = 1;
 
-    const TIEMPO_AL_CUADRADO = contador_tiempo * contador_tiempo;
-
-    //********************* */
-    //canvas.appendChild(sonido_disparo_arco);
-    //**************** */
-
-    //------------------------------------------
-    //VELOCIDAD
+ 
 
     let velocidad = 0;
     let velocidad_guerrero = 0;
@@ -874,7 +866,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         moveLaser();
         draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
 
-        actualizarMovimientosPesronajes()
+        actualizarMovimientosPesronajes();
         //  if () {}
 
 
@@ -1235,6 +1227,18 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+        context.drawImage(Interfaz.imagen_1vs1, 100 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
 
 
 
