@@ -1285,13 +1285,10 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
-        context.drawImage(Interfaz.imagen_1vs1, 100 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
+        // context.drawImage(Interfaz.imagen_1vs1, 100 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
 
 
-
-
-
-        context.drawImage(Interfaz.imagen_coop, 600, 100 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
+        // context.drawImage(Interfaz.imagen_coop, 600, 100 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
 
 
 

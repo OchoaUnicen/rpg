@@ -1,7 +1,11 @@
 
 body {
     /*centra el lienzo canvas*/
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* text-align: center; */
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 12px;
 }
@@ -11,10 +15,9 @@ body {
 .contenedor_controles {
 
   
-
     padding-top: 20px;
     display: flex;
-  justify-content: center;
+    justify-content: center;
     border: solid black;
 }
 
