@@ -107,7 +107,7 @@ function cargar_game_js() {
     let limite_aceleracion = 5;
 
 
-    function acelerar(event) {
+    // function acelerar(event) {
 
 
 
@@ -115,42 +115,42 @@ function cargar_game_js() {
 
 
 
-        if (event.keyCode == 37) {
-            //flecha <-
+    //     if (event.keyCode == 37) {
+    //         //flecha <-
 
 
-            if (velocidad_guerrero < limite_aceleracion) {
+    //         if (velocidad_guerrero < limite_aceleracion) {
 
-                velocidad_guerrero = velocidad_guerrero + 2;
-            }
-
-
-
-            Guerrero.posicion_x -= velocidad_guerrero;
-        }
-        if (event.keyCode == 39) {
-            //Flecha derecha ->
-
-
-            if (velocidad_guerrero < limite_aceleracion) {
-
-                velocidad_guerrero = velocidad_guerrero + 2;
-            }
+    //             velocidad_guerrero = velocidad_guerrero + 2;
+    //         }
 
 
 
-            Guerrero.posicion_x += velocidad_guerrero;
-            //console.log("velocidad guerrero: "+velocidad_guerrero);
-        }
+    //         Guerrero.posicion_x -= velocidad_guerrero;
+    //     }
+    //     if (event.keyCode == 39) {
+    //         //Flecha derecha ->
+
+
+    //         if (velocidad_guerrero < limite_aceleracion) {
+
+    //             velocidad_guerrero = velocidad_guerrero + 2;
+    //         }
 
 
 
+    //         Guerrero.posicion_x += velocidad_guerrero;
+    //         //console.log("velocidad guerrero: "+velocidad_guerrero);
+    //     }
 
 
 
 
 
-    }
+
+
+
+    // }
 
 
 
@@ -1242,6 +1242,9 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
+
+
+        context.drawImage(Interfaz.imagen_coop, 600, 100 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
 
 
 
