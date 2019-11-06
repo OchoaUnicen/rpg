@@ -22,9 +22,11 @@ let Guerrero = {
     "nombre": "Guerrero",
     "imagen_derecha" : imagen_guerrero_derecha,
     "imagen_izquierda": imagen_guerrero_izquierda,
-    "vida" : 100  ,
+    "vida" : 625 + (3 * Stats.guerrero.vitalidad )   ,
     "posicion_x": 650,
     "posicion_y": 360,
+    "damage": 50 + (2 * Stats.guerrero.fuerza),
+    "defensa": 50 + (2 * Stats.guerrero.agilidad) ,
 
     
 
@@ -32,9 +34,12 @@ let Guerrero = {
     w: 100,
     h: 100,
     
-    muerto: false,
+    "muerto": false,
 }
 
+
+console.log("damage guerrero: "+Guerrero.damage);
+console.log("defensa guerrero: "+ Guerrero.defensa);
 
 
 

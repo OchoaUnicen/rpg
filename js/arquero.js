@@ -91,10 +91,11 @@ let Arquero = {
     "nombre" : "Arquero",
     "imagen_derecha" : imagen_arquero_derecha,
     "imagen_izquierda": imagen_arquero_izquierda,
-    "vida" : 125 * Stats.arquero.vitalidad,
+    "vida" : 425 + (2* Stats.arquero.vitalidad),
     "posicion_x": 20,
     "posicion_y": 320 ,
-
+    "damage": 50  + (3 * Stats.arquero.agilidad),
+    "defensa": 25 + (1.25 * Stats.arquero.agilidad),
     
 
 
@@ -107,6 +108,9 @@ let Arquero = {
 
 };
 
+
+console.log(Arquero.damage); 
+console.log(Arquero.defensa);
 
 
 
