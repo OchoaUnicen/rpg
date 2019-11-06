@@ -83,6 +83,7 @@ arco_disparando.src = "./img/arqueroarco2.png";
 
 // console.log("sonido_disparo_arco: "+sonido_disparo_arco);
 
+ 
 
 let Arquero = {
 
@@ -90,9 +91,11 @@ let Arquero = {
     "nombre" : "Arquero",
     "imagen_derecha" : imagen_arquero_derecha,
     "imagen_izquierda": imagen_arquero_izquierda,
-    "vida" : 100,
+    "vida" : 125 * Stats.arquero.vitalidad,
     "posicion_x": 20,
     "posicion_y": 320 ,
+
+    
 
 
     w: 100,
@@ -102,6 +105,10 @@ let Arquero = {
     "muerto": false
     
 
-}
+};
+
+
+
+
 
 

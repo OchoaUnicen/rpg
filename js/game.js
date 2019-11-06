@@ -451,25 +451,25 @@ function cargar_game_js() {
 
 
 
-    function draw_healthbar(x, y, personaje_hp, width, thickness) {
-        context.beginPath();
-        context.rect(x - width / 2, y, width * (personaje_hp / 100), thickness);
+    // function draw_healthbar(x, y, personaje_hp, width, thickness) {
+    //     context.beginPath();
+    //     context.rect(x - width / 2, y, width * (personaje_hp / 100), thickness);
 
 
 
 
-        if (personaje_hp > 63) {
-            context.fillStyle = "green"
-        } else if (personaje_hp > 37) {
-            context.fillStyle = "gold"
-        } else if (personaje_hp > 13) {
-            context.fillStyle = "orange";
-        } else {
-            context.fillStyle = "red";
-        }
-        context.closePath();
-        context.fill();
-    }
+    //     if (personaje_hp > 63) {
+    //         context.fillStyle = "green"
+    //     } else if (personaje_hp > 37) {
+    //         context.fillStyle = "gold"
+    //     } else if (personaje_hp > 13) {
+    //         context.fillStyle = "orange";
+    //     } else {
+    //         context.fillStyle = "red";
+    //     }
+    //     context.closePath();
+    //     context.fill();
+    // }
 
 
 
@@ -493,6 +493,9 @@ function cargar_game_js() {
         if (Teclas[tecla.letra_j] == true && lasers.length <= laserTotal && Arquero.muerto == false) {
             //letra j
 
+
+
+      
 
 
             if (disparo_cooldown == 0) {
@@ -911,7 +914,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
-        draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
+       //draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
 
         actualizarMovimientosPesronajes();
         //  if () {}

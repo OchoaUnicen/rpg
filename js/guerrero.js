@@ -19,14 +19,14 @@ let Guerrero = {
 
 
 
-
     "nombre": "Guerrero",
     "imagen_derecha" : imagen_guerrero_derecha,
     "imagen_izquierda": imagen_guerrero_izquierda,
-    "vida" : 100,
+    "vida" : 100  ,
     "posicion_x": 650,
     "posicion_y": 360,
 
+    
 
     
     w: 100,
