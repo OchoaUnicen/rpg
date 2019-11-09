@@ -248,13 +248,16 @@ function cargar_game_js() {
                     if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x &&
                         lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) && lasers[i].y - 50 == Guerrero.posicion_y) {
 
-                        const damage = getRandomInt(69);
+                        let damage = Arquero.damage - Guerrero.defensa; 
+                        
+                        console.log(damage);
+                        //getRandomInt(69);
                         Guerrero.vida -= damage;
 
 
                         sondio_recibir_flechazo_armadura.play();
 
-                        console.log("damage: " + damage);
+                        //console.log("damage: " + damage);
 
                         if (Guerrero.vida < 0) {
                             Guerrero.vida = 0;
@@ -275,7 +278,7 @@ function cargar_game_js() {
                         lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) &&
                         lasers[i].y - 50 == Guerrero.posicion_y) {
 
-                        const damage = getRandomInt(69);
+                       let damage = Arquero.damage - Guerrero.defensa;
                         Guerrero.vida -= damage;
 
 
@@ -329,12 +332,8 @@ function cargar_game_js() {
 
                     if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
                         lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && laser_posicion_y - 50 == Guerrero.posicion_y) {
-                        //*****************EN PROGRESO********************** */
+                                                    //*****************EN PROGRESO********************** */
                         //verificar la altura de laser_posicion_y respecto al guerrero para delimitar hit
-
-
-
-
 
 
 
@@ -356,10 +355,6 @@ function cargar_game_js() {
 
 
 
-
-
-
-
                         //getRandomInt(69 /* <- lindo numero */);
 
 
@@ -376,7 +371,6 @@ function cargar_game_js() {
 
                         // console.log("llega");
                         console.log("damage: " + damage);
-
 
 
 
@@ -451,25 +445,25 @@ function cargar_game_js() {
 
 
 
-    function draw_healthbar(x, y, personaje_hp, width, thickness) {
-        context.beginPath();
-        context.rect(x - width / 2, y, width * (personaje_hp / 100), thickness);
+    // function draw_healthbar(x, y, personaje_hp, width, thickness) {
+    //     context.beginPath();
+    //     context.rect(x - width / 2, y, width * (personaje_hp / 100), thickness);
 
 
 
 
-        if (personaje_hp > 63) {
-            context.fillStyle = "green"
-        } else if (personaje_hp > 37) {
-            context.fillStyle = "gold"
-        } else if (personaje_hp > 13) {
-            context.fillStyle = "orange";
-        } else {
-            context.fillStyle = "red";
-        }
-        context.closePath();
-        context.fill();
-    }
+    //     if (personaje_hp > 63) {
+    //         context.fillStyle = "green"
+    //     } else if (personaje_hp > 37) {
+    //         context.fillStyle = "gold"
+    //     } else if (personaje_hp > 13) {
+    //         context.fillStyle = "orange";
+    //     } else {
+    //         context.fillStyle = "red";
+    //     }
+    //     context.closePath();
+    //     context.fill();
+    // }
 
 
 
@@ -493,6 +487,9 @@ function cargar_game_js() {
         if (Teclas[tecla.letra_j] == true && lasers.length <= laserTotal && Arquero.muerto == false) {
             //letra j
 
+
+
+      
 
 
             if (disparo_cooldown == 0) {
@@ -770,7 +767,7 @@ function cargar_game_js() {
 
 
 
-        console.log(cooldown_ataquebasico_hacha);
+        //console.log(cooldown_ataquebasico_hacha);
 
 
         let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
@@ -802,7 +799,9 @@ function cargar_game_js() {
 
 
 
-            let damage_hacha = getRandomInt(69);
+            let damage_hacha = Guerrero.damage - Arquero.defensa;
+            console.log(damage_hacha);
+            //getRandomInt(69);
             Arquero.vida -= damage_hacha;
 
 
@@ -911,7 +910,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
-        draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
+       //draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
 
         actualizarMovimientosPesronajes();
         //  if () {}
@@ -993,7 +992,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
             cooldown_ataquebasico_hacha = cooldown_ataquebasico_hacha - 10;
 
 
-            console.log(cooldown_ataquebasico_hacha);
+           // console.log(cooldown_ataquebasico_hacha);
         }
 
 
@@ -1071,13 +1070,29 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
        
 
-
+        //console.log(cooldown_habilidad_arco);
          
+
+
+
+
+
+
+
+
+
         if (cooldown_habilidad_arco == 1890) {
 
             
-            imagen_arquero_derecha.src = imagen_alas_1.src;
+
+           
+
+
+                imagen_arquero_derecha.src = imagen_alas_1.src;
              
+          
+
+
             
 
         }
@@ -1086,19 +1101,19 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
             imagen_arquero_derecha.src = imagen_alas_2.src;
              
-            
+             
              
            
 
         }
 
         if (cooldown_habilidad_arco == 1770) {
-
+            
             
             imagen_arquero_derecha.src = imagen_alas_3.src;
              
             
-             
+           
           
 
         }

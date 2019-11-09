@@ -83,6 +83,7 @@ arco_disparando.src = "./img/arqueroarco2.png";
 
 // console.log("sonido_disparo_arco: "+sonido_disparo_arco);
 
+ 
 
 let Arquero = {
 
@@ -90,9 +91,13 @@ let Arquero = {
     "nombre" : "Arquero",
     "imagen_derecha" : imagen_arquero_derecha,
     "imagen_izquierda": imagen_arquero_izquierda,
-    "vida" : 100,
+    "vida" : 425 + (2* Stats.arquero.vitalidad),
     "posicion_x": 20,
     "posicion_y": 320 ,
+    "damage": 80  + (3 * Stats.arquero.agilidad),
+    "defensa": 25 + (1.25 * Stats.arquero.agilidad),
+    "evasion": calcularEvasion_arquero(),
+    
 
 
     w: 100,
@@ -102,6 +107,23 @@ let Arquero = {
     "muerto": false
     
 
+};
+
+
+
+function calcularEvasion_arquero() {
+
+  let evasion = (Stats.arquero.agilidad / 10);
+  
+    return evasion;
+
 }
+
+console.log(Arquero.damage); 
+console.log(Arquero.defensa);
+console.log(Arquero.evasion);
+
+
+
 
 
