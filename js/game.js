@@ -248,11 +248,11 @@ function cargar_game_js() {
                     if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x &&
                         lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) && lasers[i].y - 50 == Guerrero.posicion_y) {
 
-                        let damage = Arquero.damage - Guerrero.defensa; 
+                     
                         
                         console.log(damage);
                         //getRandomInt(69);
-                        Guerrero.vida -= damage;
+                        Guerrero.vida -= Arquero.damage - Guerrero.defensa; 
 
 
                         sondio_recibir_flechazo_armadura.play();
@@ -277,14 +277,13 @@ function cargar_game_js() {
                     if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x &&
                         lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) &&
                         lasers[i].y - 50 == Guerrero.posicion_y) {
-
-                       let damage = Arquero.damage - Guerrero.defensa;
-                        Guerrero.vida -= damage;
+ 
+                        Guerrero.vida -= Arquero.damage - Guerrero.defensa; 
 
 
                         sondio_recibir_flechazo_armadura.play();
 
-                        console.log("damage: " + damage);
+                            console.log("damage: "+ (Arquero.damage - Guerrero.defensa));
 
                         if (Guerrero.vida < 0) {
                             Guerrero.vida = 0;
@@ -320,7 +319,9 @@ function cargar_game_js() {
 
 
         if (direccion_disparo == "derecha") {
-
+            console.log(
+                "asdasdsad"
+            );
             for (var i = 0; i < lasers.length; i++) {
                 if (lasers[i][0] < canvas.width) {
                     lasers[i][0] += 10;
@@ -353,8 +354,8 @@ function cargar_game_js() {
                         let damage = getRandomInt(69);
                         Guerrero.vida -= damage;
 
-
-
+                        
+                            console.log("vida guerrero: " + Guerrero.vida);
                         //getRandomInt(69 /* <- lindo numero */);
 
 
@@ -642,13 +643,7 @@ function cargar_game_js() {
                 cooldown_habilidad_arco = 1900;
 
 
-            }
-
-
-
-
-
-            
+            }          
 
 
 
@@ -658,13 +653,6 @@ function cargar_game_js() {
 
 
         }
-
-
-
-
-
-
-
 
 
 
@@ -898,31 +886,10 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
        //draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
 
         actualizarMovimientosPesronajes();
-        //  if () {}
-
-
-
-
-
-
-
-
-       
+        //  if () {}    
 
        
 
@@ -1024,18 +991,6 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
             
         }
         
-        
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1055,11 +1010,6 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
-
-
-
-
-
         //drawImage tiene 4 parametros: Imagen a ser invocada en la funcion,inicio eje x,inicio eje y, tamaño.widht, tamaño.heigh 
         context.clearRect(0, 0, canvas.width, canvas.heigh);
 
@@ -1072,10 +1022,6 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
         //console.log(cooldown_habilidad_arco);
          
-
-
-
-
 
 
 
