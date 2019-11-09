@@ -96,6 +96,7 @@ let Arquero = {
     "posicion_y": 320 ,
     "damage": 50  + (3 * Stats.arquero.agilidad),
     "defensa": 25 + (1.25 * Stats.arquero.agilidad),
+    "evasion": calcularEvasion_arquero(),
     
 
 
@@ -109,8 +110,18 @@ let Arquero = {
 };
 
 
+
+function calcularEvasion_arquero() {
+
+  let evasion = (Stats.arquero.agilidad / 10);
+  
+    return evasion;
+
+}
+
 console.log(Arquero.damage); 
 console.log(Arquero.defensa);
+console.log(Arquero.evasion);
 
 
 
