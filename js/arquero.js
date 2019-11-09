@@ -94,7 +94,7 @@ let Arquero = {
     "vida" : 425 + (2* Stats.arquero.vitalidad),
     "posicion_x": 20,
     "posicion_y": 320 ,
-    "damage": 50  + (3 * Stats.arquero.agilidad),
+    "damage": 80  + (3 * Stats.arquero.agilidad),
     "defensa": 25 + (1.25 * Stats.arquero.agilidad),
     "evasion": calcularEvasion_arquero(),
     

@@ -1070,13 +1070,29 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
        
 
-
+        //console.log(cooldown_habilidad_arco);
          
+
+
+
+
+
+
+
+
+
         if (cooldown_habilidad_arco == 1890) {
 
             
-            imagen_arquero_derecha.src = imagen_alas_1.src;
+
+           
+
+
+                imagen_arquero_derecha.src = imagen_alas_1.src;
              
+          
+
+
             
 
         }
@@ -1085,19 +1101,19 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
             imagen_arquero_derecha.src = imagen_alas_2.src;
              
-            
+             
              
            
 
         }
 
         if (cooldown_habilidad_arco == 1770) {
-
+            
             
             imagen_arquero_derecha.src = imagen_alas_3.src;
              
             
-             
+           
           
 
         }
