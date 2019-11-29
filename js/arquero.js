@@ -35,16 +35,6 @@ imagen_alas_4.src = "./anim/alas/alas4.png";
 
 
 
-
-
-
-
-
-
-
-
-
-
 let arco_disparando = new Image();
 arco_disparando.src = "./img/arqueroarco2.png";
 
