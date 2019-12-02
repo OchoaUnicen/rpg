@@ -56,10 +56,10 @@ arco_disparando.src = "./img/arqueroarco2.png";
  
  
  
+  
  
- 
- console.log("sonido_disparo_arco: "+sonido_disparo_arco);
-   console.log("y su src: " + sonido_disparo_arco.src);
+  console.log("sonido_disparo_arco: "+sonido_disparo_arco);
+  console.log("y su src: " + sonido_disparo_arco.src);
  //sonido_disparo_arco = new sound("./sounds/disparo_arco.m4a");
 
 
