@@ -6,18 +6,11 @@
     imagen_guerrero_izquierda.src = "./img/guerreroiz.png";
    // console.log("imagen guerrero:   " + imagen_guerrero_png);
 
-
-
-
    let hacha = new Image();
    hacha.src = "./anim/golpe_hacha_guerrero/guerrerohacha1.png";
 
 
-
 let Guerrero = {
-
-
-
 
     "nombre": "Guerrero",
     "imagen_derecha" : imagen_guerrero_derecha,
@@ -27,20 +20,15 @@ let Guerrero = {
     "posicion_y": 360,
     "damage": 50 + (2 * Stats.guerrero.fuerza),
     "defensa": 50 + (2 * Stats.guerrero.agilidad) ,
-
-    
-
-    
+   
     w: 100,
     h: 100,
     
     "muerto": false,
 }
 
-
 console.log("damage guerrero: "+Guerrero.damage);
 console.log("defensa guerrero: "+ Guerrero.defensa);
-
 
 
 let sonido_ataque_hacha = document.createElement("audio");
@@ -53,11 +41,6 @@ let sonido_recibir_hachazo1 = document.createElement("audio");
 sonido_recibir_hachazo1.volume = 0.4;
 
 sonido_recibir_hachazo1.src = "./sounds/sonido_recibir_hachazo1.mp3";
-
-
-
-
-
 
 
 let ataque_hacha_mov_0 = new Image();

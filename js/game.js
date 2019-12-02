@@ -628,6 +628,28 @@ function cargar_game_js() {
 
 
 
+        if (Teclas[tecla.letra_l] == true && Arquero.muerto == false) {
+
+
+            if (dash_arquero_cooldown == 0) {
+
+                Arquero.posicion_x -= 15;
+                Arquero.posicion_y -= 5;
+
+            }
+
+
+
+        }
+
+
+
+
+
+
+
+
+
         if (Teclas[tecla.letra_k] == true && Arquero.muerto == false) {
 
            
@@ -825,7 +847,7 @@ function cargar_game_js() {
 
     let disparo_cooldown = 0;
     let cooldown_ataquebasico_hacha = 0;
-
+    let dash_arquero_cooldown = 0;
 
 
 
