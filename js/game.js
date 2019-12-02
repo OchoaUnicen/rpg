@@ -635,7 +635,7 @@ function cargar_game_js() {
 
 
 
-                if (direccion == "derecha") {
+                if (direccion == "derecha" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
 
                     
                 Arquero.posicion_x -= 15;
@@ -644,7 +644,7 @@ function cargar_game_js() {
                 }
 
                 
-                if (direccion == "izquierda") {
+                if (direccion == "izquierda" && Arquero.posicion_x < LIMITE_DERECHO - 15) {
 
                     
                     Arquero.posicion_x += 15;
