@@ -16,7 +16,7 @@ function cargar_game_js() {
     let context = canvas.getContext('2d');
 
    
-    let contador_tiempo = 1;
+    //let contador_tiempo = 1;
 
  
 
@@ -203,7 +203,7 @@ function cargar_game_js() {
 
             //3* GRAVEDAD * (TIEMPO_AL_CUADRADO);
 
-            contador_tiempo++;
+            //contador_tiempo++;
             //console.log("tiempo en caer jugador 1 :"+ contador_tiempo);   
 
         }
