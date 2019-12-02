@@ -629,12 +629,30 @@ function cargar_game_js() {
 
 
         if (Teclas[tecla.letra_l] == true && Arquero.muerto == false) {
-
+            console.log(dash_arquero_cooldown);
 
             if (dash_arquero_cooldown == 0) {
 
+
+
+                if (direccion == "derecha") {
+
+                    
                 Arquero.posicion_x -= 15;
                 Arquero.posicion_y -= 5;
+
+                }
+
+                
+                if (direccion == "izquierda") {
+
+                    
+                    Arquero.posicion_x += 15;
+                    Arquero.posicion_y -= 5;
+    
+                    }
+
+                
 
             }
 
