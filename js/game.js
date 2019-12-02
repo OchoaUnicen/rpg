@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', cargar_game_js);
 
-
 function cargar_game_js() {
 
     "use strict";
@@ -10,38 +9,15 @@ function cargar_game_js() {
         window.webkitRequestAnimationFrame ||
         window.msRequestAnimationFrame;
 
-
-
     let canvas = document.getElementById('lienzo');
-    let context = canvas.getContext('2d');
-
-   
-    //let contador_tiempo = 1;
-
- 
+    let context = canvas.getContext('2d'); 
 
     let velocidad = 0;
     let velocidad_guerrero = 0;
 
-
-
-
-
-
-
-
     //---------------------------------
 
-
-
-
-
-
-
     cargarTeclas();
-
-
-
 
     const LIMITE_IZQUIERDO = 0;
     const LIMITE_DERECHO = 910;
@@ -53,13 +29,9 @@ function cargar_game_js() {
     let fondo = new Image();
     fondo.src = "./img/fondo.png";
 
-
-
-
     const mapa = crearMatriz(100, 50);
 
     var laserTotal = 6, lasers = [];
-
 
 
     function crearMatriz(w, h) {
@@ -72,16 +44,8 @@ function cargar_game_js() {
     }
 
 
-
-
-
-
     let direccion = "derecha";
     let direccion_guerrero = "izquierda";
-
-
-
-
 
 
     //#########################EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
@@ -98,21 +62,12 @@ function cargar_game_js() {
 
 
 
-
-
-
-
     //###############FIN#######EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
 
     let limite_aceleracion = 5;
 
 
     // function acelerar(event) {
-
-
-
-
-
 
 
     //     if (event.keyCode == 37) {
@@ -144,22 +99,10 @@ function cargar_game_js() {
     //     }
 
 
-
-
-
-
-
-
     // }
 
 
-
-
-
     //#########################EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
-
-
-
 
 
     document.addEventListener('keyup', (e) => {
@@ -169,10 +112,6 @@ function cargar_game_js() {
         //  console.log(Teclas[e.keyCode]);
 
     });
-
-
-
-
 
 
     document.addEventListener('keyup', event => {
@@ -203,9 +142,6 @@ function cargar_game_js() {
 
             //3* GRAVEDAD * (TIEMPO_AL_CUADRADO);
 
-            //contador_tiempo++;
-            //console.log("tiempo en caer jugador 1 :"+ contador_tiempo);   
-
         }
 
         if (Guerrero.posicion_y < LIMITE_INFERIOR) {
@@ -230,12 +166,6 @@ function cargar_game_js() {
     }
 
 
-    function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
-    }
-
-
-
     function moveLaser() {
 
         for (var i = 0; i < lasers.length; i++) {
@@ -247,13 +177,10 @@ function cargar_game_js() {
 
                     if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x &&
                         lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) && lasers[i].y - 50 == Guerrero.posicion_y) {
-
-                     
-                        
-                        console.log(damage);
+             
+                        console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
                         //getRandomInt(69);
                         Guerrero.vida -= Arquero.damage - Guerrero.defensa; 
-
 
                         sondio_recibir_flechazo_armadura.play();
 
@@ -304,110 +231,10 @@ function cargar_game_js() {
                 lasers.splice(i, 1);
         }
 
-
-
-        if (direccion_disparo == "izquierda") {
-
-
-            for (var i = 0; i < lasers.length; i++) {
-
-            }
-
-
-
-        }
-
-
-        if (direccion_disparo == "derecha") {
-            console.log(
-                "asdasdsad"
-            );
-            for (var i = 0; i < lasers.length; i++) {
-                if (lasers[i][0] < canvas.width) {
-                    lasers[i][0] += 10;
-                    //console.log(lasers[i][0]);
-                    // console.log(laser_posicion_y);
-                    // console.log("guerrero y: "+Guerrero.posicion_y);
-                    // console.log("arquero y: "+ Arquero.posicion_y);
-                    // console.log("laser y pos - compensacion: " + (laser_posicion_y-50));
-
-                    if (Guerrero.vida > 0 && (lasers[i][0] >= Guerrero.posicion_x &&
-                        lasers[i][0] <= (Guerrero.posicion_x + Guerrero.w)) && laser_posicion_y - 50 == Guerrero.posicion_y) {
-                                                    //*****************EN PROGRESO********************** */
-                        //verificar la altura de laser_posicion_y respecto al guerrero para delimitar hit
-
-
-
-                        //   console.log("contacto");
-
-                        //   console.log("lasers pos pos: "+ lasers[i][0]);
-
-
-                        //   console.log("posicion X de guerrero: "+Guerrero.posicion_x);
-                        //   console.log("posicion Y de guerrero: "+Guerrero.posicion_y);
-                        //   console.log("posicion X de arquero: "+Arquero.posicion_x);
-                        //   console.log("posicion Y de arquero: "+Arquero.posicion_y);
-
-                        //Guerrero.vida -= Math.random() * (max - min) + min;
-
-
-                        let damage = getRandomInt(69);
-                        Guerrero.vida -= damage;
-
-                        
-                            console.log("vida guerrero: " + Guerrero.vida);
-                        //getRandomInt(69 /* <- lindo numero */);
-
-
-                        sondio_recibir_flechazo_armadura.play();
-
-
-                        //createText(damage.toString(), "#990000", Guerrero);
-
-
-                        //   context.font = "30px";
-                        // context.fillText(damage, Guerrero.posicion_x, Guerrero.posicion_y-40);
-
-
-
-                        // console.log("llega");
-                        console.log("damage: " + damage);
-
-
-
-                        if (Guerrero.vida < 0) {
-                            Guerrero.vida = 0;
-
-                            Guerrero.muerto = true;
-                        }
-
-
-                        // Borramos el laser.
-                        lasers.splice(i, 1);
-                    }
-
-                    // console.log("i: "+i);
-
-
-
-
-                } else if (lasers[i][0] > canvas.width - 1) {
-                    lasers.splice(i, 1);
-                }
-            }
-
-
-        }
-
-
-
-
-
     }
 
     function createText(text_string, color_string, target) {
         var text_miss = new createjs.Text(text_string, "48px VT323", color_string);
-
 
         //delay before the text appears
         setTimeout(function () {
@@ -467,30 +294,16 @@ function cargar_game_js() {
     // }
 
 
-
-
     let laser_posicion_y;
     let direccion_disparo;
-
-
-
-
 
 
     let cooldown_habilidad_arco = 0;
 
     function actualizarMovimientosPesronajes() {
 
-
-
-
-
         if (Teclas[tecla.letra_j] == true && lasers.length <= laserTotal && Arquero.muerto == false) {
             //letra j
-
-
-
-      
 
 
             if (disparo_cooldown == 0) {
@@ -563,104 +376,117 @@ function cargar_game_js() {
 
 
         }
+/*
+        if(!Arquero.muerto){
+            switch (Teclas == true) {
+                case tecla.letra_d:
+                    alert("asd")
+                    if(Arquero.posicion_x < LIMITE_DERECHO){
+                        direccion = "derecha";
+                        //console.log("derecha true");
 
+                        //console.log(Arquero.posicion_x);
+                        if (velocidad < limite_aceleracion) {
+                            velocidad = velocidad + 1;
+                        }
 
+                    Arquero.posicion_x += velocidad;
 
+                    };    
+                break;
+        
+                case tecla.letra_a:
+                    if(Arquero.posicion_x > LIMITE_IZQUIERDO){
+                        direccion = "izquierda";
+                        //console.log(direccion);
 
-        if (Teclas[tecla.letra_d] == true && Arquero.muerto == false && Arquero.posicion_x < LIMITE_DERECHO) {
-            // Derecha
+                        if (velocidad < limite_aceleracion) {
+                            velocidad = velocidad + 1;
+                        }
+                        Arquero.posicion_x -= velocidad;
+                    }
+                break;
+                
+                case tecla.letra_w:
+                    //Tecla W - Saltar
+                    if (Arquero.posicion_y == LIMITE_INFERIOR) {
 
-            direccion = "derecha";
-            //console.log("derecha true");
+                        Arquero.posicion_y -= 50;
+                        if (direccion == "derecha" && Arquero.posicion_x < LIMITE_DERECHO - 15) {
+                            Arquero.posicion_x += 15
+                        }
+                        if (direccion == "izquierda" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
+                            Arquero.posicion_x -= 15;
+                        }
+                    }        
+         }
+        }
 
-            //console.log(Arquero.posicion_x);
-            if (velocidad < limite_aceleracion) {
+*/  if(!Arquero.muerto){
+        
+    if (Teclas[tecla.letra_d] == true && Arquero.posicion_x < LIMITE_DERECHO) {
+        // Derecha
 
-                velocidad = velocidad + 1;
+        direccion = "derecha";
+        //console.log("derecha true");
 
+        //console.log(Arquero.posicion_x);
+        if (velocidad < limite_aceleracion) {
+
+            velocidad = velocidad + 1;
+
+        }
+
+        Arquero.posicion_x += velocidad;
+
+    }
+
+    if (Teclas[tecla.letra_a] == true &&  Arquero.posicion_x > LIMITE_IZQUIERDO) {
+        //Izquierda
+
+        direccion = "izquierda";
+        //console.log(direccion);
+
+        if (velocidad < limite_aceleracion) {
+
+            velocidad = velocidad + 1;
+
+        }
+        Arquero.posicion_x -= velocidad;
+    }
+
+    if (Teclas[tecla.letra_w] == true) {
+        //Tecla W - Saltar
+        if (Arquero.posicion_y == LIMITE_INFERIOR) {
+
+            Arquero.posicion_y -= 50;
+            if (direccion == "derecha" && Arquero.posicion_x < LIMITE_DERECHO - 15) {
+                Arquero.posicion_x += 15
             }
 
-
-            Arquero.posicion_x += velocidad;
-
-        }
-
-
-        if (Teclas[tecla.letra_a] == true && Arquero.muerto == false && Arquero.posicion_x > LIMITE_IZQUIERDO) {
-            //Izquierda
-
-            direccion = "izquierda";
-            //console.log(direccion);
-
-            if (velocidad < limite_aceleracion) {
-
-                velocidad = velocidad + 1;
-
+            if (direccion == "izquierda" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
+                Arquero.posicion_x -= 15;
             }
 
-
-            Arquero.posicion_x -= velocidad;
-
         }
 
+    }
 
-        if (Teclas[tecla.letra_w] == true && Arquero.muerto == false) {
-            //Tecla W - Saltar
-            if (Arquero.posicion_y == LIMITE_INFERIOR) {
+    if (Teclas[tecla.letra_k] == true) {
+        if (cooldown_habilidad_arco == 0) {
 
+            console.log("anda");
 
+            habilidad_arquero_activada = true;
 
-                Arquero.posicion_y -= 50;
-                if (direccion == "derecha" && Arquero.posicion_x < LIMITE_DERECHO - 15) {
-                    Arquero.posicion_x += 15
-                }
+            cooldown_habilidad_arco = 1900;
 
-                if (direccion == "izquierda" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
-                    Arquero.posicion_x -= 15;
-                }
+        }          
 
+    }
+}
 
-            }
-
-
-
-        }
-
-
-
-        if (Teclas[tecla.letra_k] == true && Arquero.muerto == false) {
-
-           
-
-            if (cooldown_habilidad_arco == 0) {
-
-
-                console.log("anda");
-
-                habilidad_arquero_activada = true;
-
-
-                cooldown_habilidad_arco = 1900;
-
-
-            }          
-
-
-
-       
-
-
-
-
-        }
-
-
-
-
-
-
-
-
+        
         if (Teclas[tecla.flecha_arriba] == true && Guerrero.muerto == false) {
             //Tecla Flecha arriba - Saltar guerrero
             if (Guerrero.posicion_y == LIMITE_INFERIOR) {
@@ -1306,19 +1132,11 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         if (velocidad > 0) {
             velocidad = velocidad - 0.4;
 
-
-
-
-
-
         }
 
 
         //console.log(velocidad);
     }
-
-
-
 
     tiempo();
 

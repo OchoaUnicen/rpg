@@ -117,8 +117,6 @@ function getDamage_arquero() {
 
   let damage_arquero = (base_damage + (3* Stats.arquero.agilidad));
 
-
-
   return damage_arquero;
 
 }

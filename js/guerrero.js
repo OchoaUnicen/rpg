@@ -6,18 +6,13 @@
     imagen_guerrero_izquierda.src = "./img/guerreroiz.png";
    // console.log("imagen guerrero:   " + imagen_guerrero_png);
 
-
-
-
    let hacha = new Image();
    hacha.src = "./anim/golpe_hacha_guerrero/guerrerohacha1.png";
 
-
-
+/*let Guerrero = new Personaje("Guerrero",imagen_guerrero_derecha,imagen_guerrero_izquierda,625 + (3 * Stats.guerrero.vitalidad ),
+650,360,50 + (2 * Stats.guerrero.fuerza),50 + (2 * Stats.guerrero.agilidad),100,100,false);
+*/
 let Guerrero = {
-
-
-
 
     "nombre": "Guerrero",
     "imagen_derecha" : imagen_guerrero_derecha,
