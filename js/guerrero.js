@@ -9,9 +9,13 @@
    let hacha = new Image();
    hacha.src = "./anim/golpe_hacha_guerrero/guerrerohacha1.png";
 
+<<<<<<< HEAD
 /*let Guerrero = new Personaje("Guerrero",imagen_guerrero_derecha,imagen_guerrero_izquierda,625 + (3 * Stats.guerrero.vitalidad ),
 650,360,50 + (2 * Stats.guerrero.fuerza),50 + (2 * Stats.guerrero.agilidad),100,100,false);
 */
+=======
+
+>>>>>>> cf8c4f6cdf8d21613c2e0701c7b61e4e19cc7968
 let Guerrero = {
 
     "nombre": "Guerrero",
@@ -22,20 +26,15 @@ let Guerrero = {
     "posicion_y": 360,
     "damage": 50 + (2 * Stats.guerrero.fuerza),
     "defensa": 50 + (2 * Stats.guerrero.agilidad) ,
-
-    
-
-    
+   
     w: 100,
     h: 100,
     
     "muerto": false,
 }
 
-
 console.log("damage guerrero: "+Guerrero.damage);
 console.log("defensa guerrero: "+ Guerrero.defensa);
-
 
 
 let sonido_ataque_hacha = document.createElement("audio");
@@ -48,11 +47,6 @@ let sonido_recibir_hachazo1 = document.createElement("audio");
 sonido_recibir_hachazo1.volume = 0.4;
 
 sonido_recibir_hachazo1.src = "./sounds/sonido_recibir_hachazo1.mp3";
-
-
-
-
-
 
 
 let ataque_hacha_mov_0 = new Image();
