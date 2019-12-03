@@ -13,6 +13,7 @@ function cargar_game_js() {
     let context = canvas.getContext('2d'); 
 
     let velocidad = 0;
+
     let velocidad_guerrero = 0;
 
     //---------------------------------
@@ -43,25 +44,15 @@ function cargar_game_js() {
         return matriz;
     }
 
-
     let direccion = "derecha";
     let direccion_guerrero = "izquierda";
-
-
     //#########################EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
-
-
     document.addEventListener('keydown', (e) => {
     Teclas[e.keyCode] = true
-
         //console.log("tecla apretada");
         //console.log(Teclas[e.keyCode]);
     });
-
     // document.addEventListener('keydown', event => {
-
-
-
     //###############FIN#######EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
 
     let limite_aceleracion = 5;
@@ -107,38 +98,19 @@ function cargar_game_js() {
 
     document.addEventListener('keyup', (e) => {
     Teclas[e.keyCode] = false
-
-
         //  console.log(Teclas[e.keyCode]);
-
     });
-
-
     document.addEventListener('keyup', event => {
-
         if (event.keyCode == 74) {
-
             //j
-
-
             arco.src = "./img/arqueroarco1.png";
-
         }
-
     });
-
     //###############################GRAVEDAD#########################
-
     function gravedad() {
-
         // console.log(posicion_jugador_y);
-
-
-
         if (Arquero.posicion_y < LIMITE_INFERIOR) {
             Arquero.posicion_y += 2;
-
-
 
             //3* GRAVEDAD * (TIEMPO_AL_CUADRADO);
 
