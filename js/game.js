@@ -652,6 +652,7 @@ function cargar_game_js() {
     
                     }
 
+                    dash_arquero_cooldown = 400;
                 
 
             }
@@ -1003,6 +1004,12 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         }
 
 
+
+        if (dash_arquero_cooldown > 0) {
+
+            dash_arquero_cooldown = dash_arquero_cooldown -10;
+
+        }
 
 
 
