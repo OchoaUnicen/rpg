@@ -464,75 +464,9 @@ function cargar_game_js() {
                 Arquero.posicion_x += 15
             }
 
-<<<<<<< HEAD
             if (direccion == "izquierda" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
                 Arquero.posicion_x -= 15;
             }
-=======
-        if (Teclas[tecla.letra_l] == true && Arquero.muerto == false) {
-            console.log(dash_arquero_cooldown);
-
-            if (dash_arquero_cooldown == 0) {
-
-
-
-                if (direccion == "derecha" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
-
-                    
-                Arquero.posicion_x -= 15;
-                Arquero.posicion_y -= 5;
-
-                }
-
-                
-                if (direccion == "izquierda" && Arquero.posicion_x < LIMITE_DERECHO - 15) {
-
-                    
-                    Arquero.posicion_x += 15;
-                    Arquero.posicion_y -= 5;
-    
-                    }
-
-                
-
-            }
-
-
-
-        }
-
-
-
-
-
-
-
-
-
-        if (Teclas[tecla.letra_k] == true && Arquero.muerto == false) {
-
-           
-
-            if (cooldown_habilidad_arco == 0) {
-
-
-                console.log("anda");
-
-                habilidad_arquero_activada = true;
-
-
-                cooldown_habilidad_arco = 1900;
-
-
-            }          
-
-
-
-       
-
-
-
->>>>>>> cf8c4f6cdf8d21613c2e0701c7b61e4e19cc7968
 
         }
 

@@ -9,13 +9,9 @@
    let hacha = new Image();
    hacha.src = "./anim/golpe_hacha_guerrero/guerrerohacha1.png";
 
-<<<<<<< HEAD
 /*let Guerrero = new Personaje("Guerrero",imagen_guerrero_derecha,imagen_guerrero_izquierda,625 + (3 * Stats.guerrero.vitalidad ),
 650,360,50 + (2 * Stats.guerrero.fuerza),50 + (2 * Stats.guerrero.agilidad),100,100,false);
 */
-=======
-
->>>>>>> cf8c4f6cdf8d21613c2e0701c7b61e4e19cc7968
 let Guerrero = {
 
     "nombre": "Guerrero",
