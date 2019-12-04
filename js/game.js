@@ -15,17 +15,11 @@ function cargar_game_js() {
     let velocidad = 0;
 
     let velocidad_guerrero = 0;
-
     //---------------------------------
-
     cargarTeclas();
-
     const LIMITE_IZQUIERDO = 0;
     const LIMITE_DERECHO = 910;
     const LIMITE_INFERIOR = 370;
-
-
-
 
     let fondo = new Image();
     fondo.src = "./img/fondo.png";
