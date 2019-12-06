@@ -6,13 +6,8 @@ imagen_arquero_derecha.src = "./img/arquero.png";
 let imagen_arquero_izquierda = new Image ();
 imagen_arquero_izquierda.src = "./img/arqueroiz.png";
 
-
 let arco = new Image ();
 arco.src = "./img/arqueroarco1.png";
-
-
-
-
 
 
 // let imagen_alas_1 = new Image();
@@ -120,12 +115,6 @@ function getDamage_arquero() {
   return damage_arquero;
 
 }
-
-
-
-
-
-
 
 
 function calcularEvasion_arquero() {

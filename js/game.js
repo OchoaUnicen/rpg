@@ -268,6 +268,8 @@ function cargar_game_js() {
 
     function actualizarMovimientosPesronajes() {
 
+        if (Interfaz.mod == "coop" || Interfaz.mod == "1vs1") {
+
         if (Teclas[tecla.letra_j] == true && lasers.length <= laserTotal && Arquero.muerto == false) {
             //letra j
 
@@ -522,6 +524,8 @@ function cargar_game_js() {
 
     }
 
+    }
+
 
 
 
@@ -665,6 +669,28 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
     // }
+
+
+    canvas.addEventListener("click", function (evt) {
+        var mousePos = getMousePos(canvas, evt);
+
+        if ((mousePos.x <= 204 && mousePos.x >=100) && mousePos.y >= 100 && mousePos.y <= 176 ) {
+            
+                Interfaz.mod = "1vs1";
+            // alert(mousePos.x + ',' + mousePos.y);
+
+        }
+        
+    }, false);
+    
+    //Get Mouse Position
+    function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
 
 
 
@@ -819,16 +845,10 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
-        if (cooldown_habilidad_arco == 1890) {
-
-            
-
-           
+        if (cooldown_habilidad_arco == 1890) {  
 
 
-                imagen_arquero_derecha.src = imagen_alas_1.src;
-             
-          
+                imagen_arquero_derecha.src = imagen_alas_1.src;   
 
 
             
@@ -836,32 +856,22 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         }
 
         if (cooldown_habilidad_arco == 1830) {
-
-            imagen_arquero_derecha.src = imagen_alas_2.src;
-             
-             
-             
+            imagen_arquero_derecha.src = imagen_alas_2.src;          
            
 
         }
 
         if (cooldown_habilidad_arco == 1770) {
-            
-            
-            imagen_arquero_derecha.src = imagen_alas_3.src;
-             
-            
+                        
+            imagen_arquero_derecha.src = imagen_alas_3.src;     
            
           
 
         }
 
         if (cooldown_habilidad_arco == 1710) {
-
             
-            imagen_arquero_derecha.src = imagen_alas_4.src;
-             
-            
+            imagen_arquero_derecha.src = imagen_alas_4.src;      
             
 
         }
@@ -871,16 +881,8 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
             
             imagen_arquero_derecha.src = "./img/arquero.png";
             habilidad_arquero_activada = false; 
-            
-            
-
-
-
-
         }
-
-        
-        
+ 
         
 
 
@@ -1027,68 +1029,40 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
+         context.drawImage(Interfaz.imagen_1vs1, 100 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
 
 
-
-
-
-
-
-
-
-
-
-        // context.drawImage(Interfaz.imagen_1vs1, 100 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
-
-
-        // context.drawImage(Interfaz.imagen_coop, 600, 100 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
+         context.drawImage(Interfaz.imagen_coop, 600, 100 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
 
 
 
 
         //context.font("60px");
+
+
+
         context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 30);
 
-
         context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posicion_y - 30);
+
+
+
+
+
+
         // console.log("posicion_jugador_x : " + posicion_jugador_x);
         // console.log("posicion_jugador_y : " + posicion_jugador_y);
         // console.log(tiempo);
 
-
-
-
-
-
        // context.drawImage(Mago.imagen_derecha, Mago.posicion_x, Mago.posicion_y, Mago.imagen_derecha.naturalWidth, Mago.imagen_derecha.naturalHeight);
-
-
-
-
 
 
         drawLaser();
 
 
-
-
         if (velocidad_guerrero > 0) {
 
             velocidad_guerrero = velocidad_guerrero - 0.4;
-
-
-            if (direccion_guerrero == "izquierda") {
-
-                Guerrero.posicion_x -= velocidad_guerrero;
-            }
-
-
-            if (direccion_guerrero == "derecha") {
-
-                Guerrero.posicion_x += velocidad_guerrero;
-
-            }
-
 
 
         }
