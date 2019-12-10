@@ -527,7 +527,7 @@ function cargar_game_js() {
 
 
 
-        if (Teclas[tecla.numpad2]== true && Guerrero.muerto == false) {
+        if (Teclas[tecla.numpad2]== true && Guerrero.muerto == false && cooldown_guerrero_stun == 0) {
 
 
             guerreroStunnear();
@@ -552,27 +552,34 @@ function cargar_game_js() {
     let cooldown_guerrero_stun = 0;
     let efecto_stun = 0;
     function guerreroStunnear() {
-
+        
+        //************************1000 */
+        cooldown_guerrero_stun = 4000;
+        cooldown_ataquebasico_hacha = 300;
         console.log("stun");
 
         let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
         let distancia_arquero_guerrero_y = Math.abs(Guerrero.posicion_y - Arquero.posicion_y);
 
-        if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50) && cooldown_guerrero_stun == 0) {
+        if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50)) {
 
            
             //console.log(damage_hacha);
             //getRandomInt(69);
-            Arquero.estado == "stunneado";
+            Arquero.estado = "stunneado";
 
+
+            console.log(Arquero.estado);
             //sonido_recibir_hachazo1.play();
 
             //console.log("distancia cercana");
-            cooldown_guerrero_stun = 10000;
-            efecto_stun = 300;
+           
+            efecto_stun = 600;
 
         }
 
+       
+        console.log("cd stun" +cooldown_guerrero_stun);
 
 
     }
@@ -937,7 +944,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
             cooldown_guerrero_stun = cooldown_guerrero_stun - 10;
-
+            console.log("cd stun: " +cooldown_guerrero_stun);
 
 
         }
@@ -947,7 +954,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         if (Arquero.estado == "stunneado" && efecto_stun > 0) {
 
             efecto_stun = efecto_stun - 10;
-
+            
 
 
 
@@ -956,7 +963,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
         if (efecto_stun <= 0) {
             Arquero.estado = "funcional";
-            console.log(efecto_stun);
+            //console.log(efecto_stun);
         }
 
 
