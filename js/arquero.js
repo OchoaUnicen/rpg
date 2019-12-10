@@ -85,6 +85,7 @@ let Arquero = {
     "damage": getDamage_arquero(),
     "defensa": getDefensa_arquero() ,
     "evasion": calcularEvasion_arquero(),
+    "estado" : "funcional",
     
 
 

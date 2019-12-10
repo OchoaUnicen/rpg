@@ -270,6 +270,9 @@ function cargar_game_js() {
 
         if (Interfaz.mod == "coop" || Interfaz.mod == "1vs1") {
 
+
+
+
         if (Teclas[tecla.letra_j] == true && lasers.length <= laserTotal && Arquero.muerto == false) {
             //letra j
 
@@ -390,7 +393,7 @@ function cargar_game_js() {
          }
         }
 
-*/  if(!Arquero.muerto){
+*/  if(!Arquero.muerto && Arquero.estado == "funcional"){
         
     if (Teclas[tecla.letra_d] == true && Arquero.posicion_x < LIMITE_DERECHO) {
         // Derecha
@@ -522,6 +525,19 @@ function cargar_game_js() {
             }
         }
 
+
+
+        if (Teclas[tecla.numpad2]== true && Guerrero.muerto == false) {
+
+
+            guerreroStunnear();
+
+
+
+        }
+
+
+        
     }
 
     }
@@ -532,6 +548,34 @@ function cargar_game_js() {
     let habilidad_arquero_activada = false;
 
 
+
+    let cooldown_guerrero_stun = 0;
+    let efecto_stun = 0;
+    function guerreroStunnear() {
+
+        console.log("stun");
+
+        let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
+        let distancia_arquero_guerrero_y = Math.abs(Guerrero.posicion_y - Arquero.posicion_y);
+
+        if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50) && cooldown_guerrero_stun == 0) {
+
+           
+            //console.log(damage_hacha);
+            //getRandomInt(69);
+            Arquero.estado == "stunneado";
+
+            //sonido_recibir_hachazo1.play();
+
+            //console.log("distancia cercana");
+            cooldown_guerrero_stun = 10000;
+            efecto_stun = 300;
+
+        }
+
+
+
+    }
 
 
 
@@ -808,6 +852,9 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
             
         }
+
+
+
         
 
 
@@ -882,8 +929,35 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
             imagen_arquero_derecha.src = "./img/arquero.png";
             habilidad_arquero_activada = false; 
         }
- 
+
+
+
+
+        if (cooldown_guerrero_stun  > 0) {
+
+
+            cooldown_guerrero_stun = cooldown_guerrero_stun - 10;
+
+
+
+        }
+
+
+       
+        if (Arquero.estado == "stunneado" && efecto_stun > 0) {
+
+            efecto_stun = efecto_stun - 10;
+
+
+
+
+        }
         
+
+        if (efecto_stun <= 0) {
+            Arquero.estado = "funcional";
+            console.log(efecto_stun);
+        }
 
 
 
