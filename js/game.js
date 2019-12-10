@@ -103,6 +103,10 @@ function cargar_game_js() {
     //###############################GRAVEDAD#########################
     function gravedad() {
         // console.log(posicion_jugador_y);
+
+        
+
+
         if (Arquero.posicion_y < LIMITE_INFERIOR) {
             Arquero.posicion_y += 2;
 
