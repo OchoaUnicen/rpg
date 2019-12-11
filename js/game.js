@@ -1119,8 +1119,8 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
          context.drawImage(Interfaz.imagen_coop, 600, 100 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
 
-
-
+         context.drawImage(Interfaz.imagen_reset, 870,20, Interfaz.imagen_reset.naturalWidth, Interfaz.imagen_reset.naturalHeight);
+        //console.log(Interfaz.imagen_reset);
 
         //context.font("60px");
 

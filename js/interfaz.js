@@ -7,6 +7,10 @@ imagen_coop.src = "./img/interfaz/coop.png";
 
 
 
+let imagen_reset = new Image();
+imagen_reset.src = "./img/interfaz/reset.png";
+
+
 
 
 
@@ -40,6 +44,7 @@ imagen_coop.src = "./img/interfaz/coop.png";
 
     "imagen_1vs1": imagen_1vs1,
     "imagen_coop": imagen_coop,
+    "imagen_reset": imagen_reset,
     "mod":"pendiente"
 
 }
