@@ -146,7 +146,7 @@ function cargar_game_js() {
                     lasers[i].x -= 10;
 
                     if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x &&
-                        lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) && lasers[i].y - 50 == Guerrero.posicion_y) {
+                        lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) && lasers[i].y - 50 == Guerrero.posicion_y && Interfaz.mod == "1vs1") {
              
                         console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
                         //getRandomInt(69);
@@ -173,7 +173,7 @@ function cargar_game_js() {
 
                     if (Guerrero.vida > 0 && (lasers[i].x >= Guerrero.posicion_x &&
                         lasers[i].x <= (Guerrero.posicion_x + Guerrero.w)) &&
-                        lasers[i].y - 50 == Guerrero.posicion_y) {
+                        lasers[i].y - 50 == Guerrero.posicion_y && Interfaz.mod == "1vs1") {
  
                         Guerrero.vida -= Arquero.damage - Guerrero.defensa; 
 
@@ -542,7 +542,7 @@ function cargar_game_js() {
 
 
         
-    }
+        }
 
     }
 
@@ -565,7 +565,7 @@ function cargar_game_js() {
         let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
         let distancia_arquero_guerrero_y = Math.abs(Guerrero.posicion_y - Arquero.posicion_y);
 
-        if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50)) {
+        if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50) && Interfaz.mod == "1vs1") {
 
            
             //console.log(damage_hacha);
@@ -634,7 +634,7 @@ function cargar_game_js() {
         //     }       
 
 
-        if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50)) {
+        if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50) && Interfaz.mod == "1vs1") {
 
 
 
@@ -742,6 +742,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
             
             Interfaz.mod = "coop";
             Interfaz.estado = "invisible";
+            console.log(Guerrero.posicion_x);
             //console.log("clicked");
         // alert(mousePos.x + ',' + mousePos.y);
 
@@ -762,6 +763,8 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
+
+    let mod_estado = "pendiente";
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
@@ -1078,11 +1081,14 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
 
         if(Interfaz.mod == "coop") {
+            if (mod_estado == "pendiente") {
+                Guerrero.posicion_x = 150;
+                direccion_guerrero = "derecha";
+                mod_estado = "spawneado";
+    
+            }
 
-
-            Guerrero.posicion_x = 150;
-            direccion_guerrero = "derecha";
-
+            
         }
 
 
