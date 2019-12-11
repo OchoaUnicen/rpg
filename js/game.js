@@ -732,6 +732,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         if ((mousePos.x <= 204 && mousePos.x >=100) && mousePos.y >= 100 && mousePos.y <= 176 ) {
             
                 Interfaz.mod = "1vs1";
+                Interfaz.estado = "invisible";
             // alert(mousePos.x + ',' + mousePos.y);
 
         }
@@ -974,7 +975,7 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
         
-
+        if(Interfaz.mod != "pendiente") {
 
 
         if (direccion == "izquierda") {
@@ -1032,9 +1033,11 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         }
 
 
-        //dibuja el arco
-        //context.drawImage(arco, Arquero.posicion_x + 3, Arquero.posicion_y +3, arco.naturalWidth, arco.naturalHeight);
 
+
+        
+
+        
 
 
         context.save();
@@ -1049,8 +1052,16 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         context.drawImage(arco, 0, 0);
         context.restore();
 
+//vida arquero
+
+context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posicion_y - 30);
 
 
+
+
+
+
+        //guerrero
 
         if (direccion_guerrero == "izquierda") {
 
@@ -1098,7 +1109,11 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         }
 
 
-        //dibuja el hacha
+
+        
+
+
+
         context.save();
 
         if (direccion_guerrero == "izquierda") {
@@ -1112,26 +1127,51 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
         context.restore();
 
 
+        //vida guerrero
 
+        context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 30);
+
+        
+
+
+
+
+
+        }
+
+
+       
+        //context.drawImage(arco, Arquero.posicion_x + 3, Arquero.posicion_y +3, arco.naturalWidth, arco.naturalHeight);
+
+
+
+
+      
+        if (Interfaz.estado == "visible") {
+       
 
          context.drawImage(Interfaz.imagen_1vs1, 100 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
 
 
          context.drawImage(Interfaz.imagen_coop, 600, 100 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
 
-         context.drawImage(Interfaz.imagen_reset, 870,20, Interfaz.imagen_reset.naturalWidth, Interfaz.imagen_reset.naturalHeight);
+        
+
+            }
+
+            context.drawImage(Interfaz.imagen_reset, 870,20, Interfaz.imagen_reset.naturalWidth, Interfaz.imagen_reset.naturalHeight);
+
+
+
+
+
         //console.log(Interfaz.imagen_reset);
 
         //context.font("60px");
 
 
 
-        context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 30);
-
-        context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posicion_y - 30);
-
-
-
+       
 
 
 

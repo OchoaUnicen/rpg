@@ -45,7 +45,8 @@ imagen_reset.src = "./img/interfaz/reset.png";
     "imagen_1vs1": imagen_1vs1,
     "imagen_coop": imagen_coop,
     "imagen_reset": imagen_reset,
-    "mod":"pendiente"
+    "mod":"pendiente",
+    "estado": "visible"
 
 }
 
