@@ -736,6 +736,17 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
             // alert(mousePos.x + ',' + mousePos.y);
 
         }
+
+
+        if ((mousePos.x <= 704 && mousePos.x >=600) && mousePos.y >= 100 && mousePos.y <= 176 ) {
+            
+            Interfaz.mod = "coop";
+            Interfaz.estado = "invisible";
+            //console.log("clicked");
+        // alert(mousePos.x + ',' + mousePos.y);
+
+        }
+
         
     }, false);
     
@@ -1063,6 +1074,20 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
         //guerrero
 
+
+
+
+        if(Interfaz.mod == "coop") {
+
+
+            Guerrero.posicion_x = 150;
+            direccion_guerrero = "derecha";
+
+        }
+
+
+
+
         if (direccion_guerrero == "izquierda") {
 
             if (Guerrero.vida <= 0) {
@@ -1131,10 +1156,10 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
         context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 30);
 
+
+
+           
         
-
-
-
 
 
         }
