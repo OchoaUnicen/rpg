@@ -766,6 +766,24 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 
     let mod_estado = "pendiente";
 
+
+
+
+
+    let cooldown_spiders = 60;
+    let spidersSpawned = 0;
+   function spawnearSpiders() {
+    //EN PROGRESO roberto
+    if (spidersSpawned < Waves.level.cantidad_spiders) {
+    
+
+ 
+        }
+
+    
+
+    }
+
     function tiempo() {
         //hace ejecutar 60 veces por segundo
         frame(tiempo);
@@ -1088,8 +1106,12 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
     
             }
 
+           // spawnearSpiders();
             
+           //fin roberto
         }
+
+
 
 
 
