@@ -82,7 +82,7 @@ let Arquero = {
     "vida" : base_vida_arquero + (2* Stats.arquero.vitalidad),
     "posicion_x": 20,
     //*************320 */
-    "posicion_y": 120 ,
+    "posicion_y": 320 ,
     "damage": getDamage_arquero(),
     "defensa": getDefensa_arquero() ,
     "evasion": calcularEvasion_arquero(),
