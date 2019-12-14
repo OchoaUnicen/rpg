@@ -682,7 +682,7 @@ function cargar_game_js() {
 
 
     let imagen_alas_1 = new Image();
-imagen_alas_1.src = "./anim/alas/alas1.png";
+    imagen_alas_1.src = "./anim/alas/alas1.png";
 
 
 
@@ -776,6 +776,9 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
     //EN PROGRESO roberto
     if (spidersSpawned < Waves.level.cantidad_spiders) {
     
+        
+            
+
 
  
         }
@@ -1087,10 +1090,6 @@ imagen_alas_1.src = "./anim/alas/alas1.png";
 //vida arquero
 
 context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posicion_y - 30);
-
-
-
-
 
 
         //guerrero
