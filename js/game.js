@@ -787,13 +787,16 @@ function cargar_game_js() {
 
     }
 
+
+    
+
     function tiempo() {
         //hace ejecutar 60 veces por segundo
         frame(tiempo);
         gravedad();
         moveLaser();
 
-
+        
 
        //draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
 
