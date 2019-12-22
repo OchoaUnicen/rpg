@@ -26,9 +26,12 @@ class Spider {
     Imagen_spider.src = "./img/mobs/spider_move_1.png";
 
 
-    return Imagen_spider;
+   // return Imagen_spider;
 
     }
+
+
+
 
 
 
