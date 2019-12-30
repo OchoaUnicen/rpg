@@ -19,7 +19,8 @@ let tecla = {
 
 "numpad1": 97,
 "numpad2": 98,
-"numpad3": 99
+"numpad3": 99,
+
 
 }
 // KEYCODES 
