@@ -130,8 +130,26 @@ function cargar_game_js() {
 
     function drawLaser() {
         for (var i = 0; i < lasers.length; i++) {
-            context.fillStyle = '#f00';
-            context.fillRect(lasers[i].x, lasers[i].y, lasers[i].w, lasers[i].h)
+            //context.fillStyle = '#f00';
+
+
+            if (lasers[i].dir == "derecha") {
+
+                context.drawImage(imagen_flecha_derecha, lasers[i].x, lasers[i].y, imagen_flecha_derecha.naturalWidth /2, imagen_flecha_derecha.naturalHeight /2);
+            }
+
+            else if (lasers[i].dir == "izquierda") {
+
+             
+                context.drawImage(imagen_flecha_izquierda, lasers[i].x, lasers[i].y, imagen_flecha_izquierda.naturalWidth /2, imagen_flecha_izquierda.naturalHeight /2);
+                
+            }
+
+
+
+
+           
+            //context.fillRect(lasers[i].x, lasers[i].y, lasers[i].w, lasers[i].h)
         }
     }
 

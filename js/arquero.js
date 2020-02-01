@@ -1,4 +1,12 @@
 
+let imagen_flecha_derecha = new Image();
+imagen_flecha_derecha.src = "./img/armas/flecha_der.png";
+
+let imagen_flecha_izquierda = new Image();
+imagen_flecha_izquierda.src = "./img/armas/flecha_izq.png";
+
+
+
 
 let imagen_arquero_derecha  = new Image ();
 imagen_arquero_derecha.src = "./img/arquero.png";
