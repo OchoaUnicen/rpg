@@ -855,7 +855,7 @@ function cargar_game_js() {
         }
 
 
-        console.log(cooldown_animar_spider);
+       
 
 
 
