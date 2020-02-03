@@ -120,6 +120,12 @@ function cargar_game_js() {
 
         }
 
+        if (spider.posicion_y < LIMITE_INFERIOR && Interfaz.mod == "coop") {
+
+            spider.posicion_y +=6;
+
+        }
+
 
     }
 
@@ -144,10 +150,6 @@ function cargar_game_js() {
                 context.drawImage(imagen_flecha_izquierda, lasers[i].x, lasers[i].y, imagen_flecha_izquierda.naturalWidth /2, imagen_flecha_izquierda.naturalHeight /2);
                 
             }
-
-
-
-
            
             //context.fillRect(lasers[i].x, lasers[i].y, lasers[i].w, lasers[i].h)
         }
@@ -806,7 +808,9 @@ function cargar_game_js() {
     }
 
 
-    
+
+    let spider = new Spider();
+    let cooldown_animar_spider = 100;
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
@@ -823,10 +827,35 @@ function cargar_game_js() {
 
        
 
+        if (cooldown_animar_spider > 0) {
 
 
+            cooldown_animar_spider -= 5;
+
+        }
+
+        if (cooldown_animar_spider < 50) {
+
+            spider.animarSpider(Interfaz.mod, "move_1");
+
+            
+            
+        }
+
+        if (cooldown_animar_spider > 50) {
+
+            spider.animarSpider(Interfaz.mod, "move_2");
+           
+
+        }
+
+        if (cooldown_animar_spider <= 0) {
+
+            cooldown_animar_spider = 100;
+        }
 
 
+        console.log(cooldown_animar_spider);
 
 
 
@@ -1128,6 +1157,21 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
            // spawnearSpiders();
             
+
+
+
+            spider.dibujarSpider(context);
+            spider.moverSpider();
+
+            // if (cooldown_animar_spider == 100) {
+
+            //     spider.animarSpider();
+            // }
+
+
+            
+
+
            //fin roberto
         }
 
