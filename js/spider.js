@@ -70,13 +70,12 @@ class Spider {
 
         if (mod_interfaz == "coop") {        
 
-        console.log("entra animarSpider");
-        console.log("estado animacion " + this.animacion);
+       
 
             if (move == "move_1") {
             
                 this.Imagen.src = "./img/mobs/spider_move_2.png";
-                console.log("entra move 1");
+          
                 
 
                
@@ -86,7 +85,7 @@ class Spider {
             if (move == "move_2") {
             
                 this.Imagen.src = "./img/mobs/spider_move_1.png";
-                console.log("entra move 2");
+              
 
 
                 
