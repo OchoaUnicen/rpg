@@ -11,18 +11,56 @@ body {
 }
 
 
-
 .contenedor_controles {
 
-  
-    padding-top: 20px;
     display: flex;
+    
+
+}
+
+
+.boton_controles {
+
+   height: 20px;
+
+}
+
+.contenedor_controles_player2 {
+
+    
+    padding-top: 20px;
+    display: none;
     justify-content: center;
-    border: solid black;
+    /* border: solid black; */
+}
+
+.contenedor_controles_player1 {
+
+  
+    padding-top: 10px;
+    display: none;
+    justify-content: center;
+    /* border: solid black; */
+   
+    
 }
 
 
 
+.botones_flechas {
+
+    border: solid black;
+    padding: 2px;
+    
+}
+
+.botones_ataque {
+
+    border: solid black;
+    margin-left: 10px;
+    margin-top: 5px
+    
+}
 
 
 .contenedor_movimiento_player1 {
