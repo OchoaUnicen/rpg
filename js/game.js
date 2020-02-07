@@ -1276,7 +1276,9 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
             }
 
-            context.drawImage(Interfaz.imagen_reset, 870,20, Interfaz.imagen_reset.naturalWidth, Interfaz.imagen_reset.naturalHeight);
+
+            //SE COMENTO MOMENTANEAMENTE HASTA AGREGAR FUNCIONALIDAD
+            //context.drawImage(Interfaz.imagen_reset, 870,20, Interfaz.imagen_reset.naturalWidth, Interfaz.imagen_reset.naturalHeight);
 
 
 
