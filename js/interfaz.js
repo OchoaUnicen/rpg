@@ -10,8 +10,15 @@ imagen_coop.src = "./img/interfaz/coop.png";
 let imagen_reset = new Image();
 imagen_reset.src = "./img/interfaz/reset.png";
 
+let imagen_1vs1_mouse_over = new Image();
+imagen_1vs1_mouse_over.src= "./img/interfaz/1vs1_mouseover.png"
 
 
+let imagen_coop_mouse_over = new Image();
+imagen_coop_mouse_over.src = "./img/interfaz/coop_mouseover.png"
+
+let imagen_contenedor_interfaz = new Image();
+imagen_contenedor_interfaz.src = "./img/interfaz/imagen_contenedor_interfaz.png"
 
 
 
@@ -42,8 +49,11 @@ imagen_reset.src = "./img/interfaz/reset.png";
 
  Interfaz = {
 
+    "contenedor_interfaz": imagen_contenedor_interfaz,
     "imagen_1vs1": imagen_1vs1,
+    "imagen_1vs1_mouseover" : imagen_1vs1_mouse_over,    
     "imagen_coop": imagen_coop,
+    "imagen_coop_mouseover": imagen_coop_mouse_over,
     "imagen_reset": imagen_reset,
     "mod":"pendiente",
     "estado": "visible"

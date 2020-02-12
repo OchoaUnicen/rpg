@@ -745,11 +745,44 @@ function cargar_game_js() {
 
     // }
 
+    canvas.onmousemove = function (evt) {
+
+
+        var mouseoverPos = getMousePos(canvas, evt);
+
+        console.log("x: " +mouseoverPos.x, "y: " + mouseoverPos.y);
+
+        if ((mouseoverPos.x <= 600 && mouseoverPos.x >=383) && mouseoverPos.y >= 113 && mouseoverPos.y <= 172 && Interfaz.estado === "visible" ) {
+            
+           Interfaz.imagen_1vs1.src = imagen_1vs1_mouse_over.src; 
+        }
+
+        else {
+
+            Interfaz.imagen_1vs1.src = "./img/interfaz/1vs1.png"
+
+        }
+
+        if ((mouseoverPos.x <= 603 && mouseoverPos.x >=383) && mouseoverPos.y >= 212 && mouseoverPos.y <= 273  && Interfaz.estado === "visible" ) {
+            
+            Interfaz.imagen_coop.src = imagen_coop_mouse_over.src; 
+         }
+ 
+         else {
+ 
+             Interfaz.imagen_coop.src = "./img/interfaz/coop.png"
+ 
+         }
+
+    }
+
 
     canvas.addEventListener("click", function (evt) {
         var mousePos = getMousePos(canvas, evt);
 
-        if ((mousePos.x <= 204 && mousePos.x >=100) && mousePos.y >= 100 && mousePos.y <= 176 ) {
+        console.log("x: "+mousePos.x, "y: "+ mousePos.y );
+
+        if ((mousePos.x <= 600 && mousePos.x >=383) && mousePos.y >= 113 && mousePos.y <= 172 && Interfaz.estado === "visible" ) {
             
                 Interfaz.mod = "1vs1";
                 Interfaz.estado = "invisible";
@@ -758,7 +791,7 @@ function cargar_game_js() {
         }
 
 
-        if ((mousePos.x <= 704 && mousePos.x >=600) && mousePos.y >= 100 && mousePos.y <= 176 ) {
+        if ((mousePos.x <= 603 && mousePos.x >=383) && mousePos.y >= 212 && mousePos.y <= 273  && Interfaz.estado === "visible" ) {
             
             Interfaz.mod = "coop";
             Interfaz.estado = "invisible";
@@ -1265,12 +1298,14 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
       
         if (Interfaz.estado == "visible") {
-       
+            
 
-         context.drawImage(Interfaz.imagen_1vs1, 100 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
+        context.drawImage(Interfaz.contenedor_interfaz, 330, 10);
+
+         context.drawImage(Interfaz.imagen_1vs1, 370 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
 
 
-         context.drawImage(Interfaz.imagen_coop, 600, 100 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
+         context.drawImage(Interfaz.imagen_coop, 370, 200 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
 
         
 
