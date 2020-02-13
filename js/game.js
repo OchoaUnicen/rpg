@@ -540,7 +540,7 @@ function cargar_game_js() {
         }
 
 
-        if (Teclas[tecla.numpad1] == true && Guerrero.muerto == false) {
+        if (Teclas[tecla.numpad1] == true || Teclas[tecla.coma] == true  && Guerrero.muerto == false) {
 
             if (cooldown_ataquebasico_hacha == 0) {
 
@@ -551,7 +551,7 @@ function cargar_game_js() {
 
 
 
-        if (Teclas[tecla.numpad2]== true && Guerrero.muerto == false && cooldown_guerrero_stun == 0) {
+        if (Teclas[tecla.numpad2]== true || Teclas[tecla.punto] == true && Guerrero.muerto == false && cooldown_guerrero_stun == 0) {
 
 
             guerreroStunnear();

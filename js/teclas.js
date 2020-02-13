@@ -21,6 +21,9 @@ let tecla = {
 "numpad2": 98,
 "numpad3": 99,
 
+"coma":188,
+"punto":190
+
 
 }
 // KEYCODES 
