@@ -750,7 +750,7 @@ function cargar_game_js() {
 
         var mouseoverPos = getMousePos(canvas, evt);
 
-        console.log("x: " +mouseoverPos.x, "y: " + mouseoverPos.y);
+        //console.log("x: " +mouseoverPos.x, "y: " + mouseoverPos.y);
 
         if ((mouseoverPos.x <= 600 && mouseoverPos.x >=383) && mouseoverPos.y >= 113 && mouseoverPos.y <= 172 && Interfaz.estado === "visible" ) {
             
@@ -780,7 +780,7 @@ function cargar_game_js() {
     canvas.addEventListener("click", function (evt) {
         var mousePos = getMousePos(canvas, evt);
 
-        console.log("x: "+mousePos.x, "y: "+ mousePos.y );
+        //console.log("x: "+mousePos.x, "y: "+ mousePos.y );
 
         if ((mousePos.x <= 600 && mousePos.x >=383) && mousePos.y >= 113 && mousePos.y <= 172 && Interfaz.estado === "visible" ) {
             
@@ -795,7 +795,7 @@ function cargar_game_js() {
             
             Interfaz.mod = "coop";
             Interfaz.estado = "invisible";
-            console.log(Guerrero.posicion_x);
+            //console.log(Guerrero.posicion_x);
             //console.log("clicked");
         // alert(mousePos.x + ',' + mousePos.y);
 
@@ -1067,7 +1067,7 @@ function cargar_game_js() {
 
 
             cooldown_guerrero_stun = cooldown_guerrero_stun - 10;
-            console.log("cd stun: " +cooldown_guerrero_stun);
+            //console.log("cd stun: " +cooldown_guerrero_stun);
 
 
         }
@@ -1295,10 +1295,40 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
 
 
+        //se dibujan las nubes --------------------------------------
+        context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
+        Nubes.nube_1.x -= 0.23;
 
+        context.drawImage(Nubes.nube_2.imagen, Nubes.nube_2.x, Nubes.nube_2.y);
+        Nubes.nube_2.x -= 0.2;
+
+        context.drawImage(Nubes.nube_3.imagen, Nubes.nube_3.x, Nubes.nube_3.y);
+        Nubes.nube_3.x -= 0.24;
+
+
+        if (Nubes.nube_1.x <= -140) {
+
+            Nubes.nube_1.x = 1000;
+
+        }
+        if (Nubes.nube_2.x <= -140) {
+
+            Nubes.nube_2.x = 1000;
+
+        }
+        if (Nubes.nube_3.x <= -140) {
+
+            Nubes.nube_3.x = 1000;
+
+        }
+        //console.log(Nubes.nube_1.x);
+
+
+
+        // fin se dibujan las nubes --------------------------------------
+ 
       
-        if (Interfaz.estado == "visible") {
-            
+        if (Interfaz.estado == "visible") {           
 
         context.drawImage(Interfaz.contenedor_interfaz, 330, 10);
 
@@ -1309,7 +1339,11 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
         
 
-            }
+        }
+
+
+        
+
 
 
             //SE COMENTO MOMENTANEAMENTE HASTA AGREGAR FUNCIONALIDAD

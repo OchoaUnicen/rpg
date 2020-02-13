@@ -75,7 +75,7 @@ let tecla = {
 
 function cargarTeclas () {
 
-    console.log("entra");
+    //console.log("entra");
     for (var i = 0 ; i < Teclas.length; i++) {
         Teclas[i] = false;
         
