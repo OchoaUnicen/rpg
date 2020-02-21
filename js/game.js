@@ -21,6 +21,28 @@ function cargar_game_js() {
     const LIMITE_DERECHO = 910;
     const LIMITE_INFERIOR = 370;
 
+ 
+    let backgroundMusic = document.createElement("audio");
+    backgroundMusic.src = "./sounds/sonido_background_wherema.wav";
+    backgroundMusic.volume = 0.4;
+    
+    // backgroundMusic.pause();
+    // setTimeout(function(){backgroundMusic.play(); }, 1500);
+    backgroundMusic.load();
+    backgroundMusic.loop = true;
+    // setTimeout(function() {
+    //     backgroundMusic.play();
+    // }, 0);
+  
+    
+          
+   
+  
+
+
+
+  
+
     let fondo = new Image();
     fondo.src = "./img/fondo.png";
 
@@ -777,8 +799,22 @@ function cargar_game_js() {
     }
 
 
+
+    let background_music_isPlaying = false;
+
     canvas.addEventListener("click", function (evt) {
         var mousePos = getMousePos(canvas, evt);
+
+
+        if (background_music_isPlaying === false) {
+          
+         
+                backgroundMusic.play();
+           
+            
+
+            background_music_isPlaying = true;
+        }
 
         //console.log("x: "+mousePos.x, "y: "+ mousePos.y );
 
@@ -1392,5 +1428,5 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
     }
 
     tiempo();
-
+   
 }
