@@ -571,6 +571,8 @@ function cargar_game_js() {
             }
         }
 
+       
+
 
 
         if (Teclas[tecla.numpad2]== true || Teclas[tecla.punto] == true && Guerrero.muerto == false && cooldown_guerrero_stun == 0) {
@@ -806,6 +808,17 @@ function cargar_game_js() {
         var mousePos = getMousePos(canvas, evt);
 
 
+
+        if (Guerrero.muerto == false && Interfaz.estado !== "visible") {
+
+            if (cooldown_ataquebasico_hacha == 0) {
+
+
+                atacarHacha();
+            }
+        }
+
+
         if (background_music_isPlaying === false) {
           
          
@@ -913,13 +926,10 @@ function cargar_game_js() {
 
         if (cooldown_animar_spider > 50) {
 
-            spider.animarSpider(Interfaz.mod, "move_2");
-           
+            spider.animarSpider(Interfaz.mod, "move_2");       
 
         }
-
         if (cooldown_animar_spider <= 0) {
-
             cooldown_animar_spider = 100;
         }
 
@@ -930,78 +940,49 @@ function cargar_game_js() {
 
 
         // console.log(laser_posicion_y);
-
-
         //ANIMACION ATAQUE HACHA GUERRERO
-
         if (cooldown_ataquebasico_hacha == 300) {
-
             //console.log("activo animacion: "+ cooldown_ataquebasico_hacha);
-
             hacha.src = ataque_hacha_mov_1.src;
-
             sonido_ataque_hacha.play();
 
         }
 
 
         if (cooldown_ataquebasico_hacha == 240) {
-
             //console.log("activo animacion: "+ cooldown_ataquebasico_hacha);
-
             hacha.src = ataque_hacha_mov_2.src;
         }
 
         if (cooldown_ataquebasico_hacha == 180) {
-
             hacha.src = ataque_hacha_mov_3.src;
             //console.log("activo animacion: "+ cooldown_ataquebasico_hacha);
         }
         if (cooldown_ataquebasico_hacha == 120) {
             hacha.src = ataque_hacha_mov_4.src;
-
             // console.log("activo animacion: "+cooldown_ataquebasico_hacha );
         }
 
 
         if (cooldown_ataquebasico_hacha == 60) {
             hacha.src = ataque_hacha_mov_3.src;
-
             // console.log("activo animacion: "+cooldown_ataquebasico_hacha );
         }
 
         if (cooldown_ataquebasico_hacha == 10) {
-
             hacha.src = ataque_hacha_mov_0.src;
-
         }
-
-
-
 
 
         //reduccion de cds de ataque hacha guerrero
-
-
         if (cooldown_ataquebasico_hacha > 0) {
             cooldown_ataquebasico_hacha = cooldown_ataquebasico_hacha - 10;
-
-
            // console.log(cooldown_ataquebasico_hacha);
         }
 
-
-
-
-
-
-
         //console.log(cooldown_ataquebasico_hacha);
-
-
         if (disparo_cooldown > 0) {
             disparo_cooldown = disparo_cooldown - 10;
-
             //console.log(disparo_cooldown);
         }
 
@@ -1012,11 +993,7 @@ function cargar_game_js() {
 
 
         if (cooldown_habilidad_arco > 0) {
-
-
-            cooldown_habilidad_arco = cooldown_habilidad_arco -10;
-
-            
+            cooldown_habilidad_arco = cooldown_habilidad_arco -10;            
         }
 
 
