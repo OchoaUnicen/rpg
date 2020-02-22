@@ -43,8 +43,7 @@ function cargar_game_js() {
 
   
 
-    let fondo = new Image();
-    fondo.src = "./img/fondo.png";
+   
 
     const mapa = crearMatriz(100, 50);
 
@@ -446,6 +445,8 @@ function cargar_game_js() {
 
         direccion = "derecha";
         //console.log("derecha true");
+
+        console.log(Arquero.posicion_x);
 
         //console.log(Arquero.posicion_x);
         if (velocidad < limite_aceleracion) {
@@ -909,6 +910,10 @@ function cargar_game_js() {
 
        
 
+
+
+        cambiarMapa();
+
         if (cooldown_animar_spider > 0) {
 
 
@@ -1023,8 +1028,14 @@ function cargar_game_js() {
 
 
 
+        // if (Escenarios.escenario_actual === "escenario_1") {
 
-        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
+        
+            dibujarEscenario(context);
+        // }
+
+        
+        // context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
 
        
 

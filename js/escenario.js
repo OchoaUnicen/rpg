@@ -34,17 +34,84 @@ let Nubes = {
 
 }
 
+let fondo = new Image();
+fondo.src = "./img/fondo.png";
+
+let imagen_escenario_shop = new Image();
+imagen_escenario_shop.src = "./img/fondo/imagen_escenario_shop.png";
+//console.log(imagen_escenario_shop);
+
+
+let Escenarios = {
+    "escenario_actual": "escenario_1",
+    "escenario_1": escenario_1 =    {
+        "nombre": "Lobby",
+        "imagen": fondo,        
+    },
+    "escenario_2": escenario_2 =    {
+        "nombre": "Shop",
+        "imagen": imagen_escenario_shop,        
+    },
+
+
+}
+
+
+function cambiarMapa() {
+
+    const LIMITE_DERECHO = 910;
+
+    
+
+    if ((Arquero.posicion_x >= LIMITE_DERECHO - Arquero.w) && (Guerrero.posicion_x >= LIMITE_DERECHO - Guerrero.w)) {
+      
+        
+        if (Escenarios.escenario_actual == "escenario_1") {
+
+            cambiarFondo();
+
+            Escenarios.escenario_actual = "escenario_2";
+
+
+
+        }
+
+
+    }
+
+  
+
+
+}
+
+   
+function cambiarFondo() {
+
+    console.log("cambia");
 
 
 
 
+    fondo.src = imagen_escenario_shop.src;
+
+    Arquero.posicion_x = 50;
+    Guerrero.posicion_x = 50;
+
+
+}
 
 
 
-// let Escenarios = {
 
-//     "escenario_1": escenario_1,
-//     "escenario_2": escenario_2
+function dibujarEscenario(context)  {
+   
+
+        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
+  
 
 
-// }
+
+   
+}
+
+
