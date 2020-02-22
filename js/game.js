@@ -894,6 +894,7 @@ function cargar_game_js() {
 
     let spider = new Spider();
     let cooldown_animar_spider = 100;
+    let spider_attack_cooldown = 0;
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
@@ -913,6 +914,40 @@ function cargar_game_js() {
 
 
         cambiarMapa();
+
+        console.log("spider pos x" + spider.posicion_x);
+        console.log("arquero pos x + w" + Arquero.posicion_x + Arquero.w);
+        console.log("arquero pos x" +  Arquero.posicion_x);
+
+        if (Escenarios.escenario_actual == "escenario_3") {
+         
+            if (spider.posicion_x > Arquero.posicion_x &&
+                spider.posicion_x < Arquero.posicion_x + Arquero.w &&
+                spider_attack_cooldown == 0) {  
+                          
+                   Arquero.vida -= 10;
+                   spider_attack_cooldown = 300;
+                   console.log("spider att" + spider_attack_cooldown);
+
+                }
+
+        }
+       
+
+        if (spider_attack_cooldown > 0 ) {
+
+            spider_attack_cooldown -= 10;
+            
+        }
+
+        if (spider_attack_cooldown < 0 ) {
+
+            spider_attack_cooldown = 0;
+            
+        }
+
+
+
 
         if (cooldown_animar_spider > 0) {
 

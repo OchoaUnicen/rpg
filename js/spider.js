@@ -9,6 +9,7 @@ class Spider {
         this.posicion_x = 900;
         this.posicion_y = 200;
         this.animacion = "move_1";
+        this.atacando = false;
     }
     
     talk () {
@@ -45,6 +46,8 @@ class Spider {
 
     }
 
+
+    
 
 
     moverSpider () {

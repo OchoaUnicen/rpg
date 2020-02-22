@@ -106,6 +106,7 @@ let Arquero = {
     
 
 };
+//console.log("hp arquero: " + Arquero.vida);
 
 function getDefensa_arquero() {
 
