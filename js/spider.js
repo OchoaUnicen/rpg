@@ -9,7 +9,7 @@ class Spider {
         this.posicion_x = 900;
         this.posicion_y = 200;
         this.animacion = "move_1";
-        this.atacando = false;
+        this.muerto = false;
     }
     
     talk () {
@@ -17,6 +17,17 @@ class Spider {
         console.log("Its alive");
 
     }
+
+
+    // controlarEstado() {
+
+    //     if (this.muerto == true) {
+            
+
+    //     }
+
+
+    // }
 
 
 //     get Imagen() {
@@ -50,8 +61,10 @@ class Spider {
     
 
 
-    moverSpider () {
+    moverSpider (muerto) {
 
+
+        if (muerto == false) {        
        
         if (this.posicion_x > Arquero.posicion_x) {
            
@@ -65,6 +78,16 @@ class Spider {
 
         }
 
+    }
+
+
+    }
+
+
+
+    mostrarHp(context) {
+
+        context.fillText("Spider Hp: " + this.hp, this.posicion_x, this.posicion_y - 30);
 
     }
 

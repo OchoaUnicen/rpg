@@ -21,7 +21,13 @@ let imagen_contenedor_interfaz = new Image();
 imagen_contenedor_interfaz.src = "./img/interfaz/imagen_contenedor_interfaz.png"
 
 
+let imagen_single = new Image();
+imagen_single.src = "./img/interfaz/single.png";
 
+
+
+let imagen_single_mouseover = new Image();
+imagen_single_mouseover.src = "./img/interfaz/single_mouseover.png"
 
 // let boton_1vs1 = document.createElement("button");
 // boton_1vs1.setAttribute("id", "boton_1vs1");
@@ -50,6 +56,8 @@ imagen_contenedor_interfaz.src = "./img/interfaz/imagen_contenedor_interfaz.png"
  Interfaz = {
 
     "contenedor_interfaz": imagen_contenedor_interfaz,
+    "imagen_single": imagen_single,
+    "imagen_single_mouseover": imagen_single_mouseover, 
     "imagen_1vs1": imagen_1vs1,
     "imagen_1vs1_mouseover" : imagen_1vs1_mouse_over,    
     "imagen_coop": imagen_coop,

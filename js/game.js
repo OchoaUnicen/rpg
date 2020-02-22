@@ -205,6 +205,51 @@ function cargar_game_js() {
                         // Borramos el laser.
                         borrar = true;
                     }
+
+
+
+
+
+                    if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
+                        lasers[i].x <= (spider.posicion_x + 20)) && Interfaz.mod == "coop") {
+                            //lasers[i].y - 50 == Guerrero.posicion_y
+                        //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
+                        //getRandomInt(69);
+                        spider.hp -= Arquero.damage; 
+
+                        sondio_recibir_flechazo_armadura.play();
+
+                        //console.log("damage: " + damage);
+
+                        
+
+                        // Borramos el laser.
+                        borrar = true;
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 } else if (lasers[i].x < LIMITE_IZQUIERDO + 1) {
                     borrar = true;
                 }
@@ -227,6 +272,31 @@ function cargar_game_js() {
                             Guerrero.vida = 0;
                             Guerrero.muerto = true;
                         }
+
+                        // Borramos el laser.
+                        borrar = true;
+                    }
+
+
+                    if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
+                        lasers[i].x <= (spider.posicion_x + 20)) && Interfaz.mod == "coop") {
+                            //lasers[i].y - 50 == Guerrero.posicion_y
+                        //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
+                        //getRandomInt(69);
+                        spider.hp -= Arquero.damage; 
+
+                        sondio_recibir_flechazo_armadura.play();
+
+                        //console.log("damage: " + damage);
+
+
+
+                        
+                        if (spider.hp < 0) {
+                            spider.hp = 0;
+                            spider.muerto = true;
+                        }
+                        
 
                         // Borramos el laser.
                         borrar = true;
@@ -644,19 +714,12 @@ function cargar_game_js() {
         //console.log(cooldown_ataquebasico_hacha);
         cooldown_ataquebasico_hacha = 300;
 
-
-
-
-
-
-
-
         //console.log(cooldown_ataquebasico_hacha);
 
 
         let distancia_arquero_guerrero_x = Math.abs(Guerrero.posicion_x - Arquero.posicion_x);
         let distancia_arquero_guerrero_y = Math.abs(Guerrero.posicion_y - Arquero.posicion_y);
-
+        let distancia_guerrero_spider_x = Math.abs(Guerrero.posicion_x - spider.posicion_x);
         //console.log(Arquero.posicion_x + Arquero.w);
 
 
@@ -680,29 +743,30 @@ function cargar_game_js() {
 
 
         if (Arquero.vida > 0 && (distancia_arquero_guerrero_x <= 100 && distancia_arquero_guerrero_y <= 50) && Interfaz.mod == "1vs1") {
-
-
-
             let damage_hacha = Guerrero.damage - Arquero.defensa;
             console.log(damage_hacha);
             //getRandomInt(69);
             Arquero.vida -= damage_hacha;
-
-
-
-
             sonido_recibir_hachazo1.play();
-
             //console.log("distancia cercana");
-
-
-
             if (Arquero.vida <= 0) {
                 Arquero.vida = 0;
-
                 Arquero.muerto = true;
+            }
+
+        }
 
 
+        if (spider.hp > 0 && (distancia_guerrero_spider_x <= 100 ) && Interfaz.mod == "coop") {
+            let damage_hacha = Guerrero.damage;
+            //console.log(damage_hacha);
+            //getRandomInt(69);
+            spider.hp -= damage_hacha;
+            sonido_recibir_hachazo1.play();
+            //console.log("distancia cercana");
+            if (spider.hp <= 0) {
+                spider.hp = 0;
+                spider.muerto = true;
             }
 
         }
@@ -892,7 +956,7 @@ function cargar_game_js() {
 
 
 
-    let spider = new Spider();
+    let spider = new Spider(10, 100);
     let cooldown_animar_spider = 100;
     let spider_attack_cooldown = 0;
 
@@ -915,17 +979,17 @@ function cargar_game_js() {
 
         cambiarMapa();
 
-        console.log("spider pos x" + spider.posicion_x);
-        console.log("arquero pos x + w" + Arquero.posicion_x + Arquero.w);
-        console.log("arquero pos x" +  Arquero.posicion_x);
+        // console.log("spider pos x" + spider.posicion_x);
+        // console.log("arquero pos x + w" + Arquero.posicion_x + Arquero.w);
+        // console.log("arquero pos x" +  Arquero.posicion_x);
 
         if (Escenarios.escenario_actual == "escenario_3") {
          
             if (spider.posicion_x > Arquero.posicion_x &&
                 spider.posicion_x < Arquero.posicion_x + Arquero.w &&
-                spider_attack_cooldown == 0) {  
+                spider_attack_cooldown == 0 && spider.muerto == false) {  
                           
-                   Arquero.vida -= 10;
+                   Arquero.vida -= spider.damage;
                    spider_attack_cooldown = 300;
                    console.log("spider att" + spider_attack_cooldown);
 
@@ -1264,8 +1328,13 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
             if (Escenarios.escenario_actual == "escenario_3") {
 
-                spider.dibujarSpider(context);
-                spider.moverSpider();
+                if (spider.muerto == false) {
+                    spider.dibujarSpider(context);
+                    spider.mostrarHp(context);
+                }
+              
+                spider.moverSpider(spider.muerto);
+               
 
             }
 
@@ -1417,7 +1486,9 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
          context.drawImage(Interfaz.imagen_coop, 370, 200 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
 
-        
+    
+
+         //context.drawImage(Interfaz.imagen_single, 370, 280);
 
         }
 
