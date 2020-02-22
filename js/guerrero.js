@@ -22,6 +22,8 @@ let Guerrero = {
     "posicion_y": 360,
     "damage": 50 + (2 * Stats.guerrero.fuerza),
     "defensa": 50 + (2 * Stats.guerrero.agilidad) ,
+    "nivel": 1,
+    "exp": 0,
    
     w: 100,
     h: 100,

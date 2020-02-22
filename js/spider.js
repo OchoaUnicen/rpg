@@ -10,6 +10,7 @@ class Spider {
         this.posicion_y = 200;
         this.animacion = "move_1";
         this.muerto = false;
+        this.exp = 50;
     }
     
     talk () {
@@ -18,6 +19,15 @@ class Spider {
 
     }
 
+
+
+
+    respawnSpider() {
+        this.hp = 100;
+        this.posicion_x = 900;
+        this.posicion_y = 200;
+        this.muerto = false;
+    }
 
     // controlarEstado() {
 
@@ -93,16 +103,9 @@ class Spider {
 
 
     animarSpider(mod_interfaz, move) {
-
-        if (mod_interfaz == "coop") {        
-
-       
-
-            if (move == "move_1") {
-            
+        if (mod_interfaz == "coop") {    
+            if (move == "move_1") {            
                 this.Imagen.src = "./img/mobs/spider_move_2.png";
-          
-                
 
                
                 

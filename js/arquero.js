@@ -95,6 +95,10 @@ let Arquero = {
     "defensa": getDefensa_arquero() ,
     "evasion": calcularEvasion_arquero(),
     "estado" : "funcional",
+    "nivel": 1,
+    "exp": 0,
+
+    
     
 
 
@@ -106,6 +110,13 @@ let Arquero = {
     
 
 };
+
+
+
+
+
+
+
 //console.log("hp arquero: " + Arquero.vida);
 
 function getDefensa_arquero() {

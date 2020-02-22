@@ -211,7 +211,8 @@ function cargar_game_js() {
 
 
                     if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
-                        lasers[i].x <= (spider.posicion_x + 20)) && Interfaz.mod == "coop") {
+                        lasers[i].x <= (spider.posicion_x + 20)) && Interfaz.mod == "coop" &&
+                        Escenarios.escenario_actual == "escenario_3") {
                             //lasers[i].y - 50 == Guerrero.posicion_y
                         //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
                         //getRandomInt(69);
@@ -222,6 +223,12 @@ function cargar_game_js() {
                         //console.log("damage: " + damage);
 
                         
+
+                        if (spider.hp < 0) {
+                            spider.hp = 0;
+                            spider.muerto = true;
+                            Arquero.exp += spider.exp;
+                        }
 
                         // Borramos el laser.
                         borrar = true;
@@ -279,7 +286,8 @@ function cargar_game_js() {
 
 
                     if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
-                        lasers[i].x <= (spider.posicion_x + 20)) && Interfaz.mod == "coop") {
+                        lasers[i].x <= (spider.posicion_x + 20)) && Interfaz.mod == "coop" &&
+                        Escenarios.escenario_actual == "escenario_3") {
                             //lasers[i].y - 50 == Guerrero.posicion_y
                         //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
                         //getRandomInt(69);
@@ -295,6 +303,7 @@ function cargar_game_js() {
                         if (spider.hp < 0) {
                             spider.hp = 0;
                             spider.muerto = true;
+                            Arquero.exp += spider.exp;
                         }
                         
 
@@ -757,7 +766,8 @@ function cargar_game_js() {
         }
 
 
-        if (spider.hp > 0 && (distancia_guerrero_spider_x <= 100 ) && Interfaz.mod == "coop") {
+        if (spider.hp > 0 && (distancia_guerrero_spider_x <= 100 ) && Interfaz.mod == "coop" &&
+        Escenarios.escenario_actual == "escenario_3") {
             let damage_hacha = Guerrero.damage;
             //console.log(damage_hacha);
             //getRandomInt(69);
@@ -767,6 +777,7 @@ function cargar_game_js() {
             if (spider.hp <= 0) {
                 spider.hp = 0;
                 spider.muerto = true;
+                Guerrero.exp += spider.exp;
             }
 
         }
@@ -979,16 +990,24 @@ function cargar_game_js() {
 
         cambiarMapa();
 
+
+
+        if (Arquero.vida <= 0) {
+            Arquero.muerto = true;
+            Arquero.vida = 0;
+
+        }
+        
+
         // console.log("spider pos x" + spider.posicion_x);
         // console.log("arquero pos x + w" + Arquero.posicion_x + Arquero.w);
         // console.log("arquero pos x" +  Arquero.posicion_x);
 
-        if (Escenarios.escenario_actual == "escenario_3") {
-         
+        if (Escenarios.escenario_actual == "escenario_3") {         
             if (spider.posicion_x > Arquero.posicion_x &&
                 spider.posicion_x < Arquero.posicion_x + Arquero.w &&
-                spider_attack_cooldown == 0 && spider.muerto == false) {  
-                          
+                spider_attack_cooldown == 0 && spider.muerto == false && 
+                Arquero.muerto == false) {                            
                    Arquero.vida -= spider.damage;
                    spider_attack_cooldown = 300;
                    console.log("spider att" + spider_attack_cooldown);
@@ -1306,6 +1325,46 @@ function cargar_game_js() {
 //vida arquero
 
 context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posicion_y - 30);
+context.fillText("Lvl " + Arquero.nivel, Arquero.posicion_x, Arquero.posicion_y - 40);
+
+
+switch (Arquero.nivel) {
+    case 1:context.fillText("Exp " + Arquero.exp + "/" + Levels.level_1_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    break;
+
+    case 2: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_2_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    break;
+
+    case 3: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_3_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    break;
+
+    case 4: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_4_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    break;
+
+    case 5: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_5_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    break;
+
+    case 6: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_6_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    break;
+
+    case 7: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_7_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    break;
+
+    case 8: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_8_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    break;            
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         //guerrero
@@ -1423,8 +1482,44 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
         //vida guerrero
 
         context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 30);
+        context.fillText("Lvl " + Guerrero.nivel, Guerrero.posicion_x, Guerrero.posicion_y - 40);
+
+       
+        switch (Guerrero.nivel) {
+            case 1: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_1_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+            break;
+
+            case 2: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_2_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+            break;
+
+            case 3: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_3_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+            break;
+
+            case 4: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_4_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+            break;
+
+            case 5: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_5_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+            break;
+
+            case 6: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_6_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+            break;
+
+            case 7: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_7_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+            break;
+
+            case 8: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_8_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+            break;            
+        }
 
 
+
+
+
+
+
+
+
+        
 
            
         
@@ -1474,6 +1569,13 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
 
 
+
+
+
+
+
+
+
         // fin se dibujan las nubes --------------------------------------
  
       
@@ -1519,6 +1621,20 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
         // console.log(tiempo);
 
        // context.drawImage(Mago.imagen_derecha, Mago.posicion_x, Mago.posicion_y, Mago.imagen_derecha.naturalWidth, Mago.imagen_derecha.naturalHeight);
+
+
+
+
+
+        if (spider.muerto == true) {
+            spider.respawnSpider();
+
+
+        }
+
+
+        checkIfLevelUp();
+
 
 
         drawLaser();
