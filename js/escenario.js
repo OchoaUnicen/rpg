@@ -63,19 +63,26 @@ function cambiarMapa() {
 
     
 
-    if ((Arquero.posicion_x >= LIMITE_DERECHO - Arquero.w) && (Guerrero.posicion_x >= LIMITE_DERECHO - Guerrero.w)) {
-      
+    if ((Arquero.posicion_x >= LIMITE_DERECHO - Arquero.w) &&
+     (Guerrero.posicion_x >= LIMITE_DERECHO - Guerrero.w) && 
+        Interfaz.mod == "coop") {      
         
-        if (Escenarios.escenario_actual == "escenario_1") {
 
-            cambiarFondo();
+        switch (Escenarios.escenario_actual) {       
 
+        case "escenario_1" :
+            cambiarFondo(Escenarios.escenario_actual);
             Escenarios.escenario_actual = "escenario_2";
+        break;       
 
 
+        case "escenario_2" :
+            cambiarFondo(Escenarios.escenario_actual);
+            Escenarios.escenario_actual = "escenario_3";
+        break;    
+            
 
-        }
-
+    }
 
     }
 
@@ -85,17 +92,25 @@ function cambiarMapa() {
 }
 
    
-function cambiarFondo() {
-
+function cambiarFondo(escenario_fondo) {
     console.log("cambia");
 
 
+    if (escenario_fondo == "escenario_1") {
+        fondo.src = imagen_escenario_shop.src;
+        Arquero.posicion_x = 50;
+        Guerrero.posicion_x = 50;
+
+    }
 
 
-    fondo.src = imagen_escenario_shop.src;
+    if (escenario_fondo == "escenario_2") {
+        fondo.src ="./img/fondo.png";
+        Arquero.posicion_x = 50;
+        Guerrero.posicion_x = 50;
 
-    Arquero.posicion_x = 50;
-    Guerrero.posicion_x = 50;
+    }
+  
 
 
 }

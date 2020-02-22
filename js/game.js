@@ -141,7 +141,7 @@ function cargar_game_js() {
 
         }
 
-        if (spider.posicion_y < LIMITE_INFERIOR && Interfaz.mod == "coop") {
+        if (spider.posicion_y < LIMITE_INFERIOR && Interfaz.mod == "coop" && Escenarios.escenario_actual == "escenario_3") {
 
             spider.posicion_y +=6;
 
@@ -1217,8 +1217,13 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
 
 
-            spider.dibujarSpider(context);
-            spider.moverSpider();
+            if (Escenarios.escenario_actual == "escenario_3") {
+
+                spider.dibujarSpider(context);
+                spider.moverSpider();
+
+            }
+
 
             // if (cooldown_animar_spider == 100) {
 
@@ -1324,7 +1329,7 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
         
         Nubes.nube_1.x -= 0.23;
 
-        if (Escenarios.escenario_actual == "escenario_1") {
+        if (Escenarios.escenario_actual == "escenario_1" || Escenarios.escenario_actual == "escenario_3") {
             context.drawImage(Nubes.nube_2.imagen, Nubes.nube_2.x, Nubes.nube_2.y);
             context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
         }
