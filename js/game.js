@@ -1032,6 +1032,16 @@ function cargar_game_js() {
 
 
             dibujarEscenario(context);
+
+            if ( Interfaz.mod == "coop"&&
+                Interfaz.estado == "invisible" &&
+                Escenarios.escenario_actual == "escenario_1"
+                ) {
+
+
+                    context.drawImage(imagen_cartel, Escenarios.escenario_1.misc.cartel_posX, Escenarios.escenario_1.misc.cartel_posY, imagen_cartel.naturalWidth, imagen_cartel.naturalHeight);
+                   
+            }
         // }
 
         
