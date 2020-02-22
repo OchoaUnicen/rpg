@@ -1030,7 +1030,7 @@ function cargar_game_js() {
 
         // if (Escenarios.escenario_actual === "escenario_1") {
 
-        
+
             dibujarEscenario(context);
         // }
 
@@ -1320,13 +1320,19 @@ context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posi
 
 
         //se dibujan las nubes --------------------------------------
-        context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
+        context.drawImage(Nubes.nube_3.imagen, Nubes.nube_3.x, Nubes.nube_3.y);
+        
         Nubes.nube_1.x -= 0.23;
 
-        context.drawImage(Nubes.nube_2.imagen, Nubes.nube_2.x, Nubes.nube_2.y);
+        if (Escenarios.escenario_actual == "escenario_1") {
+            context.drawImage(Nubes.nube_2.imagen, Nubes.nube_2.x, Nubes.nube_2.y);
+            context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
+        }
+
+        
         Nubes.nube_2.x -= 0.2;
 
-        context.drawImage(Nubes.nube_3.imagen, Nubes.nube_3.x, Nubes.nube_3.y);
+      
         Nubes.nube_3.x -= 0.24;
 
 
