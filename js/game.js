@@ -141,7 +141,7 @@ function cargar_game_js() {
 
         }
 
-        if (spider.posicion_y < LIMITE_INFERIOR && Interfaz.mod == "coop" && Escenarios.escenario_actual == "escenario_3") {
+        if (spider.posicion_y < LIMITE_INFERIOR && (Interfaz.mod == "coop" || Interfaz.mod == "single" ) && Escenarios.escenario_actual == "escenario_3") {
 
             spider.posicion_y +=6;
 
@@ -181,6 +181,9 @@ function cargar_game_js() {
 
         for (var i = 0; i < lasers.length; i++) {
             let borrar = false;
+            
+
+            //lasers[i].y +=4.98;
 
             if (lasers[i].dir == "izquierda") {
                 if (lasers[i].x > LIMITE_IZQUIERDO) {
@@ -211,8 +214,8 @@ function cargar_game_js() {
 
 
                     if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
-                        lasers[i].x <= (spider.posicion_x + 20)) && Interfaz.mod == "coop" &&
-                        Escenarios.escenario_actual == "escenario_3") {
+                        lasers[i].x <= (spider.posicion_x + 20)) && (Interfaz.mod == "coop" || Interfaz.mod == "single")
+                        && Escenarios.escenario_actual == "escenario_3") {
                             //lasers[i].y - 50 == Guerrero.posicion_y
                         //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
                         //getRandomInt(69);
@@ -286,7 +289,7 @@ function cargar_game_js() {
 
 
                     if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
-                        lasers[i].x <= (spider.posicion_x + 20)) && Interfaz.mod == "coop" &&
+                        lasers[i].x <= (spider.posicion_x + 20)) && (Interfaz.mod == "coop" || Interfaz.mod == "single" ) &&
                         Escenarios.escenario_actual == "escenario_3") {
                             //lasers[i].y - 50 == Guerrero.posicion_y
                         //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
@@ -392,7 +395,7 @@ function cargar_game_js() {
 
     function actualizarMovimientosPesronajes() {
 
-        if (Interfaz.mod == "coop" || Interfaz.mod == "1vs1") {
+        if (Interfaz.mod == "coop" || Interfaz.mod == "1vs1" || Interfaz.mod == "single" ) {
 
 
 
@@ -584,7 +587,7 @@ function cargar_game_js() {
 }
 
         
-        if (Teclas[tecla.flecha_arriba] == true && Guerrero.muerto == false) {
+        if (Teclas[tecla.flecha_arriba] == true && Guerrero.muerto == false && Interfaz.mod != "single") {
             //Tecla Flecha arriba - Saltar guerrero
             if (Guerrero.posicion_y == LIMITE_INFERIOR) {
 
@@ -607,7 +610,7 @@ function cargar_game_js() {
 
         }
 
-        if (Teclas[tecla.flecha_izq] == true && Guerrero.muerto == false && Guerrero.posicion_x > LIMITE_IZQUIERDO) {
+        if (Teclas[tecla.flecha_izq] == true && Guerrero.muerto == false && Interfaz.mod != "single" && Guerrero.posicion_x > LIMITE_IZQUIERDO) {
             //Flecha Izquierda
 
             direccion_guerrero = "izquierda";
@@ -624,7 +627,7 @@ function cargar_game_js() {
 
         }
 
-        if (Teclas[tecla.flecha_der] == true && Guerrero.muerto == false && Guerrero.posicion_x < LIMITE_DERECHO) {
+        if (Teclas[tecla.flecha_der] == true && Guerrero.muerto == false && Interfaz.mod != "single" && Guerrero.posicion_x < LIMITE_DERECHO) {
             //Flecha derecha
 
             direccion_guerrero = "derecha";
@@ -644,7 +647,7 @@ function cargar_game_js() {
 
         if (Teclas[tecla.numpad1] == true || Teclas[tecla.coma] == true  && Guerrero.muerto == false) {
 
-            if (cooldown_ataquebasico_hacha == 0) {
+            if (cooldown_ataquebasico_hacha == 0  && Interfaz.mod != "single") {
 
 
                 atacarHacha();
@@ -655,10 +658,14 @@ function cargar_game_js() {
 
 
 
-        if (Teclas[tecla.numpad2]== true || Teclas[tecla.punto] == true && Guerrero.muerto == false && cooldown_guerrero_stun == 0) {
+        if (Teclas[tecla.numpad2]== true || Teclas[tecla.punto] == true && Guerrero.muerto == false  && cooldown_guerrero_stun == 0) {
 
 
-            guerreroStunnear();
+            if(Interfaz.mod != "single") {
+                guerreroStunnear();
+            }
+
+         
 
 
 
@@ -850,27 +857,38 @@ function cargar_game_js() {
 
         var mouseoverPos = getMousePos(canvas, evt);
 
-        //console.log("x: " +mouseoverPos.x, "y: " + mouseoverPos.y);
+        console.log("x: " +mouseoverPos.x, "y: " + mouseoverPos.y);
 
-        if ((mouseoverPos.x <= 600 && mouseoverPos.x >=383) && mouseoverPos.y >= 113 && mouseoverPos.y <= 172 && Interfaz.estado === "visible" ) {
+        if ((mouseoverPos.x <= 600 && mouseoverPos.x >=383) && mouseoverPos.y >= 160 && mouseoverPos.y <= 223 && Interfaz.estado === "visible" ) {
             
-           Interfaz.imagen_1vs1.src = imagen_1vs1_mouse_over.src; 
+           Interfaz.boton_1vs1.imagen.src = imagen_1vs1_mouse_over.src; 
         }
 
         else {
 
-            Interfaz.imagen_1vs1.src = "./img/interfaz/1vs1.png"
+            Interfaz.boton_1vs1.imagen.src = "./img/interfaz/1vs1.png"
 
         }
 
-        if ((mouseoverPos.x <= 603 && mouseoverPos.x >=383) && mouseoverPos.y >= 212 && mouseoverPos.y <= 273  && Interfaz.estado === "visible" ) {
+        if ((mouseoverPos.x <= 603 && mouseoverPos.x >=383) && mouseoverPos.y >=250 && mouseoverPos.y <= 318  && Interfaz.estado === "visible" ) {
             
-            Interfaz.imagen_coop.src = imagen_coop_mouse_over.src; 
+            Interfaz.boton_coop.imagen.src = imagen_coop_mouse_over.src; 
          }
  
          else {
  
-             Interfaz.imagen_coop.src = "./img/interfaz/coop.png"
+             Interfaz.boton_coop.imagen.src = "./img/interfaz/coop.png"
+ 
+         }
+
+         if ((mouseoverPos.x <= 603 && mouseoverPos.x >=383) && mouseoverPos.y >=65 && mouseoverPos.y <= 123  && Interfaz.estado === "visible" ) {
+            
+            Interfaz.boton_single.imagen.src = Interfaz.boton_single.imagen_mouseover.src; 
+         }
+ 
+         else {
+ 
+             Interfaz.boton_single.imagen.src = "./img/interfaz/single.png"
  
          }
 
@@ -885,7 +903,7 @@ function cargar_game_js() {
 
 
 
-        if (Guerrero.muerto == false && Interfaz.estado !== "visible") {
+        if (Guerrero.muerto == false && Interfaz.estado !== "visible" && Interfaz.mod != "single") {
 
             if (cooldown_ataquebasico_hacha == 0) {
 
@@ -907,7 +925,7 @@ function cargar_game_js() {
 
         //console.log("x: "+mousePos.x, "y: "+ mousePos.y );
 
-        if ((mousePos.x <= 600 && mousePos.x >=383) && mousePos.y >= 113 && mousePos.y <= 172 && Interfaz.estado === "visible" ) {
+        if ((mousePos.x <= 600 && mousePos.x >=383) && mousePos.y >= 160 && mousePos.y <= 223 && Interfaz.estado === "visible" ) {
             
                 Interfaz.mod = "1vs1";
                 Interfaz.estado = "invisible";
@@ -916,7 +934,7 @@ function cargar_game_js() {
         }
 
 
-        if ((mousePos.x <= 603 && mousePos.x >=383) && mousePos.y >= 212 && mousePos.y <= 273  && Interfaz.estado === "visible" ) {
+        if ((mousePos.x <= 603 && mousePos.x >=383) && mousePos.y >= 250 && mousePos.y <= 318  && Interfaz.estado === "visible" ) {
             
             Interfaz.mod = "coop";
             Interfaz.estado = "invisible";
@@ -925,6 +943,16 @@ function cargar_game_js() {
         // alert(mousePos.x + ',' + mousePos.y);
 
         }
+
+
+
+
+        if ((mousePos.x <= 603 && mousePos.x >=383) && mousePos.y >=65 && mousePos.y <= 123  && Interfaz.estado === "visible" ) {
+            
+            Interfaz.mod = "single";
+            Interfaz.estado = "invisible";
+            
+         }
 
         
     }, false);
@@ -1151,7 +1179,7 @@ function cargar_game_js() {
 
             dibujarEscenario(context);
 
-            if ( Interfaz.mod == "coop"&&
+            if ( (Interfaz.mod == "coop" || Interfaz.mod == "single" )&&
                 Interfaz.estado == "invisible" &&
                 Escenarios.escenario_actual == "escenario_1"
                 ) {
@@ -1372,18 +1400,19 @@ switch (Arquero.nivel) {
 
 
 
-        if(Interfaz.mod == "coop") {
-            if (mod_estado == "pendiente") {
+        if(Interfaz.mod == "coop"  || Interfaz.mod == "single") {
+            if (Interfaz.mod == "coop" && mod_estado == "pendiente") {
                 Guerrero.posicion_x = 150;
                 direccion_guerrero = "derecha";
-                mod_estado = "spawneado";
-    
+                mod_estado = "spawneado";    
             }
+
+
 
            // spawnearSpiders();
             
 
-
+            
 
             if (Escenarios.escenario_actual == "escenario_3") {
 
@@ -1415,7 +1444,7 @@ switch (Arquero.nivel) {
 
 
 
-        if (direccion_guerrero == "izquierda") {
+        if (direccion_guerrero == "izquierda" && Interfaz.mod != "single") {
 
             if (Guerrero.vida <= 0) {
                 context.save();
@@ -1436,7 +1465,7 @@ switch (Arquero.nivel) {
         }
 
 
-        if (direccion_guerrero == "derecha") {
+        if (direccion_guerrero == "derecha" && Interfaz.mod != "single") {
 
 
             if (Guerrero.vida <= 0) {
@@ -1467,6 +1496,31 @@ switch (Arquero.nivel) {
 
 
         context.save();
+        if (Interfaz.mod != "single") {
+
+            switch (Guerrero.nivel) {
+                case 1: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_1_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);          
+                break;
+                case 2: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_2_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+                break;
+                case 3: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_3_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+                break;
+                case 4: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_4_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+                break;
+                case 5: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_5_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+                break;
+                case 6: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_6_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+                break;
+                case 7: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_7_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+                break;
+                case 8: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_8_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+                break;            
+            }
+          
+
+            context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 30);
+            context.fillText("Lvl " + Guerrero.nivel, Guerrero.posicion_x, Guerrero.posicion_y - 40);
+    
 
         if (direccion_guerrero == "izquierda") {
             context.translate(Guerrero.posicion_x + (Guerrero.w - 20), Guerrero.posicion_y - 3);
@@ -1475,41 +1529,21 @@ switch (Arquero.nivel) {
             context.translate(Guerrero.posicion_x + 9, Guerrero.posicion_y + 3);
         }
         //context.drawImage(hacha, Guerrero.posicion_x + 3, Guerrero.posicion_y + 3, hacha.naturalWidth, hacha.naturalHeight);
-        context.drawImage(hacha, 0, 0);
+        
+
+       
+       
+            context.drawImage(hacha, 0, 0);
+        }
+      
         context.restore();
 
 
         //vida guerrero
 
-        context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 30);
-        context.fillText("Lvl " + Guerrero.nivel, Guerrero.posicion_x, Guerrero.posicion_y - 40);
-
        
-        switch (Guerrero.nivel) {
-            case 1: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_1_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-            break;
-
-            case 2: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_2_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-            break;
-
-            case 3: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_3_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-            break;
-
-            case 4: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_4_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-            break;
-
-            case 5: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_5_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-            break;
-
-            case 6: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_6_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-            break;
-
-            case 7: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_7_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-            break;
-
-            case 8: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_8_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-            break;            
-        }
+       
+       
 
 
 
@@ -1581,17 +1615,12 @@ switch (Arquero.nivel) {
       
         if (Interfaz.estado == "visible") {           
 
-        context.drawImage(Interfaz.contenedor_interfaz, 330, 10);
 
-         context.drawImage(Interfaz.imagen_1vs1, 370 ,100 , Interfaz.imagen_1vs1.naturalWidth, Interfaz.imagen_1vs1.naturalHeight);
-
-
-         context.drawImage(Interfaz.imagen_coop, 370, 200 , Interfaz.imagen_coop.naturalWidth, Interfaz.imagen_coop.naturalHeight);
-
-    
-
+        context.drawImage(Interfaz.contenedor_interfaz.imagen, Interfaz.contenedor_interfaz.posX, Interfaz.contenedor_interfaz.posY);
+        context.drawImage(Interfaz.boton_single.imagen, Interfaz.boton_single.posX, Interfaz.boton_single.posY);
+        context.drawImage(Interfaz.boton_1vs1.imagen, Interfaz.boton_1vs1.posX ,Interfaz.boton_1vs1.posY);
+        context.drawImage(Interfaz.boton_coop.imagen, Interfaz.boton_coop.posX, Interfaz.boton_coop.posY);
          //context.drawImage(Interfaz.imagen_single, 370, 280);
-
         }
 
 
@@ -1658,6 +1687,8 @@ switch (Arquero.nivel) {
         //console.log(velocidad);
     }
 
+
+   
     tiempo();
    
 }

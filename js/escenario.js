@@ -73,6 +73,33 @@ function cambiarMapa() {
     let trayecto = "ida";
 
     
+    if ((Arquero.posicion_x >= LIMITE_DERECHO - Arquero.w) && Interfaz.mod == "single") {      
+       
+           trayecto = "ida";
+       
+       switch (Escenarios.escenario_actual) {       
+
+       case "escenario_1" :
+           cambiarFondo(Escenarios.escenario_actual, trayecto);
+           Escenarios.escenario_actual = "escenario_2";
+           Arquero.posicion_x = 50;
+         
+       break;       
+
+
+       case "escenario_2" :
+           cambiarFondo(Escenarios.escenario_actual, trayecto);
+           Escenarios.escenario_actual = "escenario_3";
+           Arquero.posicion_x = 50;
+          
+       break;    
+           
+
+   }
+
+   }
+
+    
 
     if ((Arquero.posicion_x >= LIMITE_DERECHO - Arquero.w) &&
      (Guerrero.posicion_x >= LIMITE_DERECHO - Guerrero.w) && 
@@ -136,6 +163,39 @@ function cambiarMapa() {
 
     }
 
+
+    if ((Arquero.posicion_x <= LIMITE_IZQUIERDO) && Interfaz.mod == "single") {   
+            
+            trayecto = "vuelta";
+        
+
+        switch (Escenarios.escenario_actual) {       
+
+        // case "escenario_1" :
+        //     cambiarFondo(Escenarios.escenario_actual);
+        //     Escenarios.escenario_actual = "escenario_2";
+        // break;       
+
+
+        case "escenario_2" :
+            cambiarFondo(Escenarios.escenario_actual, trayecto);
+            Escenarios.escenario_actual = "escenario_1";
+            Arquero.posicion_x = 800;
+         
+        break;    
+
+        case "escenario_3" :
+            cambiarFondo(Escenarios.escenario_actual, trayecto);
+            Escenarios.escenario_actual = "escenario_2";
+            Arquero.posicion_x = 800;
+           
+        break;    
+            
+
+    }
+
+    }
+
   
 
 
@@ -172,14 +232,7 @@ function cambiarFondo(escenario_fondo, trayecto) {
 
 
 function dibujarEscenario(context)  {
-   
-
-        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
-  
-
-
-
-   
+        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);   
 }
 
 

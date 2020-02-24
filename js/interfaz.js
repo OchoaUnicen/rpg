@@ -55,16 +55,47 @@ imagen_single_mouseover.src = "./img/interfaz/single_mouseover.png"
 
  Interfaz = {
 
-    "contenedor_interfaz": imagen_contenedor_interfaz,
-    "imagen_single": imagen_single,
-    "imagen_single_mouseover": imagen_single_mouseover, 
-    "imagen_1vs1": imagen_1vs1,
-    "imagen_1vs1_mouseover" : imagen_1vs1_mouse_over,    
-    "imagen_coop": imagen_coop,
-    "imagen_coop_mouseover": imagen_coop_mouse_over,
-    "imagen_reset": imagen_reset,
     "mod":"pendiente",
-    "estado": "visible"
+    "estado": "visible",
+
+    "contenedor_interfaz": {
+        "imagen": imagen_contenedor_interfaz,
+        posX: 330,
+        posY: 10
+    },
+    "boton_single": {
+        "imagen":  imagen_single,
+        posX: 370,
+        posY: 55,
+        "imagen_mouseover": imagen_single_mouseover
+    },
+   
+    "boton_1vs1": {
+        "imagen":  imagen_1vs1,
+        posX: 370,
+        posY: 148,
+        "imagen_mouseover": imagen_1vs1_mouse_over
+    },
+   
+    "boton_coop": {
+        "imagen":  imagen_coop,
+        posX: 370,
+        posY: 241,
+        "imagen_mouseover": imagen_coop_mouse_over
+    },
+    
+    "imagen_reset": {
+        "imagen":  imagen_reset,
+        posX: 370,
+        posY: 20,
+        "imagen_mouseover": null
+    }
+    
+    
+    
+    
+    
+    
 
 }
 
