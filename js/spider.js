@@ -66,9 +66,34 @@ class Spider {
             }
         }
     }
+
+    dropObject(context) { 
+
+        let drop_gold = 20;
+        let dropEquipamiento = false;
+        let dropConsumible = false;  
+        let posX = this.posicion_x;
+        let posY = this.posicion_y;  
+        let chanceDeDrop = Math.floor(Math.random() * (3 - 0));
+        console.log(chanceDeDrop);
+        switch (chanceDeDrop) {
+            case 0:{ console.log("No drops");}
+            break;
+            case 1: {console.log("Drops bow");        
+            Escenarios.escenario_3.dropped_items.push(Equipamiento.arquero.armas.golden_bow, this.posicion_x, this.posicion_y);
+            //droppedObjects(context,Equipamiento.arquero.armas.golden_bow,this.posicion_x,this.posicion_y );           
+        }
+            break;
+            case 2: {console.log("Drops consumable");}
+            break;
+        }
+
+    }
+    // droppedObjects(context, droppedObject , posX, posY) {
+    //     context.drawImage(droppedObject.imagen,posX ,posY);     
+    // }
+
 }
-
-
 // let Spiders = {
 
 //     "imagen": Imagen_spider,

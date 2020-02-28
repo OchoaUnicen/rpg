@@ -62,8 +62,34 @@ let Escenarios = {
         "imagen": imagen_escenario_shop,        
     },
 
+    "escenario_3": escenario_3 =    {
+        "nombre": "Bosque Spider",
+        "imagen": fondo,
+        "dropped_items": []      
+    }
+
 
 }
+
+
+
+function droppedObjects(context, droppedObject , posX, posY) {
+
+
+    context.drawImage(droppedObject.imagen,posX ,posY);     
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function cambiarMapa() {

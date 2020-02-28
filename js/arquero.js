@@ -106,7 +106,13 @@ let Arquero = {
     h: 100,
     
 
-    "muerto": false
+    "muerto": false,
+
+    "interfaz": {
+      "inventario_abierto": false,
+      "estadisticas_abierto": false
+
+  }
     
 
 };
@@ -114,7 +120,19 @@ let Arquero = {
 
 
 
+function respawnArquero(context) {
 
+
+  if (Arquero.muerto == true) {
+    console.log("respawn");
+    context.fillText("Respawn", Arquero.posicion_x, Arquero.posicion_y - 60);
+  }
+
+
+
+
+
+}
 
 
 //console.log("hp arquero: " + Arquero.vida);

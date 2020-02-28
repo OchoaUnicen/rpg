@@ -22,7 +22,9 @@ let tecla = {
 "numpad3": 99,
 
 "coma":188,
-"punto":190
+"punto":190,
+
+"letra_i": 73
 
 
 }

@@ -120,6 +120,14 @@ function cargar_game_js() {
             //j
             arco.src = "./img/arqueroarco1.png";
         }
+
+        if (event.keyCode === 73) {
+            console.log("letra I");
+            Arquero.interfaz.inventario_abierto = false;
+
+        }
+
+
     });
     //###############################GRAVEDAD#########################
     function gravedad() {
@@ -227,9 +235,10 @@ function cargar_game_js() {
 
                         
 
-                        if (spider.hp < 0) {
+                        if (spider.hp <= 0) {
                             spider.hp = 0;
                             spider.muerto = true;
+                            // spider.dropObject();
                             Arquero.exp += spider.exp;
                         }
 
@@ -397,6 +406,14 @@ function cargar_game_js() {
 
         if (Interfaz.mod == "coop" || Interfaz.mod == "1vs1" || Interfaz.mod == "single" ) {
 
+
+
+            if (Teclas[tecla.letra_i] == true) {
+
+                console.log("entra letra I");
+                Arquero.interfaz.inventario_abierto = true;
+
+            }
 
 
 
@@ -954,6 +971,18 @@ function cargar_game_js() {
             
          }
 
+        //  if ((mousePos.x <= Arquero.posicion_x + Arquero.w && mousePos.x >= Arquero.posicion_x) && mousePos.y >= Arquero.posicion_y - 20 && mousePos.y <=  Arquero.posicion_y - 60  && Interfaz.estado === "invisible"  && Arquero.muerto == true) {
+            
+        //     console.log("entro click");
+         
+        //     Arquero.muerto = false;
+        //     Escenarios.escenario_actual = "escenario_1";
+        //     Arquero.vida = 445;
+            
+        //  }
+
+
+
         
     }, false);
     
@@ -995,9 +1024,17 @@ function cargar_game_js() {
 
 
 
-    let spider = new Spider(10, 100);
+    let spider = new Spider(100, 100);
+    spider.dropObject(context);
     let cooldown_animar_spider = 100;
     let spider_attack_cooldown = 0;
+
+
+
+
+
+
+  
 
     function tiempo() {
         //hace ejecutar 60 veces por segundo
@@ -1005,6 +1042,7 @@ function cargar_game_js() {
         gravedad();
         moveLaser();
 
+        
         
 
        //draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
@@ -1025,7 +1063,13 @@ function cargar_game_js() {
             Arquero.vida = 0;
 
         }
-        
+
+
+
+
+
+
+      
 
         // console.log("spider pos x" + spider.posicion_x);
         // console.log("arquero pos x + w" + Arquero.posicion_x + Arquero.w);
@@ -1281,6 +1325,7 @@ function cargar_game_js() {
 
 
             if (Arquero.vida <= 0) {
+                Arquero.muerto = true;
                 context.save();
 
                 context.translate(Arquero.posicion_x, Arquero.posicion_y);
@@ -1311,6 +1356,7 @@ function cargar_game_js() {
 
 
             if (Arquero.vida <= 0) {
+                Arquero.muerto = true;
                 context.save();
 
                 context.translate(Arquero.posicion_x, Arquero.posicion_y);
@@ -1388,7 +1434,7 @@ switch (Arquero.nivel) {
 
 
 
-
+        respawnArquero(context);
 
 
 
@@ -1438,6 +1484,8 @@ switch (Arquero.nivel) {
 
            //fin roberto
         }
+
+
 
 
 
@@ -1585,9 +1633,7 @@ switch (Arquero.nivel) {
 
 
         if (Nubes.nube_1.x <= -140) {
-
             Nubes.nube_1.x = 1000;
-
         }
         if (Nubes.nube_2.x <= -140) {
 
@@ -1656,32 +1702,56 @@ switch (Arquero.nivel) {
 
 
         if (spider.muerto == true) {
+            spider.dropObject(context);
             spider.respawnSpider();
 
 
         }
 
 
+
+        // if (Escenarios.escenario_3.dropped_items.length > 0) {           
+        //     console.log(Escenarios.escenario_3.dropped_items);
+        //     // for (let i = 0 ; i < Escenarios.escenario_3.dropped_items.length; i ++) {
+                
+             
+        //     //corregir luego
+        //         context.drawImage(Equipamiento.arquero.armas.golden_bow.imagen, spider.posicion_x,spider.posicion_y);
+        //     // }
+        //     }
+            
+
+       
+
+       
+
+
+
         checkIfLevelUp();
 
+
+        
 
 
         drawLaser();
 
 
         if (velocidad_guerrero > 0) {
-
             velocidad_guerrero = velocidad_guerrero - 0.4;
-
-
         }
-
 
 
         if (velocidad > 0) {
             velocidad = velocidad - 0.4;
-
         }
+
+
+
+
+        if (Arquero.interfaz.inventario_abierto == true) {
+            context.drawImage(imagen_inventario,700, 100);
+        }
+      
 
 
         //console.log(velocidad);

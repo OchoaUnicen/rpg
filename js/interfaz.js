@@ -29,6 +29,14 @@ imagen_single.src = "./img/interfaz/single.png";
 let imagen_single_mouseover = new Image();
 imagen_single_mouseover.src = "./img/interfaz/single_mouseover.png"
 
+
+
+
+let imagen_inventario = new Image();
+imagen_inventario.src = "./img/interfaz/interfaz_personaje/inventario.png"
+
+
+
 // let boton_1vs1 = document.createElement("button");
 // boton_1vs1.setAttribute("id", "boton_1vs1");
 // boton_1vs1.innerHTML = "1vs1";
