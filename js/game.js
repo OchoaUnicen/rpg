@@ -111,6 +111,41 @@ function cargar_game_js() {
     //#########################EN ACTUALIZACION SISTEMA MOVIMIENTO ##############
 
 
+    let inventarioCerrado = true;
+    document.addEventListener('keypress', (e) => {
+        
+        // Teclas[e.keyCode] = true;
+
+        if (Interfaz.mod == "coop" || Interfaz.mod == "single" ) {
+
+
+       
+
+
+
+
+
+        if (Teclas[tecla.letra_i] && inventarioCerrado == false) {
+                
+            Arquero.interfaz.inventario_abierto = false;
+            inventarioCerrado = true;
+            console.log("cerro");
+            //Arquero.interfaz.inventario_abierto = true;
+           }
+
+        else if (Teclas[tecla.letra_i] && inventarioCerrado) {
+            Arquero.interfaz.inventario_abierto = true;
+                inventarioCerrado = false;
+                console.log("abrio");
+            }
+
+       
+
+        }
+    });
+
+
+
     document.addEventListener('keyup', (e) => {
     Teclas[e.keyCode] = false
         //  console.log(Teclas[e.keyCode]);
@@ -121,11 +156,11 @@ function cargar_game_js() {
             arco.src = "./img/arqueroarco1.png";
         }
 
-        if (event.keyCode === 73) {
-            console.log("letra I");
-            Arquero.interfaz.inventario_abierto = false;
+        // if (event.keyCode === 73) {
+        //     console.log("letra I");
+        //     Arquero.interfaz.inventario_abierto = false;
 
-        }
+        // }
 
 
     });
@@ -405,15 +440,7 @@ function cargar_game_js() {
     function actualizarMovimientosPesronajes() {
 
         if (Interfaz.mod == "coop" || Interfaz.mod == "1vs1" || Interfaz.mod == "single" ) {
-
-
-
-            if (Teclas[tecla.letra_i] == true) {
-
-                console.log("entra letra I");
-                Arquero.interfaz.inventario_abierto = true;
-
-            }
+            
 
 
 
