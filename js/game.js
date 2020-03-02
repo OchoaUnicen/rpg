@@ -118,13 +118,6 @@ function cargar_game_js() {
 
         if (Interfaz.mod == "coop" || Interfaz.mod == "single" ) {
 
-
-       
-
-
-
-
-
         if (Teclas[tecla.letra_i] && inventarioCerrado == false) {
                 
             Arquero.interfaz.inventario_abierto = false;
@@ -137,13 +130,10 @@ function cargar_game_js() {
             Arquero.interfaz.inventario_abierto = true;
                 inventarioCerrado = false;
                 console.log("abrio");
-            }
-
-       
+            }      
 
         }
     });
-
 
 
     document.addEventListener('keyup', (e) => {
@@ -1052,7 +1042,7 @@ function cargar_game_js() {
 
 
     let spider = new Spider(100, 100);
-    spider.dropObject(context);
+    //spider.dropObject(context);
     let cooldown_animar_spider = 100;
     let spider_attack_cooldown = 0;
 
@@ -1777,6 +1767,8 @@ switch (Arquero.nivel) {
 
         if (Arquero.interfaz.inventario_abierto == true) {
             context.drawImage(imagen_inventario,700, 100);
+            context.fillText("Gold: "+ Arquero.gold,720,130);
+            
         }
       
 

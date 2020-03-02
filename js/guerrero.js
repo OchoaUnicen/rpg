@@ -23,6 +23,7 @@ let Guerrero = {
     "damage": 50 + (2 * Stats.guerrero.fuerza),
     "defensa": 50 + (2 * Stats.guerrero.agilidad) ,
     "nivel": 1,
+    "gold": 0,
     "exp": 0,
    
     w: 100,

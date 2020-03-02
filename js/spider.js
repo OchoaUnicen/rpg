@@ -88,6 +88,22 @@ class Spider {
             break;
         }
 
+
+
+
+        if (Interfaz.mod == "single") {
+
+            Arquero.gold += drop_gold;
+
+        }
+
+
+        if (Interfaz.mod == "coop") {
+            Arquero.gold += drop_gold;
+            Guerrero.gold += drop_gold; 
+
+        }
+
     }
     // droppedObjects(context, droppedObject , posX, posY) {
     //     context.drawImage(droppedObject.imagen,posX ,posY);     

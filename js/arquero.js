@@ -96,6 +96,7 @@ let Arquero = {
     "evasion": calcularEvasion_arquero(),
     "estado" : "funcional",
     "nivel": 1,
+    "gold": 0,
     "exp": 0,
 
     
