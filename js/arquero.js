@@ -121,11 +121,14 @@ let Arquero = {
 
 
 
+
+
+
 function respawnArquero(context) {
 
 
   if (Arquero.muerto == true) {
-    console.log("respawn");
+   //console.log("respawn");
     context.fillText("Respawn", Arquero.posicion_x, Arquero.posicion_y - 60);
   }
 

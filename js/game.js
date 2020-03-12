@@ -891,7 +891,7 @@ function cargar_game_js() {
 
         var mouseoverPos = getMousePos(canvas, evt);
 
-        console.log("x: " +mouseoverPos.x, "y: " + mouseoverPos.y);
+        //console.log("x: " +mouseoverPos.x, "y: " + mouseoverPos.y);
 
         if ((mouseoverPos.x <= 600 && mouseoverPos.x >=383) && mouseoverPos.y >= 160 && mouseoverPos.y <= 223 && Interfaz.estado === "visible" ) {
             
@@ -987,6 +987,26 @@ function cargar_game_js() {
             Interfaz.estado = "invisible";
             
          }
+
+
+
+         //falta terminar
+         if (Interfaz.estado == "invisible" && Arquero.muerto == true) {
+            console.log("clicked respawn");
+            Arquero.vida = 400;
+            Arquero.posicion_y = 300;
+            Arquero.muerto = false;
+            Escenarios.escenario_actual = "escenario_1";
+            Arquero.posicion_x = 30;
+
+
+            
+         }
+         //console.log(mousePos.x + " " + mousePos.y);
+
+
+
+
 
         //  if ((mousePos.x <= Arquero.posicion_x + Arquero.w && mousePos.x >= Arquero.posicion_x) && mousePos.y >= Arquero.posicion_y - 20 && mousePos.y <=  Arquero.posicion_y - 60  && Interfaz.estado === "invisible"  && Arquero.muerto == true) {
             
