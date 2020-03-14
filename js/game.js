@@ -1476,8 +1476,8 @@ if (mostrarBarras_hp && porcentaje_arquero_hp > 0) {
     // va en spider cuando ataca
 
    let length_barra = 76 * porcentaje_barra_hp / 100;
-    console.log(length_barra);
-    console.log(porcentaje_arquero_hp);
+    // console.log(length_barra);
+    // console.log(porcentaje_arquero_hp);
 
     let asd = 200 + width_barra_hp - 124
 
