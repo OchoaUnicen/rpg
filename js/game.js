@@ -570,7 +570,7 @@ function cargar_game_js() {
         direccion = "derecha";
         //console.log("derecha true");
 
-        console.log(Arquero.posicion_x);
+        //console.log(Arquero.posicion_x);
 
         //console.log(Arquero.posicion_x);
         if (velocidad < limite_aceleracion) {
@@ -1479,7 +1479,7 @@ if (mostrarBarras_hp && porcentaje_arquero_hp > 0) {
     // console.log(length_barra);
     // console.log(porcentaje_arquero_hp);
 
-    let asd = 200 + width_barra_hp - 124
+    
 
     
 
