@@ -24,7 +24,8 @@ let tecla = {
 "coma":188,
 "punto":190,
 
-"letra_i": 73
+"letra_i": 73,
+"letra_c": 67
 
 
 }

@@ -41,6 +41,9 @@ let imagen_barras_hp_mp = new Image();
 imagen_barras_hp_mp.src = "./img/interfaz/interfaz_personaje/interfaz_hp_mp.png";
 
 
+let imagen_equipamiento_stats = new Image();
+imagen_equipamiento_stats.src = "./img/interfaz/interfaz_personaje/equipamiento_stats.png";
+
 // let boton_1vs1 = document.createElement("button");
 // boton_1vs1.setAttribute("id", "boton_1vs1");
 // boton_1vs1.innerHTML = "1vs1";
@@ -109,7 +112,17 @@ imagen_barras_hp_mp.src = "./img/interfaz/interfaz_personaje/interfaz_hp_mp.png"
         posX: 1,
         posY: 1
 
+    },
+
+    "imagen_equipamiento_stats" : {
+
+        "imagen": imagen_equipamiento_stats,
+        posX: 100,
+        posY: 100
+
     }
+
+
     
     
     

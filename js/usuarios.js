@@ -15,9 +15,10 @@ let Usuarios = {
         "posicion_y": 320,
         stats: {
             fuerza: 5,
-            agilidad: 5,
-            vitalidad: 5,
-            inteligencia: 5
+            agilidad: 10,
+            vitalidad: 10,
+            energia: 5,
+            sabiduria: 5
         }
         
     },
@@ -35,9 +36,10 @@ let Usuarios = {
         "posicion_y": 320,
         stats: {
             fuerza: 5,
-            agilidad: 5,
-            vitalidad: 5,
-            inteligencia: 5
+            agilidad: 10,
+            vitalidad: 10,
+            energia: 5,
+            sabiduria: 5
         }
     }, 
     "nacho": {
@@ -54,9 +56,10 @@ let Usuarios = {
         "posicion_y": 320,
         stats: {
             fuerza: 5,
-            agilidad: 5,
-            vitalidad: 5,
-            inteligencia: 5
+            agilidad: 10,
+            vitalidad: 10,
+            energia: 5,
+            sabiduria: 5
         }
     }
 }

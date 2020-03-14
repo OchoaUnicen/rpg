@@ -11,6 +11,7 @@ function cargar_game_js() {
 
     let canvas = document.getElementById('lienzo');
     let context = canvas.getContext('2d'); 
+    context.font = "15px Verdana";
 
     let velocidad = 0;
 
@@ -112,6 +113,7 @@ function cargar_game_js() {
 
 
     let inventarioCerrado = true;
+    let estadisticasCerrado = true;
     document.addEventListener('keypress', (e) => {
         
         // Teclas[e.keyCode] = true;
@@ -130,7 +132,27 @@ function cargar_game_js() {
             Arquero.interfaz.inventario_abierto = true;
                 inventarioCerrado = false;
                 console.log("abrio");
-            }      
+            }  
+            
+            if (Teclas[tecla.letra_c] && estadisticasCerrado == false) {
+                
+                Arquero.interfaz.estadisticas_abierto = false;
+                estadisticasCerrado = true;
+                
+               
+               }
+    
+            else if (Teclas[tecla.letra_c] && estadisticasCerrado) {
+                Arquero.interfaz.estadisticas_abierto = true;
+                estadisticasCerrado = false;
+                   
+                }  
+
+
+
+
+
+        
 
         }
     });
@@ -1508,7 +1530,7 @@ if (mostrarBarras_mp) {
 
 
 
-context.fillText("Arquero Hp: " + Math.round(Arquero.vida), Arquero.posicion_x, Arquero.posicion_y - 30);
+context.fillText(Math.round(Arquero.vida) + "/" + Arquero.vida_maxima, Interfaz.imagen_barras_hp_mp.posX+ 175,Interfaz.imagen_barras_hp_mp.posY +34);
 context.fillText(Arquero.nivel,47,84);
 //context.fillText("Lvl " + Arquero.nivel, Arquero.posicion_x, Arquero.posicion_y - 40);
 
@@ -1885,6 +1907,15 @@ switch (Arquero.nivel) {
             context.fillText("Gold: "+ Arquero.gold,720,130);
             
         }
+
+        if (Arquero.interfaz.estadisticas_abierto == true) {
+
+            context.drawImage(Interfaz.imagen_equipamiento_stats.imagen,Interfaz.imagen_equipamiento_stats.posX, Interfaz.imagen_equipamiento_stats.posY);
+            
+            context.fillText(Stats.arquero.fuerza,490,323);
+        }
+
+
       
 
 

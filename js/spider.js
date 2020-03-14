@@ -39,8 +39,9 @@ class Spider {
     }
 
     moverSpider (muerto) {
+        let distancia_arqueroas_pider = Math.abs(this.posicion_x - Arquero.posicion_x);
         if (muerto == false) {         
-            if (this.posicion_x > Arquero.posicion_x) {           
+            if (this.posicion_x > Arquero.posicion_x && distancia_arqueroas_pider < 600 ) {           
                 this.posicion_x -= 2;
             }
             else if (this.posicion_x < Arquero.posicion_x) {
