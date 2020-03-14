@@ -418,6 +418,14 @@ function cargar_game_js() {
     //     }
     //     context.closePath();
     //     context.fill();
+
+      
+
+
+
+
+
+        
     // }
 
 
@@ -929,6 +937,9 @@ function cargar_game_js() {
     }
 
 
+    let mostrarBarras_hp = false;
+    let mostrarBarras_mp = false;
+
 
     let background_music_isPlaying = false;
 
@@ -985,6 +996,8 @@ function cargar_game_js() {
             
             Interfaz.mod = "single";
             Interfaz.estado = "invisible";
+            mostrarBarras_hp = true;
+            mostrarBarras_mp = true;
             
          }
 
@@ -993,7 +1006,7 @@ function cargar_game_js() {
          //falta terminar
          if (Interfaz.estado == "invisible" && Arquero.muerto == true) {
             console.log("clicked respawn");
-            Arquero.vida = 400;
+            Arquero.vida = Arquero.vida_maxima;
             Arquero.posicion_y = 300;
             Arquero.muerto = false;
             Escenarios.escenario_actual = "escenario_1";
@@ -1082,8 +1095,8 @@ function cargar_game_js() {
         
         
 
-       //draw_healthbar(Guerrero.posicion_x, Guerrero.posicion_y + 10, Guerrero.vida, Guerrero.vida);
-
+       //draw_healthbar(Arquero.posicion_x, Arquero.posicion_y + 10, Arquero.vida, Arquero.vida);
+        
         actualizarMovimientosPesronajes();
         //  if () {}    
 
@@ -1435,8 +1448,76 @@ function cargar_game_js() {
 
 //vida arquero
 
-context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posicion_y - 30);
-context.fillText("Lvl " + Arquero.nivel, Arquero.posicion_x, Arquero.posicion_y - 40);
+context.drawImage(Nubes.nube_3.imagen, Nubes.nube_3.x, Nubes.nube_3.y);
+    
+if (Escenarios.escenario_actual == "escenario_1" || Escenarios.escenario_actual == "escenario_3") {
+    context.drawImage(Nubes.nube_2.imagen, Nubes.nube_2.x, Nubes.nube_2.y);
+    context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
+}
+
+
+let porcentaje_arquero_hp = Arquero.vida * 100 / 222;
+if (mostrarBarras_hp && porcentaje_arquero_hp > 0) {
+
+    // hacer aca
+    
+    // let porcentaje_de_vida = 100;
+
+    let inicio_width_barra_hp = 124;
+    let max_width_barra_hp = 200;
+    let width_barra_hp = max_width_barra_hp - inicio_width_barra_hp; // 200 - 124 = 76
+
+
+  
+    let porcentaje_barra_hp = width_barra_hp * 100 / 76;
+
+
+    
+    // va en spider cuando ataca
+
+   let length_barra = 76 * porcentaje_barra_hp / 100;
+    console.log(length_barra);
+    console.log(porcentaje_arquero_hp);
+
+    let asd = 200 + width_barra_hp - 124
+
+    
+
+    context.beginPath();
+    context.rect(inicio_width_barra_hp, 27, porcentaje_arquero_hp , 8);
+    // max_width_barra_hp
+    context.lineWidth = "13";
+    context.strokeStyle = "red";
+    context.stroke();
+
+    context.drawImage(Interfaz.imagen_barras_hp_mp.imagen, Interfaz.imagen_barras_hp_mp.posX, Interfaz.imagen_barras_hp_mp.posY);
+}
+
+if (mostrarBarras_mp) {
+
+    
+
+    context.beginPath();
+    context.rect(116, 47, 210, 4);
+    context.lineWidth = "13";
+    context.strokeStyle = "blue";
+    context.stroke();
+
+    context.drawImage(Interfaz.imagen_barras_hp_mp.imagen, Interfaz.imagen_barras_hp_mp.posX, Interfaz.imagen_barras_hp_mp.posY);
+}
+
+
+
+context.fillText("Arquero Hp: " + Math.round(Arquero.vida), Arquero.posicion_x, Arquero.posicion_y - 30);
+context.fillText(Arquero.nivel,47,84);
+//context.fillText("Lvl " + Arquero.nivel, Arquero.posicion_x, Arquero.posicion_y - 40);
+
+
+
+
+
+
+
 
 
 switch (Arquero.nivel) {
@@ -1653,14 +1734,21 @@ switch (Arquero.nivel) {
 
 
         //se dibujan las nubes --------------------------------------
-        context.drawImage(Nubes.nube_3.imagen, Nubes.nube_3.x, Nubes.nube_3.y);
-        
+      
+
         Nubes.nube_1.x -= 0.23;
 
-        if (Escenarios.escenario_actual == "escenario_1" || Escenarios.escenario_actual == "escenario_3") {
-            context.drawImage(Nubes.nube_2.imagen, Nubes.nube_2.x, Nubes.nube_2.y);
-            context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
-        }
+        
+
+
+
+
+
+
+
+
+
+
 
         
         Nubes.nube_2.x -= 0.2;
@@ -1772,6 +1860,13 @@ switch (Arquero.nivel) {
 
         drawLaser();
 
+        
+
+        if (Interfaz.mod == "single") {
+
+            recuperarVidaArquero ()
+        }
+
 
         if (velocidad_guerrero > 0) {
             velocidad_guerrero = velocidad_guerrero - 0.4;
@@ -1795,6 +1890,7 @@ switch (Arquero.nivel) {
 
         //console.log(velocidad);
     }
+
 
 
    

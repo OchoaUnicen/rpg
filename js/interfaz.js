@@ -37,6 +37,10 @@ imagen_inventario.src = "./img/interfaz/interfaz_personaje/inventario.png"
 
 
 
+let imagen_barras_hp_mp = new Image();
+imagen_barras_hp_mp.src = "./img/interfaz/interfaz_personaje/interfaz_hp_mp.png";
+
+
 // let boton_1vs1 = document.createElement("button");
 // boton_1vs1.setAttribute("id", "boton_1vs1");
 // boton_1vs1.innerHTML = "1vs1";
@@ -97,6 +101,14 @@ imagen_inventario.src = "./img/interfaz/interfaz_personaje/inventario.png"
         posX: 370,
         posY: 20,
         "imagen_mouseover": null
+    },
+
+
+    "imagen_barras_hp_mp" : {
+        "imagen": imagen_barras_hp_mp,
+        posX: 1,
+        posY: 1
+
     }
     
     

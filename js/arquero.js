@@ -88,6 +88,7 @@ let Arquero = {
     "imagen_derecha" : imagen_arquero_derecha,
     "imagen_izquierda": imagen_arquero_izquierda,
     "vida" : base_vida_arquero + (2* Stats.arquero.vitalidad),
+    "vida_maxima": 445,
     "posicion_x": 20,
     //*************320 */
     "posicion_y": 320 ,
@@ -120,6 +121,9 @@ let Arquero = {
 
 
 
+// let porcentaje_arquero_hp = Arquero.vida * 100 / 222;
+
+
 
 
 
@@ -135,6 +139,17 @@ function respawnArquero(context) {
 
 
 
+
+}
+
+
+function recuperarVidaArquero () {
+
+  if (Arquero.vida < Arquero.vida_maxima && Arquero.muerto == false) {
+
+    Arquero.vida += 0.25;
+
+  }
 
 }
 
