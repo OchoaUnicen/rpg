@@ -8,9 +8,50 @@
     <title>Prototipo RPG</title>
     <link rel="stylesheet" href="css/estilo.css" media="">
     <link rel="stylesheet" href="css/interfaz.css">
+    <link rel="stylesheet" href="css/boton_login.css">
 </head>
 
 <body>
+
+
+    <!-- --------------------------BOTON----LOGIN-------------------------------- -->
+    <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-green w3-large">Login</button>
+
+    <div id="id01" class="w3-modal">
+      <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+    
+        <div class="w3-center"><br>
+          <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
+          <img src="img/imagen_login.png" alt="Avatar" style="width:60%" class="w3-margin-top">
+          <!-- w3-circle -->
+        </div>
+  
+        <form class="w3-container">
+          <!-- action="/action_page.php" -->
+          <div class="w3-section">
+            <label><b>Username</b></label>
+            <input id="input_usuario" class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+            <label><b>Password</b></label>
+            <input id="input_pass" class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+            <button id="boton_loggear" class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
+            
+            <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
+          </div>
+        </form>
+  
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+          <button onclick="document.getElementById('id01').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+          <span class="w3-right w3-padding w3-hide-small">Forgot <a href="#">password?</a></span>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!-- --------------------------BOTON----LOGIN---FIN-------------------------- -->
+
+
+
+
 
     <canvas id="lienzo" width="1000px" height="500px">
 
@@ -116,35 +157,20 @@
 </div>
     
     
-
+    <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/interfaz.js"></script>
-
     <script type="text/javascript" src="js/game.js"></script>
-
     <script type="text/javascript" src="js/stats.js"></script>
-
-
     <script type="text/javascript" src="js/guerrero.js"></script>
-
     <script type="text/javascript" src="js/arquero.js"></script>
-
-
     <script type="text/javascript" src="js/teclas.js"></script>
-
-
     <script type="text/javascript" src="js/mago.js"></script>
-
     <script type="text/javascript" src="js/Personaje.js"></script>
-
     <script type="text/javascript" src="js/wave.js"></script>
-
     <script type="text/javascript" src="js/spider.js"></script>
     <script type="text/javascript" src="js/boton_controles.js"></script>
-
     <script type="text/javascript" src="js/escenario.js"></script>
-
     <script type="text/javascript" src="js/levelup.js"></script>
-
     <script type="text/javascript" src="js/equipamiento.js"></script>
     <!-- <script type="text/javascript" src="js/interfaz.js"></script> -->
 </body>
