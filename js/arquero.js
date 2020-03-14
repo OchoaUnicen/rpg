@@ -133,7 +133,7 @@ function respawnArquero(context) {
 
   if (Arquero.muerto == true) {
    //console.log("respawn");
-    context.fillText("Respawn", Arquero.posicion_x, Arquero.posicion_y - 60);
+    context.fillText("Click to Respawn", Arquero.posicion_x, Arquero.posicion_y - 60);
   }
 
 
