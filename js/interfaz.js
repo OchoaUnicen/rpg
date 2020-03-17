@@ -44,6 +44,16 @@ imagen_barras_hp_mp.src = "./img/interfaz/interfaz_personaje/interfaz_hp_mp.png"
 let imagen_equipamiento_stats = new Image();
 imagen_equipamiento_stats.src = "./img/interfaz/interfaz_personaje/equipamiento_stats.png";
 
+let imagen_barra_exp = new Image();
+imagen_barra_exp.src = "./img/interfaz/interfaz_personaje/barra_exp.png";
+
+
+
+let imagen_boton_musica_on = new Image();
+imagen_boton_musica_on.src = "./img/interfaz/imagen_boton_musica_on.png";
+
+let imagen_boton_musica_off = new Image();
+imagen_boton_musica_off.src = "./img/interfaz/imagen_boton_musica_off.png";
 // let boton_1vs1 = document.createElement("button");
 // boton_1vs1.setAttribute("id", "boton_1vs1");
 // boton_1vs1.innerHTML = "1vs1";
@@ -120,11 +130,37 @@ imagen_equipamiento_stats.src = "./img/interfaz/interfaz_personaje/equipamiento_
         posX: 100,
         posY: 100
 
+    },
+
+    "imagen_barra_exp" : {
+
+
+        
+        "imagen": imagen_barra_exp,
+        posX: 49,
+        posY: 47
+        
+    },
+
+
+    "musica" : {
+
+
+        
+        "imagen_boton_on": { 
+        imagen: imagen_boton_musica_on,
+        posX: 923,
+        posY: 10
+        },
+
+        "imagen_boton_off": {
+        imagen: imagen_boton_musica_off,
+        posX: 923,
+        posY: 10
+        }
     }
-
-
     
-    
+   
     
     
     

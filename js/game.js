@@ -961,10 +961,11 @@ function cargar_game_js() {
 
     let mostrarBarras_hp = false;
     let mostrarBarras_mp = false;
+    let mostrarBarras_exp = false;
 
 
     let background_music_isPlaying = false;
-
+    let musica_turned_off = false;
     canvas.addEventListener("click", function (evt) {
         var mousePos = getMousePos(canvas, evt);
 
@@ -985,9 +986,11 @@ function cargar_game_js() {
          
                 backgroundMusic.play();
            
-            
+            if (musica_turned_off == false) {
+                background_music_isPlaying = true;
+            }
 
-            background_music_isPlaying = true;
+           
         }
 
         //console.log("x: "+mousePos.x, "y: "+ mousePos.y );
@@ -1020,6 +1023,7 @@ function cargar_game_js() {
             Interfaz.estado = "invisible";
             mostrarBarras_hp = true;
             mostrarBarras_mp = true;
+            mostrarBarras_exp = true;
             
          }
 
@@ -1037,7 +1041,30 @@ function cargar_game_js() {
 
             
          }
-         //console.log(mousePos.x + " " + mousePos.y);
+
+
+
+
+
+         
+         if ((mousePos.x <= 987 && mousePos.x >=934) && mousePos.y >= 20 && mousePos.y <= 60 && musica_turned_off == false ) {
+
+            musica_turned_off = true;
+            backgroundMusic.pause();
+
+         }
+
+          
+         else if ((mousePos.x <= 987 && mousePos.x >=934) && mousePos.y >= 20 && mousePos.y <= 60 && musica_turned_off == true ) {
+
+            musica_turned_off = false;
+            backgroundMusic.play();
+
+         }
+
+
+
+         console.log(mousePos.x + " " + mousePos.y);
 
 
 
@@ -1515,7 +1542,17 @@ if (mostrarBarras_hp && porcentaje_arquero_hp > 0) {
     context.drawImage(Interfaz.imagen_barras_hp_mp.imagen, Interfaz.imagen_barras_hp_mp.posX, Interfaz.imagen_barras_hp_mp.posY);
 }
 
+
+
+
+
+
+
+
+
 if (mostrarBarras_mp) {
+
+    
 
     
 
@@ -1526,6 +1563,24 @@ if (mostrarBarras_mp) {
     context.stroke();
 
     context.drawImage(Interfaz.imagen_barras_hp_mp.imagen, Interfaz.imagen_barras_hp_mp.posX, Interfaz.imagen_barras_hp_mp.posY);
+}
+
+if (mostrarBarras_exp) {
+
+    let barra_exp_limite = 248;
+    let barra_exp_width = Arquero.exp;
+
+    if (Arquero.exp > 0) {
+    context.beginPath();
+    context.rect(76, 70, barra_exp_width, 4);
+    context.lineWidth = "13";
+    context.strokeStyle = "orange";
+    context.stroke();
+    }
+    //inicio 76
+    //maximo 248
+    //Arquero.exp 
+    context.drawImage(Interfaz.imagen_barra_exp.imagen, Interfaz.imagen_barra_exp.posX, Interfaz.imagen_barra_exp.posY);
 }
 
 
@@ -1914,6 +1969,20 @@ switch (Arquero.nivel) {
             
             context.fillText(Stats.arquero.fuerza,490,323);
         }
+
+
+
+
+
+        if (musica_turned_off == false) {
+
+            context.drawImage(Interfaz.musica.imagen_boton_on.imagen, Interfaz.musica.imagen_boton_on.posX, Interfaz.musica.imagen_boton_on.posY );
+        }else if (musica_turned_off){
+            context.drawImage(Interfaz.musica.imagen_boton_off.imagen, Interfaz.musica.imagen_boton_off.posX, Interfaz.musica.imagen_boton_off.posY );
+        }
+        
+
+       
 
 
       
