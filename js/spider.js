@@ -3,6 +3,7 @@ class Spider {
     constructor(damage, hp) {        
         this.damage = damage;
         this.hp = hp;
+        this.max_hp = hp;
         this.Imagen = new Image();
         this.Imagen.src = "./img/mobs/spider_move_1.png";
         this.posicion_x = 900;
@@ -10,6 +11,7 @@ class Spider {
         this.animacion = "move_1";
         this.muerto = false;
         this.exp = 50;
+        
     }    
     talk () {
         console.log("Its alive");
@@ -52,7 +54,15 @@ class Spider {
 
 
     mostrarHp(context) {
-        context.fillText("Spider Hp: " + this.hp, this.posicion_x, this.posicion_y - 30);
+        
+        context.beginPath();
+        context.rect(this.posicion_x, this.posicion_y -40 , this.hp , 8);
+        // max_width_barra_hp
+        context.lineWidth = "13";
+        context.strokeStyle = "red";
+        context.stroke();
+        
+        context.fillText("     "+ this.hp + "/" + this.max_hp, this.posicion_x, this.posicion_y - 30);
     }
 
 
