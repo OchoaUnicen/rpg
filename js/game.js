@@ -631,8 +631,13 @@ function cargar_game_js() {
             if (direccion == "izquierda" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
                 Arquero.posicion_x -= 15;
             }
+            //subir escalera
+        }else if (Escenarios.escenario_actual == "escenario_3" && (Arquero.posicion_x >= Escenarios.escenario_3.escalera.posicion_x &&Arquero.posicion_x <= Escenarios.escenario_3.escalera.posicion_x + Escenarios.escenario_3.escalera.w 
+            && (Arquero.posicion_y <= Escenarios.escenario_3.escalera.posicion_y + Escenarios.escenario_3.escalera.h   && Arquero.posicion_y >= Escenarios.escenario_3.escalera.posicion_y - Arquero.h )) ) {
+            Arquero.posicion_y -= 4;
 
         }
+
 
     }
 
@@ -1504,7 +1509,6 @@ if (Escenarios.escenario_actual == "escenario_1" || Escenarios.escenario_actual 
     context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
 }
 
-
 let porcentaje_arquero_hp = Arquero.vida * 100 / 222;
 if (mostrarBarras_hp && porcentaje_arquero_hp > 0) {
 
@@ -1656,6 +1660,14 @@ switch (Arquero.nivel) {
             
 
             if (Escenarios.escenario_actual == "escenario_3") {
+
+
+                context.drawImage(Escenarios.escenario_3.escalera.imagen, Escenarios.escenario_3.escalera.posicion_x, Escenarios.escenario_3.escalera.posicion_y);
+                context.drawImage(Escenarios.escenario_3.plataforma.imagen, Escenarios.escenario_3.plataforma.posicion_x, Escenarios.escenario_3.plataforma.posicion_y);
+
+
+
+
 
                 if (spider.muerto == false) {
                     spider.dibujarSpider(context);

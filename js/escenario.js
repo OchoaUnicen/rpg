@@ -20,6 +20,12 @@ imagen_nube_3.src = "./img/nube_3.png"
 let imagen_cartel = new Image();
 imagen_cartel.src = "./img/fondo/cartel_coop.png";
 
+let imagen_escalera = new Image();
+imagen_escalera.src = "./img/mapas/colisionables/imagen_escalera.png";
+
+let imagen_plataforma = new Image();
+imagen_plataforma.src = "./img/mapas/colisionables/imagen_plataforma_pasto.png";
+
 
 let Nubes = {
     "nube_1" : {
@@ -65,7 +71,23 @@ let Escenarios = {
     "escenario_3": escenario_3 =    {
         "nombre": "Bosque Spider",
         "imagen": fondo,
-        "dropped_items": []      
+        "dropped_items": [],
+        "escalera" : {
+            imagen: imagen_escalera,
+            posicion_x: 200,
+            posicion_y: 100,
+            w: 100,
+            h: 379
+
+        },
+        "plataforma": {
+            imagen: imagen_plataforma,
+            posicion_x: 200,
+            posicion_y: 60,
+            w: 700,
+            h: 100
+
+        }
     }
 
 
