@@ -11,6 +11,9 @@ class Spider {
         this.animacion = "move_1";
         this.muerto = false;
         this.exp = 50;
+        this.direccion = "izquierda"
+        this.recorrido_cooldown = 80;
+        this.spawn_time = 0;
         
     }    
     talk () {
@@ -18,8 +21,8 @@ class Spider {
     }
     respawnSpider() {
         this.hp = 100;
-        this.posicion_x = 900;
-        this.posicion_y = 200;
+        this.posicion_x = 800;
+        this.posicion_y = 350;
         this.muerto = false;
     }
 
@@ -36,18 +39,100 @@ class Spider {
 //    // return Imagen_spider;
 //     }
     //esto no fuinciona 
-    dibujarSpider(context) {        
-        context.drawImage(this.Imagen, this.posicion_x, this.posicion_y);
+    dibujarSpider(context) {  
+        
+        
+        if (this.direccion == "izquierda") {
+            context.drawImage(this.Imagen, this.posicion_x, this.posicion_y);
+        }
+
+       else if (this.direccion == "derecha") {
+        context.save();
+
+        context.translate(this.posicion_x + this.Imagen.width * 2, this.posicion_y + this.Imagen.height);
+        context.scale(-1,1);
+
+        // context.rotate(60 * Math.PI / 180);
+         context.drawImage(this.Imagen, this.Imagen.width , -this.Imagen.height );
+
+        //context.drawImage(Guerrero.imagen_izquierda, Guerrero.posicion_x, Guerrero.posicion_y, Guerrero.imagen_izquierda.naturalWidth, Guerrero.imagen_izquierda.naturalHeight);
+        // Reset transformation matrix to the identity matrix
+        context.restore();
+       }
+
+
+       
     }
 
     moverSpider (muerto) {
-        let distancia_arqueroas_pider = Math.abs(this.posicion_x - Arquero.posicion_x);
+        let distancia_arquero_spider = Math.abs(this.posicion_x - Arquero.posicion_x);
+        let distancia_arquero_spider_y = Math.abs(this.posicion_y - Arquero.posicion_y);
         if (muerto == false) {         
-            if (this.posicion_x > Arquero.posicion_x && distancia_arqueroas_pider < 600 ) {           
+            if (this.posicion_x > Arquero.posicion_x && distancia_arquero_spider < 400  && distancia_arquero_spider_y < 200) {           
                 this.posicion_x -= 2;
             }
-            else if (this.posicion_x < Arquero.posicion_x) {
+
+
+            else if (this.posicion_x < Arquero.posicion_x  && distancia_arquero_spider < 400  && distancia_arquero_spider_y < 200) {
                 this.posicion_x += 2;
+            }
+
+
+            
+            if (Escenarios.escenario_actual == "escenario_3" && distancia_arquero_spider > 400) {
+               
+               
+                if (this.direccion == "izquierda") {
+                    this.posicion_x -= 2;
+                }else if (this.direccion == "derecha") {
+                    this.posicion_x += 2;
+                }
+             
+
+
+              this.recorrido_cooldown -=1;
+
+              if (this.recorrido_cooldown == 0) {
+
+                if (this.direccion == "izquierda") {
+                    this.direccion = "derecha"
+                }else if (this.direccion == "derecha") {
+                    this.direccion = "izquierda"
+                }
+                this.recorrido_cooldown = 80;
+
+              }
+                
+
+
+
+
+                
+
+                // if (distancia_recorrida > 0 && this.direccion == "izquierda") {
+                //     this.posicion_x -= 2;
+                //     distancia_recorrida -= 2;
+                // }
+                // else if (distancia_recorrida > 0 && this.direccion == "derecha") {
+                //     this.posicion_x += 2;
+                //     distancia_recorrida -= 2;
+
+                // }
+
+                // else if (distancia_recorrida <= 0) {
+                  
+
+                //     if (this.direccion == "derecha") {
+                //         this.direccion = "izquierda";
+                //     }
+                //     if (this.direccion == "izquierda") {
+                //         this.direccion = "derecha";
+                //     }
+                   
+
+                //     distancia_recorrida = 50;
+                // }
+
             }
         }
     }   

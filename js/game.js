@@ -1132,7 +1132,7 @@ function cargar_game_js() {
 
 
 
-
+    let dropped = false;
   
 
     function tiempo() {
@@ -1901,14 +1901,36 @@ switch (Arquero.nivel) {
 
 
 
-
+       
+        
 
         if (spider.muerto == true) {
-            spider.dropObject(context);
-            spider.respawnSpider();
+
+           
+            if (dropped == false){
+                spider.dropObject(context);
+                dropped = true;
+            }
+            
+            if (spider.spawn_time == 0){
+                spider.respawnSpider();
+                dropped = false;
+                
+            }
+            
 
 
         }
+
+        if (spider.spawn_time  > 0) {
+            spider.spawn_time -= 1;
+
+        }
+        else if (spider.spawn_time == 0) {
+            
+            spider.spawn_time = 700;
+        }
+
 
 
 
