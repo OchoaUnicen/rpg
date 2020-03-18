@@ -269,7 +269,7 @@ function cargar_game_js() {
 
 
                     if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
-                        lasers[i].x <= (spider.posicion_x + 20)) && (lasers[i].y >= spider.posicion_y + 45 && lasers[i].y <= spider.posicion_y) && (Interfaz.mod == "coop" || Interfaz.mod == "single")
+                        lasers[i].x <= (spider.posicion_x + 20)) && (lasers[i].y == spider.posicion_y + 46) && (Interfaz.mod == "coop" || Interfaz.mod == "single")
                         && Escenarios.escenario_actual == "escenario_3") {
                             //lasers[i].y - 50 == Guerrero.posicion_y
                         //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
