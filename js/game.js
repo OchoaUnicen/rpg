@@ -1180,10 +1180,11 @@ function cargar_game_js() {
         // console.log("arquero pos x" +  Arquero.posicion_x);
 
         if (Escenarios.escenario_actual == "escenario_3") {         
+            let distancia_arquero_spider_y = Math.abs(spider.posicion_y - Arquero.posicion_y);
             if (spider.posicion_x > Arquero.posicion_x &&
                 spider.posicion_x < Arquero.posicion_x + Arquero.w &&
                 spider_attack_cooldown == 0 && spider.muerto == false && 
-                Arquero.muerto == false) {                            
+                Arquero.muerto == false && distancia_arquero_spider_y < 80) {                            
                    Arquero.vida -= spider.damage;
                    spider_attack_cooldown = 300;
                    console.log("spider att" + spider_attack_cooldown);
