@@ -176,14 +176,16 @@ function cargar_game_js() {
 
 
     });
+
     //###############################GRAVEDAD#########################
+    let gravedad_arquero_off = false;
     function gravedad() {
         // console.log(posicion_jugador_y);
 
         
 
 
-        if (Arquero.posicion_y < LIMITE_INFERIOR) {
+        if (Arquero.posicion_y < LIMITE_INFERIOR && gravedad_arquero_off == false) {
             Arquero.posicion_y += 2;
 
             //3* GRAVEDAD * (TIEMPO_AL_CUADRADO);
@@ -625,7 +627,7 @@ function cargar_game_js() {
 
     if (Teclas[tecla.letra_w] == true) {
         //Tecla W - Saltar
-        if (Arquero.posicion_y == LIMITE_INFERIOR) {
+        if (Arquero.posicion_y == LIMITE_INFERIOR || gravedad_arquero_off == true) {
 
             Arquero.posicion_y -= 50;
             if (direccion == "derecha" && Arquero.posicion_x < LIMITE_DERECHO - 15) {
@@ -1343,6 +1345,12 @@ function cargar_game_js() {
             }
         // }
 
+        context.drawImage(Nubes.nube_3.imagen, Nubes.nube_3.x, Nubes.nube_3.y);
+    
+        if (Escenarios.escenario_actual == "escenario_1" || Escenarios.escenario_actual == "escenario_3") {
+            context.drawImage(Nubes.nube_2.imagen, Nubes.nube_2.x, Nubes.nube_2.y);
+            context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
+        }
         
         // context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);
 
@@ -1350,6 +1358,60 @@ function cargar_game_js() {
 
         //console.log(cooldown_habilidad_arco);
          
+
+        if(Interfaz.mod == "coop"  || Interfaz.mod == "single") {
+            if (Interfaz.mod == "coop" && mod_estado == "pendiente") {
+                Guerrero.posicion_x = 150;
+                direccion_guerrero = "derecha";
+                mod_estado = "spawneado";    
+            }
+
+
+
+           // spawnearSpiders();
+            
+
+            
+
+            if (Escenarios.escenario_actual == "escenario_3") {
+
+
+               
+                context.drawImage(Escenarios.escenario_3.plataforma.imagen, Escenarios.escenario_3.plataforma.posicion_x, Escenarios.escenario_3.plataforma.posicion_y);
+                context.drawImage(Escenarios.escenario_3.escalera.imagen, Escenarios.escenario_3.escalera.posicion_x, Escenarios.escenario_3.escalera.posicion_y);
+
+                if (Arquero.posicion_x >= Escenarios.escenario_3.plataforma.posicion_x && Arquero.posicion_x <= Escenarios.escenario_3.plataforma.posicion_x + Escenarios.escenario_3.plataforma.w 
+                    && Arquero.posicion_y == Escenarios.escenario_3.plataforma.posicion_y - 50) {
+                        gravedad_arquero_off = true;
+                }else {
+                    gravedad_arquero_off = false;
+                }
+
+
+
+
+                if (spider.muerto == false) {
+                    spider.dibujarSpider(context);
+                    spider.mostrarHp(context);
+                }
+              
+                spider.moverSpider(spider.muerto);
+               
+
+            }
+
+
+            // if (cooldown_animar_spider == 100) {
+
+            //     spider.animarSpider();
+            // }
+
+
+            
+
+
+           //fin roberto
+        }
 
 
 
@@ -1507,12 +1569,7 @@ function cargar_game_js() {
 
 //vida arquero
 
-context.drawImage(Nubes.nube_3.imagen, Nubes.nube_3.x, Nubes.nube_3.y);
-    
-if (Escenarios.escenario_actual == "escenario_1" || Escenarios.escenario_actual == "escenario_3") {
-    context.drawImage(Nubes.nube_2.imagen, Nubes.nube_2.x, Nubes.nube_2.y);
-    context.drawImage(Nubes.nube_1.imagen, Nubes.nube_1.x, Nubes.nube_1.y);
-}
+
 
 let porcentaje_arquero_hp = Arquero.vida * 100 / 222;
 if (mostrarBarras_hp && porcentaje_arquero_hp > 0) {
@@ -1650,52 +1707,6 @@ switch (Arquero.nivel) {
 
 
 
-        if(Interfaz.mod == "coop"  || Interfaz.mod == "single") {
-            if (Interfaz.mod == "coop" && mod_estado == "pendiente") {
-                Guerrero.posicion_x = 150;
-                direccion_guerrero = "derecha";
-                mod_estado = "spawneado";    
-            }
-
-
-
-           // spawnearSpiders();
-            
-
-            
-
-            if (Escenarios.escenario_actual == "escenario_3") {
-
-
-                context.drawImage(Escenarios.escenario_3.escalera.imagen, Escenarios.escenario_3.escalera.posicion_x, Escenarios.escenario_3.escalera.posicion_y);
-                context.drawImage(Escenarios.escenario_3.plataforma.imagen, Escenarios.escenario_3.plataforma.posicion_x, Escenarios.escenario_3.plataforma.posicion_y);
-
-
-
-
-
-                if (spider.muerto == false) {
-                    spider.dibujarSpider(context);
-                    spider.mostrarHp(context);
-                }
-              
-                spider.moverSpider(spider.muerto);
-               
-
-            }
-
-
-            // if (cooldown_animar_spider == 100) {
-
-            //     spider.animarSpider();
-            // }
-
-
-            
-
-
-           //fin roberto
-        }
 
 
 
