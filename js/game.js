@@ -277,8 +277,8 @@ function cargar_game_js() {
                         //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
                         //getRandomInt(69);
 
-                        console.log("lase pos y: " + lasers[i].y);
-                        console.log("spider pos y: " + spider.posicion_y);
+                        // console.log("lase pos y: " + lasers[i].y);
+                        // console.log("spider pos y: " + spider.posicion_y);
                         spider.hp -= Arquero.damage; 
 
                         sondio_recibir_flechazo_armadura.play();
