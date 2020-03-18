@@ -269,11 +269,14 @@ function cargar_game_js() {
 
 
                     if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
-                        lasers[i].x <= (spider.posicion_x + 20)) && (Interfaz.mod == "coop" || Interfaz.mod == "single")
+                        lasers[i].x <= (spider.posicion_x + 20)) && (lasers[i].y >= spider.posicion_y + 45 && lasers[i].y <= spider.posicion_y) && (Interfaz.mod == "coop" || Interfaz.mod == "single")
                         && Escenarios.escenario_actual == "escenario_3") {
                             //lasers[i].y - 50 == Guerrero.posicion_y
                         //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
                         //getRandomInt(69);
+
+                        console.log("lase pos y: " + lasers[i].y);
+                        console.log("spider pos y: " + spider.posicion_y);
                         spider.hp -= Arquero.damage; 
 
                         sondio_recibir_flechazo_armadura.play();
@@ -343,15 +346,16 @@ function cargar_game_js() {
                         borrar = true;
                     }
 
-
+                    console.log("lase pos y: " + lasers[i].y);
+                    console.log("spider pos y: " + spider.posicion_y);
                     if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
-                        lasers[i].x <= (spider.posicion_x + 20)) && (Interfaz.mod == "coop" || Interfaz.mod == "single" ) &&
+                        lasers[i].x <= (spider.posicion_x + 20))&& (lasers[i].y == spider.posicion_y + 46) && (Interfaz.mod == "coop" || Interfaz.mod == "single" ) &&
                         Escenarios.escenario_actual == "escenario_3") {
                             //lasers[i].y - 50 == Guerrero.posicion_y
                         //console.log("Damage: " + (Arquero.damage - Guerrero.defensa));
                         //getRandomInt(69);
                         spider.hp -= Arquero.damage; 
-
+                        
                         sondio_recibir_flechazo_armadura.play();
 
                         //console.log("damage: " + damage);
