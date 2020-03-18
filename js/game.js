@@ -638,7 +638,7 @@ function cargar_game_js() {
                 Arquero.posicion_x -= 15;
             }
             //subir escalera
-        }else if (Escenarios.escenario_actual == "escenario_3" && (Arquero.posicion_x >= Escenarios.escenario_3.escalera.posicion_x &&Arquero.posicion_x <= Escenarios.escenario_3.escalera.posicion_x + Escenarios.escenario_3.escalera.w 
+        }else if (Escenarios.escenario_actual == "escenario_3" && (Arquero.posicion_x >= Escenarios.escenario_3.escalera.posicion_x - 30 && Arquero.posicion_x <= Escenarios.escenario_3.escalera.posicion_x + Escenarios.escenario_3.escalera.w - 50
             && (Arquero.posicion_y <= Escenarios.escenario_3.escalera.posicion_y + Escenarios.escenario_3.escalera.h   && Arquero.posicion_y >= Escenarios.escenario_3.escalera.posicion_y - Arquero.h )) ) {
             Arquero.posicion_y -= 4;
 
