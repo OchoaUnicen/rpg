@@ -170,13 +170,15 @@ imagen_boton_agregar_puntos_onclick.src = "./img/interfaz/interfaz_personaje/bot
         "imagen_boton_agregar_puntos": imagen_boton_agregar_puntos,
         "imagen_boton_agregar_puntos_onclick": imagen_boton_agregar_puntos_onclick,
         "fuerza_posicion_x": 537,
-        "fuerza_posicion_y": 310,
+        "fuerza_posicion_y": 305,
         "agilidad_posicion_x": 537,
-        "agilidad_posicion_y": 337,
+        "agilidad_posicion_y": 331,
         "vitalidad_posicion_x": 537,
-        "vitalidad_posicion_y": 364,
-        "inteligencia_posicion_x": 537,
-        "inteligencia_posicion_y": 390,
+        "vitalidad_posicion_y": 355,
+        "energia_posicion_x": 537,
+        "energia_posicion_y": 382,
+        "sabiduria_posicion_x": 537,
+        "sabiduria_posicion_y": 403,
 
     }
     

@@ -2023,9 +2023,16 @@ switch (Arquero.nivel) {
                 context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.fuerza_posicion_x, Interfaz.boton_agregar_puntos.fuerza_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
                 context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.agilidad_posicion_x, Interfaz.boton_agregar_puntos.agilidad_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
                 context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.vitalidad_posicion_x, Interfaz.boton_agregar_puntos.vitalidad_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
-                context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.inteligencia_posicion_x, Interfaz.boton_agregar_puntos.inteligencia_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
+                context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.energia_posicion_x, Interfaz.boton_agregar_puntos.energia_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
+                context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.sabiduria_posicion_x, Interfaz.boton_agregar_puntos.sabiduria_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
             }
-            context.fillText(Stats.arquero.fuerza,490,323);
+
+
+            context.fillText(Stats.arquero.fuerza,510,318);
+            context.fillText(Stats.arquero.agilidad,510,344);
+            context.fillText(Stats.arquero.vitalidad,510,369);
+            context.fillText(Stats.arquero.energia,510,395);
+            context.fillText(Stats.arquero.sabiduria,510,415);
         }
 
 

@@ -125,7 +125,22 @@ let Arquero = {
 // let porcentaje_arquero_hp = Arquero.vida * 100 / 222;
 
 
+function aumentarPuntos (stat) {
 
+  switch (stat) {
+    case "fuerza": Arquero.fuerza += 1;
+    break;
+    case "agilidad": Arquero.agilidad +=1;
+    break;
+    case "vitalidad": Arquero.vitalidad +=1;
+    break;   
+    case "energia": Arquero.energia +=1;
+    break;
+    case "sabiduria": Arquero.sabiduria +=1;
+    break;
+  }
+
+}
 
 
 
