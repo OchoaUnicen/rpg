@@ -18,41 +18,49 @@ function checkIfLevelUp () {
         case 1: if (Arquero.exp >= Levels.level_1_max_exp) {
             Arquero.nivel += 1;
             Arquero.exp = 0;
+            Arquero.puntos_aumento_restante += 5;
         }
         break;
         case 2: if (Arquero.exp >= Levels.level_2_max_exp) {
             Arquero.nivel += 1;
             Arquero.exp = 0;
+            Arquero.puntos_aumento_restante += 5;
         }
         break;
         case 3: if (Arquero.exp >= Levels.level_3_max_exp) {
             Arquero.nivel += 1;
             Arquero.exp = 0;
+            Arquero.puntos_aumento_restante += 5;
         }
         break;
         case 4: if (Arquero.exp >= Levels.level_4_max_exp) {
             Arquero.nivel += 1;
             Arquero.exp = 0;
+            Arquero.puntos_aumento_restante += 5;
         }
         break;
         case 5: if (Arquero.exp >= Levels.level_5_max_exp) {
             Arquero.nivel += 1;
             Arquero.exp = 0;
+            Arquero.puntos_aumento_restante += 5;
         }
         break;
         case 6: if (Arquero.exp >= Levels.level_6_max_exp) {
             Arquero.nivel += 1;
             Arquero.exp = 0;
+            Arquero.puntos_aumento_restante += 5;
         }
         break;
         case 7: if (Arquero.exp >= Levels.level_7_max_exp) {
             Arquero.nivel += 1;
             Arquero.exp = 0;
+            Arquero.puntos_aumento_restante += 5;
         }
         break;
         case 8: if (Arquero.exp >= Levels.level_8_max_exp) {
             Arquero.nivel += 1;
             Arquero.exp = 0;
+            Arquero.puntos_aumento_restante += 5;
         }
         break;
     }

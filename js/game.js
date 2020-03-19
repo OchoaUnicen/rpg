@@ -348,8 +348,8 @@ function cargar_game_js() {
                         borrar = true;
                     }
 
-                    console.log("lase pos y: " + lasers[i].y);
-                    console.log("spider pos y: " + spider.posicion_y);
+                    // console.log("lase pos y: " + lasers[i].y);
+                    // console.log("spider pos y: " + spider.posicion_y);
                     if (spider.hp > 0 && (lasers[i].x >= spider.posicion_x &&
                         lasers[i].x <= (spider.posicion_x + 20))&& (lasers[i].y == spider.posicion_y + 46) && (Interfaz.mod == "coop" || Interfaz.mod == "single" ) &&
                         Escenarios.escenario_actual == "escenario_3") {
@@ -1135,6 +1135,7 @@ function cargar_game_js() {
 
 
     let spider = new Spider(100, 100);
+    // let spider2 = new Spider(100, 100);
     //spider.dropObject(context);
     let cooldown_animar_spider = 100;
     let spider_attack_cooldown = 0;
@@ -2016,7 +2017,14 @@ switch (Arquero.nivel) {
         if (Arquero.interfaz.estadisticas_abierto == true) {
 
             context.drawImage(Interfaz.imagen_equipamiento_stats.imagen,Interfaz.imagen_equipamiento_stats.posX, Interfaz.imagen_equipamiento_stats.posY);
-            
+            context.fillText(Arquero.puntos_aumento_restante, 534, 275);
+            //Dibuja los botones para agregar puntos
+            if (Arquero.puntos_aumento_restante > 0) {
+                context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.fuerza_posicion_x, Interfaz.boton_agregar_puntos.fuerza_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
+                context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.agilidad_posicion_x, Interfaz.boton_agregar_puntos.agilidad_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
+                context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.vitalidad_posicion_x, Interfaz.boton_agregar_puntos.vitalidad_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
+                context.drawImage(Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos, Interfaz.boton_agregar_puntos.inteligencia_posicion_x, Interfaz.boton_agregar_puntos.inteligencia_posicion_y, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalWidth / 2, Interfaz.boton_agregar_puntos.imagen_boton_agregar_puntos.naturalHeight / 2);
+            }
             context.fillText(Stats.arquero.fuerza,490,323);
         }
 

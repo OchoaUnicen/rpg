@@ -54,6 +54,12 @@ imagen_boton_musica_on.src = "./img/interfaz/imagen_boton_musica_on.png";
 
 let imagen_boton_musica_off = new Image();
 imagen_boton_musica_off.src = "./img/interfaz/imagen_boton_musica_off.png";
+
+let imagen_boton_agregar_puntos = new Image();
+imagen_boton_agregar_puntos.src = "./img/interfaz/interfaz_personaje/boton_agregar_puntos.png";
+
+let imagen_boton_agregar_puntos_onclick = new Image();
+imagen_boton_agregar_puntos_onclick.src = "./img/interfaz/interfaz_personaje/boton_agregar_puntos_onclick.png";
 // let boton_1vs1 = document.createElement("button");
 // boton_1vs1.setAttribute("id", "boton_1vs1");
 // boton_1vs1.innerHTML = "1vs1";
@@ -158,6 +164,20 @@ imagen_boton_musica_off.src = "./img/interfaz/imagen_boton_musica_off.png";
         posX: 923,
         posY: 10
         }
+    },
+
+    "boton_agregar_puntos": {
+        "imagen_boton_agregar_puntos": imagen_boton_agregar_puntos,
+        "imagen_boton_agregar_puntos_onclick": imagen_boton_agregar_puntos_onclick,
+        "fuerza_posicion_x": 537,
+        "fuerza_posicion_y": 310,
+        "agilidad_posicion_x": 537,
+        "agilidad_posicion_y": 337,
+        "vitalidad_posicion_x": 537,
+        "vitalidad_posicion_y": 364,
+        "inteligencia_posicion_x": 537,
+        "inteligencia_posicion_y": 390,
+
     }
     
    
