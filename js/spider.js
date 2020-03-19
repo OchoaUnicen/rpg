@@ -68,22 +68,23 @@ class Spider {
         let distancia_arquero_spider = Math.abs(this.posicion_x - Arquero.posicion_x);
         let distancia_arquero_spider_y = Math.abs(this.posicion_y - Arquero.posicion_y);
         if (muerto == false) {         
-            if (this.posicion_x > Arquero.posicion_x && distancia_arquero_spider < 400  && distancia_arquero_spider_y < 200) {           
+            if (this.posicion_x > Arquero.posicion_x && distancia_arquero_spider < 400  && distancia_arquero_spider_y < 200 && Arquero.muerto == false ) {           
                 this.posicion_x -= 2;
             }
 
 
-            else if (this.posicion_x < Arquero.posicion_x  && distancia_arquero_spider < 400  && distancia_arquero_spider_y < 200) {
+            else if (this.posicion_x < Arquero.posicion_x  && distancia_arquero_spider < 400  && distancia_arquero_spider_y < 200 && Arquero.muerto == false) {
                 this.posicion_x += 2;
             }
 
-
+        
             
-            if (Escenarios.escenario_actual == "escenario_3" && distancia_arquero_spider > 400) {
+            if (Escenarios.escenario_actual == "escenario_3" && (distancia_arquero_spider > 400 || Arquero.muerto == true)) {
                
                
                 if (this.direccion == "izquierda") {
                     this.posicion_x -= 2;
+                    
                 }else if (this.direccion == "derecha") {
                     this.posicion_x += 2;
                 }
@@ -135,6 +136,7 @@ class Spider {
 
             }
         }
+        
     }   
 
 
