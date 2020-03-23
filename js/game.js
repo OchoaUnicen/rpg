@@ -365,7 +365,7 @@ function cargar_game_js() {
 
 
                         
-                        if (spider.hp < 0) {
+                        if (spider.hp <= 0) {
                             spider.hp = 0;
                             spider.muerto = true;
                             Arquero.exp += spider.exp;
@@ -1071,6 +1071,35 @@ function cargar_game_js() {
             musica_turned_off = false;
             backgroundMusic.play();
 
+         }
+
+
+
+
+         if ((mousePos.x <= Interfaz.boton_agregar_puntos.fuerza_posicion_x + 20 && mousePos.x >= Interfaz.boton_agregar_puntos.fuerza_posicion_x) &&
+            (mousePos.y <= Interfaz.boton_agregar_puntos.fuerza_posicion_y + 20 && mousePos.y >= Interfaz.boton_agregar_puntos.fuerza_posicion_y) &&
+            Arquero.puntos_aumento_restante > 0 && Arquero.interfaz.estadisticas_abierto == true) {
+
+                let stat_elegido = "fuerza";
+
+                aumentarPuntos(stat_elegido);
+            // "fuerza_posicion_x": 537,
+            // "fuerza_posicion_y": 305,
+         }
+
+
+         if ((mousePos.x <= Interfaz.boton_agregar_puntos.agilidad_posicion_x + 20 && mousePos.x >= Interfaz.boton_agregar_puntos.agilidad_posicion_x) &&
+            (mousePos.y <= Interfaz.boton_agregar_puntos.agilidad_posicion_y + 20 && mousePos.y >= Interfaz.boton_agregar_puntos.agilidad_posicion_y) &&
+            Arquero.puntos_aumento_restante > 0 && Arquero.interfaz.estadisticas_abierto == true) {
+
+                let stat_elegido = "agilidad";
+                
+
+                aumentarPuntos(stat_elegido);
+                //aumenta el damage pero tambien deberia aaumentar su defensa
+                Arquero.damage = base_damage + (3* Stats.arquero.agilidad);
+            // "fuerza_posicion_x": 537,
+            // "fuerza_posicion_y": 305,
          }
 
 

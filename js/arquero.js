@@ -128,17 +128,19 @@ let Arquero = {
 function aumentarPuntos (stat) {
 
   switch (stat) {
-    case "fuerza": Arquero.fuerza += 1;
+    case "fuerza": Stats.arquero.fuerza += 1;
     break;
-    case "agilidad": Arquero.agilidad +=1;
+    case "agilidad":  Stats.arquero.agilidad +=1;
     break;
-    case "vitalidad": Arquero.vitalidad +=1;
+    case "vitalidad":  Stats.arquero.vitalidad +=1;
     break;   
-    case "energia": Arquero.energia +=1;
+    case "energia":  Stats.arquero.energia +=1;
     break;
-    case "sabiduria": Arquero.sabiduria +=1;
+    case "sabiduria": Stats.arquero.sabiduria +=1;
     break;
   }
+
+  Arquero.puntos_aumento_restante -= 1;
 
 }
 
@@ -186,7 +188,7 @@ function getDamage_arquero() {
 
 
   let damage_arquero = (base_damage + (3* Stats.arquero.agilidad));
-
+//  55 + 3* 10
   return damage_arquero;
 
 }
