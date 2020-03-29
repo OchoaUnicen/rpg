@@ -139,7 +139,6 @@ class Spider {
         
     }   
 
-
     mostrarHp(context) {
         
         context.beginPath();
@@ -151,7 +150,6 @@ class Spider {
         
         context.fillText("     "+ this.hp + "/" + this.max_hp, this.posicion_x, this.posicion_y - 30);
     }
-
 
     animarSpider(mod_interfaz, move) {
         //faltaria agregar al if que los personajes esten en la misma sala "escenario_3"
@@ -182,31 +180,27 @@ class Spider {
             //droppedObjects(context,Equipamiento.arquero.armas.golden_bow,this.posicion_x,this.posicion_y );           
         }
             break;
-            case 2: {console.log("Drops consumable");}
+            case 2: {
+                console.log("Drops consumable");
+                Arquero.objetos_inventario.push("Pocion de hp");
+            }
             break;
         }
 
-
-
-
         if (Interfaz.mod == "single") {
-
             Arquero.gold += drop_gold;
-
         }
 
 
         if (Interfaz.mod == "coop") {
             Arquero.gold += drop_gold;
             Guerrero.gold += drop_gold; 
-
         }
 
     }
     // droppedObjects(context, droppedObject , posX, posY) {
     //     context.drawImage(droppedObject.imagen,posX ,posY);     
     // }
-
 }
 // let Spiders = {
 

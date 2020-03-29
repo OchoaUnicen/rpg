@@ -150,10 +150,6 @@ function cargar_game_js() {
 
 
 
-
-
-        
-
         }
     });
 
@@ -2040,7 +2036,7 @@ switch (Arquero.nivel) {
         if (Arquero.interfaz.inventario_abierto == true) {
             context.drawImage(imagen_inventario,700, 100);
             context.fillText("Gold: "+ Arquero.gold,720,130);
-            
+            //mostrar objetos del inventario
         }
 
         if (Arquero.interfaz.estadisticas_abierto == true) {

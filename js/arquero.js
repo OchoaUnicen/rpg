@@ -99,7 +99,12 @@ let Arquero = {
     "nivel": 1,
     "gold": 0,
     "exp": 0,
-    "puntos_aumento_restante": 0,
+    "puntos_aumento_restante": 5,
+
+
+
+
+    "objetos_inventario": [],
 
     
     

@@ -3,14 +3,7 @@ imagen_arco_golden_bow.src = "./img/golden_bow.png";
 
 
 let Equipamiento = {
-
-    "consumables": {
-
-        "pocion_hp": {
-            "imagen": null,            
-        }
-    },
-
+    
     "arquero": {
 
         "armas" : {
