@@ -1093,7 +1093,16 @@ function cargar_game_js() {
 
                 aumentarPuntos(stat_elegido);
                 //aumenta el damage pero tambien deberia aaumentar su defensa
-                Arquero.damage = base_damage + (3* Stats.arquero.agilidad);
+                
+                
+                
+                //Arquero.damage = base_damage + (3* Stats.arquero.agilidad);
+
+
+
+
+
+
             // "fuerza_posicion_x": 537,
             // "fuerza_posicion_y": 305,
          }
@@ -1216,8 +1225,27 @@ function cargar_game_js() {
             if (spider.posicion_x > Arquero.posicion_x &&
                 spider.posicion_x < Arquero.posicion_x + Arquero.w &&
                 spider_attack_cooldown == 0 && spider.muerto == false && 
-                Arquero.muerto == false && distancia_arquero_spider_y < 80) {                            
-                   Arquero.vida -= spider.damage;
+                Arquero.muerto == false && distancia_arquero_spider_y < 80) {         
+                    
+                    //defensa de arquero menor ataque araña reducir Arquero.vida
+
+
+                    if (Arquero.defensa < spider.damage) {
+
+                        Arquero.vida -= (spider.damage - Arquero.defensa);
+                    }
+
+                    else if (Arquero.defensa >= spider.damage) {
+
+                       // console.log("miss");
+
+                    }
+
+
+
+                    //defensa de arquero es mayor a ataque de araña MISS
+
+                  
                    spider_attack_cooldown = 300;
                    console.log("spider att" + spider_attack_cooldown);
 

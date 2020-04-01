@@ -99,7 +99,7 @@ let Arquero = {
     "nivel": 1,
     "gold": 0,
     "exp": 0,
-    "puntos_aumento_restante": 5,
+    "puntos_aumento_restante": 0,
 
 
 
@@ -146,6 +146,9 @@ function aumentarPuntos (stat) {
   }
 
   Arquero.puntos_aumento_restante -= 1;
+
+  Arquero.damage = base_damage + (3* Stats.arquero.agilidad);
+  Arquero.defensa = base_defensa_arquero + (1.25 * Stats.arquero.agilidad);
 
 }
 
