@@ -1,3 +1,4 @@
+let user_loged_in = false;
 document.addEventListener('DOMContentLoaded', cargar_game_js);
 
 function cargar_game_js() {
@@ -12,6 +13,11 @@ function cargar_game_js() {
     let canvas = document.getElementById('lienzo');
     let context = canvas.getContext('2d'); 
     context.font = "15px Verdana";
+
+
+    
+   
+
 
     let velocidad = 0;
 
@@ -36,8 +42,13 @@ function cargar_game_js() {
     // }, 0);
   
     
-          
+    
    
+   if (user_loged_in == false) {
+
+    clearInterval();        
+
+}
   
 
 
@@ -1024,13 +1035,20 @@ function cargar_game_js() {
 
 
 
-        if ((mousePos.x <= 603 && mousePos.x >=383) && mousePos.y >=65 && mousePos.y <= 123  && Interfaz.estado === "visible" ) {
+        if ((mousePos.x <= 603 && mousePos.x >=383) && mousePos.y >=65 && mousePos.y <= 123  && Interfaz.estado === "visible" && user_loged_in == true) {
             
             Interfaz.mod = "single";
             Interfaz.estado = "invisible";
             mostrarBarras_hp = true;
             mostrarBarras_mp = true;
             mostrarBarras_exp = true;
+            
+            
+         }
+         if ((mousePos.x <= 603 && mousePos.x >=383) && mousePos.y >=65 && mousePos.y <= 123  && Interfaz.estado === "visible" && user_loged_in == false) {
+            
+        
+            document.getElementById('id01').style.display='block';
             
          }
 
@@ -1718,28 +1736,28 @@ context.fillText(Arquero.nivel,47,84);
 
 
 switch (Arquero.nivel) {
-    case 1:context.fillText("Exp " + Arquero.exp + "/" + Levels.level_1_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    case 1:context.fillText("Exp " + Arquero.exp + "/" + Levels.level_1_max_exp, 156, 76);
     break;
 
-    case 2: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_2_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    case 2: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_2_max_exp, 156, 76);
     break;
 
-    case 3: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_3_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    case 3: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_3_max_exp, 156, 76);
+    break;
+    //Arquero.posicion_x, Arquero.posicion_y - 20
+    case 4: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_4_max_exp, 156, 76);
     break;
 
-    case 4: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_4_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    case 5: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_5_max_exp, 156, 76);
     break;
 
-    case 5: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_5_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    case 6: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_6_max_exp, 156, 76);
     break;
 
-    case 6: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_6_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    case 7: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_7_max_exp, 156, 76);
     break;
 
-    case 7: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_7_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
-    break;
-
-    case 8: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_8_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+    case 8: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_8_max_exp, 156, 76);
     break;            
 }
 
@@ -2086,6 +2104,13 @@ switch (Arquero.nivel) {
             context.fillText(Stats.arquero.vitalidad,510,369);
             context.fillText(Stats.arquero.energia,510,395);
             context.fillText(Stats.arquero.sabiduria,510,415);
+
+
+
+            context.fillText(Arquero.damage, 488, 134);
+            context.fillText(Arquero.defensa, 488, 153);
+            context.fillText(Arquero.vida_maxima, 488, 172);
+            context.fillText(Arquero.evasion, 488, 191);
         }
 
 

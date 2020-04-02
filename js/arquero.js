@@ -146,9 +146,9 @@ function aumentarPuntos (stat) {
   }
 
   Arquero.puntos_aumento_restante -= 1;
-
-  Arquero.damage = base_damage + (3* Stats.arquero.agilidad);
-  Arquero.defensa = base_defensa_arquero + (1.25 * Stats.arquero.agilidad);
+  
+  Arquero.damage = Math.floor(base_damage + (3* Stats.arquero.agilidad));
+  Arquero.defensa = Math.floor(base_defensa_arquero + (1.25 * Stats.arquero.agilidad));
 
 }
 
@@ -184,7 +184,7 @@ function recuperarVidaArquero () {
 
 function getDefensa_arquero() {
 
-  let defensa_arquero = base_defensa_arquero + (1.25 * Stats.arquero.agilidad);
+  let defensa_arquero = Math.floor(base_defensa_arquero + (1.25 * Stats.arquero.agilidad));
   return defensa_arquero;
 }
 

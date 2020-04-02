@@ -14,6 +14,8 @@ let Usuarios = {
         "vida" : 250,
         "posicion_x": 20,
         "posicion_y": 320,
+        "mapa_actual": "escenario_1",
+        "puntos_restantes": 0,
         stats: {
             fuerza: 5,
             agilidad: 10,
@@ -36,6 +38,8 @@ let Usuarios = {
         "vida" : 250,
         "posicion_x": 20,
         "posicion_y": 320,
+        "mapa_actual": "escenario_1",
+        "puntos_restantes": 0,
         stats: {
             fuerza: 5,
             agilidad: 10,
@@ -57,6 +61,8 @@ let Usuarios = {
         "vida" : 250,
         "posicion_x": 20,
         "posicion_y": 320,
+        "mapa_actual": "escenario_1",
+        "puntos_restantes": 0,
         stats: {
             fuerza: 5,
             agilidad: 10,
