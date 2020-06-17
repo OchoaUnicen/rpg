@@ -128,7 +128,7 @@ function cargar_game_js() {
     document.addEventListener('keypress', (e) => {
         
         // Teclas[e.keyCode] = true;
-
+        
         if (Interfaz.mod == "coop" || Interfaz.mod == "single" ) {
 
 
@@ -159,9 +159,10 @@ function cargar_game_js() {
 
 
                             var resto = i % 3; 
-                            if ((Escenarios.escenario_3.dropped_items[i]!= null &&  resto == 0 || i == 0) && Arquero.posicion_x >= Escenarios.escenario_3.dropped_items[i+1] - 30 
+                            if ((Escenarios.escenario_3.dropped_items[i]!= null &&  resto == 0) && Arquero.posicion_x >= Escenarios.escenario_3.dropped_items[i+1] - 30 
                             && Arquero.posicion_x <= Escenarios.escenario_3.dropped_items[i+1] + 30 && Arquero.posicion_y <= Escenarios.escenario_3.dropped_items[i+2] + 20 &&
-                            Arquero.posicion_y >= Escenarios.escenario_3.dropped_items[i+2] - 20) {
+                            Arquero.posicion_y >= Escenarios.escenario_3.dropped_items[i+2] - 20 && Arquero.cooldown_recoger_objeto == 0
+                             && Arquero.cantidad_objetos_inventario < Arquero.limite_inventario) {
                          
                         
                         
@@ -172,13 +173,26 @@ function cargar_game_js() {
 
 
                             //pasar el elemento del array droppedobject del mapa actual al array inventario
-
+                            Inventario["recuadro_"+(i+3)/3].objeto =  Escenarios.escenario_3.dropped_items[i];
+                           
+                            
+                            // Escenarios.escenario_3.dropped_items[i];
                             Arquero.objetos_inventario.push(Escenarios.escenario_3.dropped_items[i]);
-                            Escenarios.escenario_3.dropped_items[i] = null;
+                            Arquero.cantidad_objetos_inventario +=1;
+                            console.log("guarda arco");
+                            // for (let k = 0 ; k < Inventario.recuadros_cantidad_total; k++) {}
 
-                            // Escenarios.escenario_3.dropped_items.splice(i, 1);
+                               
+                            
+                            Arquero.cooldown_recoger_objeto += 20;
+                            Escenarios.escenario_3.dropped_items[i] = null;
+                          
+
+                            //Escenarios.escenario_3.dropped_items.splice(i, 1);
                             
             
+                            } else if (Arquero.cantidad_objetos_inventario == Arquero.limite_inventario) {
+                                console.log("Inventario lleno");
                             }
 
 
@@ -211,6 +225,7 @@ function cargar_game_js() {
             Arquero.interfaz.inventario_abierto = true;
                 inventarioCerrado = false;
                 console.log("abrio");
+                // mostrar_objetos_iventario = true;
             }  
             
             if (Teclas[tecla.letra_c] && estadisticasCerrado == false) {
@@ -2113,8 +2128,8 @@ switch (Arquero.nivel) {
 
         }
         else if (spider.spawn_time == 0) {
-            
-            spider.spawn_time = 700;
+            //700
+            spider.spawn_time = 100;
         }
 
 
@@ -2145,6 +2160,16 @@ switch (Arquero.nivel) {
 
         drawLaser();
         
+        // console.log(Arquero.cooldown_recoger_objeto);
+        if (Arquero.cooldown_recoger_objeto > 0) {
+
+            Arquero.cooldown_recoger_objeto -= 0.25;
+        }
+        if (Arquero.cooldown_recoger_objeto < 0) {
+            Arquero.cooldown_recoger_objeto = 0;
+        }
+
+       
         
 
         if (Interfaz.mod == "single") {
@@ -2168,7 +2193,13 @@ switch (Arquero.nivel) {
         if (Arquero.interfaz.inventario_abierto == true) {
             context.drawImage(imagen_inventario,700, 100);
             context.fillText("Gold: "+ Arquero.gold,720,130);
+            mostrarObjetosInventario(context);
             //mostrar objetos del inventario
+
+        
+
+
+
         }
 
         if (Arquero.interfaz.estadisticas_abierto == true) {

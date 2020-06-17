@@ -100,6 +100,9 @@ let Arquero = {
     "gold": 0,
     "exp": 0,
     "puntos_aumento_restante": 0,
+    "cooldown_recoger_objeto": 0,
+    "cantidad_objetos_inventario": 0,
+    "limite_inventario": 12,
 
 
 
@@ -154,6 +157,42 @@ function aumentarPuntos (stat) {
 
 
 
+
+function mostrarObjetosInventario(context) {
+
+
+  if (Arquero.objetos_inventario.length > 0) {
+
+    for (let i = 0 ; i < Arquero.objetos_inventario.length; i++) {
+
+      if (Arquero.objetos_inventario[i] != null) {
+
+        for (let j = 1 ; j <= Inventario.recuadros_cantidad_total ; j++) {
+        //11 hace referencia a la cantidad de espacios en el inventario empezando desde el 0
+        
+        if (Inventario["recuadro_"+j].objeto != "vacio") {
+
+          context.drawImage(Inventario["recuadro_"+j].objeto.imagen, Inventario["recuadro_"+j].x ,Inventario["recuadro_"+j].y,Inventario["recuadro_"+j].objeto.imagen.naturalWidth/2, Inventario["recuadro_"+j].objeto.imagen.naturalHeight/2 );
+          // Arquero.objetos_inventario[i].imagen
+        }
+        
+
+        }
+
+        
+
+
+      }
+      
+
+
+    }
+
+  }
+
+
+
+}
 
 
 

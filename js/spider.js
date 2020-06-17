@@ -175,16 +175,16 @@ class Spider {
         switch (chanceDeDrop) {
             case 0:{ console.log("No drops");}
             // break;
-            case 1: {console.log("Drops bow");        
+            case 1, 2: {console.log("Drops bow");        
             Escenarios.escenario_3.dropped_items.push(Equipamiento.arquero.armas.golden_bow, this.posicion_x, this.posicion_y);
             //droppedObjects(context,Equipamiento.arquero.armas.golden_bow,this.posicion_x,this.posicion_y );           
         }
             break;
-            case 2: {
-                console.log("Drops consumable");
-                Arquero.objetos_inventario.push("Pocion de hp");
-            }
-            break;
+            // case 2: {
+            //     console.log("Drops consumable");
+            //     Arquero.objetos_inventario.push("Pocion de hp");
+            // }
+            // break;
         }
 
         if (Interfaz.mod == "single") {
