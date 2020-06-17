@@ -61,10 +61,12 @@ let Escenarios = {
             "imagen_cartel": imagen_cartel,
             "cartel_posX": 740,
             "cartel_posY": 292
-        }      
+        },
+        "dropped_items": [],      
     },
     "escenario_2": escenario_2 =    {
         "nombre": "Shop",
+        "dropped_items": [],
         "imagen": imagen_escenario_shop,        
     },
 
@@ -98,14 +100,17 @@ let Escenarios = {
 // function droppedObjects(context, droppedObject , posX, posY) {
     function droppedObjects(context) {
         //recorrer el array de objetos droppeados si pos 0 no es nulla
-
-        if (Escenarios.escenario_3.dropped_items[0]!= null){
+        //console.log("ejecutandose dropobjects");
+        if (Escenarios.escenario_actual == "escenario_3" ){
+            //&& Escenarios.escenario_3.dropped_items[0]!= null
 
             for (let i = 0 ; i < Escenarios.escenario_3.dropped_items.length; i ++){
-
+                // 3 corresponde a la cantida de propiedades de cada elemento
                 var resto = i % 3; 
-                if (Escenarios.escenario_3.dropped_items[i]!= null && resto == 0 || i == 0 ) {
-                      
+                if (Escenarios.escenario_3.dropped_items[i]!= null && resto == 0  ) {
+                    // || i == 0
+
+
                     // if ( resto == 0 ){
                     // alert("multiplo");
                     // }

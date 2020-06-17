@@ -131,6 +131,74 @@ function cargar_game_js() {
 
         if (Interfaz.mod == "coop" || Interfaz.mod == "single" ) {
 
+
+
+            
+            if (Teclas[tecla.barra_espaciadora] && Arquero.muerto == false) {
+                // y esta en rango de un objeto dropeado en ese mapa actual
+                
+                
+                switch (Escenarios.escenario_actual) {
+                    //if (Escenarios.escenario_1.dropped_items) {}
+                   
+                   
+                    case "escenario_1" : 
+                    break;
+
+                    case "escenario_2" :
+                    break;
+
+                    case "escenario_3" : if ( Escenarios.escenario_3.dropped_items.length > 0) {
+
+
+
+
+
+
+                        for (let i = 0 ; i < Escenarios.escenario_3.dropped_items.length; i ++) {
+
+
+                            var resto = i % 3; 
+                            if ((Escenarios.escenario_3.dropped_items[i]!= null &&  resto == 0 || i == 0) && Arquero.posicion_x >= Escenarios.escenario_3.dropped_items[i+1] - 30 
+                            && Arquero.posicion_x <= Escenarios.escenario_3.dropped_items[i+1] + 30 && Arquero.posicion_y <= Escenarios.escenario_3.dropped_items[i+2] + 20 &&
+                            Arquero.posicion_y >= Escenarios.escenario_3.dropped_items[i+2] - 20) {
+                         
+                        
+                        
+                        
+                        // Escenarios.escenario_3.dropped_items[i+1]
+                            // Escenarios.escenario_3.dropped_items[i+2];
+
+
+
+                            //pasar el elemento del array droppedobject del mapa actual al array inventario
+
+                            Arquero.objetos_inventario.push(Escenarios.escenario_3.dropped_items[i]);
+                            Escenarios.escenario_3.dropped_items[i] = null;
+
+                            // Escenarios.escenario_3.dropped_items.splice(i, 1);
+                            
+            
+                            }
+
+
+                           
+                        }
+
+                    }
+                    break;
+
+                }
+
+
+
+
+            }
+            //juntar drops
+
+
+
+
         if (Teclas[tecla.letra_i] && inventarioCerrado == false) {
                 
             Arquero.interfaz.inventario_abierto = false;
@@ -1434,6 +1502,9 @@ function cargar_game_js() {
          
 
         if(Interfaz.mod == "coop"  || Interfaz.mod == "single") {
+
+
+            droppedObjects(context);
             if (Interfaz.mod == "coop" && mod_estado == "pendiente") {
                 Guerrero.posicion_x = 150;
                 direccion_guerrero = "derecha";
@@ -2073,7 +2144,7 @@ switch (Arquero.nivel) {
 
 
         drawLaser();
-
+        
         
 
         if (Interfaz.mod == "single") {
@@ -2140,7 +2211,7 @@ switch (Arquero.nivel) {
         }
         
 
-       droppedObjects(context);
+      
 
 
       

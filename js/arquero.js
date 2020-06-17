@@ -154,6 +154,11 @@ function aumentarPuntos (stat) {
 
 
 
+
+
+
+
+
 function respawnArquero(context) {
 
 
