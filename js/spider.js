@@ -38,7 +38,7 @@ class Spider {
 //     Imagen_spider.src = "./img/mobs/spider_move_1.png";
 //    // return Imagen_spider;
 //     }
-    //esto no fuinciona 
+  
     dibujarSpider(context) {  
         
         
@@ -174,7 +174,7 @@ class Spider {
         console.log(chanceDeDrop);
         switch (chanceDeDrop) {
             case 0:{ console.log("No drops");}
-            break;
+            // break;
             case 1: {console.log("Drops bow");        
             Escenarios.escenario_3.dropped_items.push(Equipamiento.arquero.armas.golden_bow, this.posicion_x, this.posicion_y);
             //droppedObjects(context,Equipamiento.arquero.armas.golden_bow,this.posicion_x,this.posicion_y );           

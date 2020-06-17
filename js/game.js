@@ -1219,13 +1219,15 @@ function cargar_game_js() {
 
         cambiarMapa();
 
-
-
         if (Arquero.vida <= 0) {
             Arquero.muerto = true;
             Arquero.vida = 0;
 
         }
+
+
+
+        
 
 
 
@@ -1705,12 +1707,25 @@ if (mostrarBarras_mp) {
 
 if (mostrarBarras_exp) {
 
+    let barra_exp_inicio = 76;
     let barra_exp_limite = 248;
-    let barra_exp_width = Arquero.exp;
+    let cantidad_barra_exp = barra_exp_limite - barra_exp_inicio;
+    let limite_exp_nivel_actual = 0;
 
+
+    switch (Arquero.nivel){
+        case 5 : limite_exp_nivel_actual = 1100;
+        break;
+        case 6: limite_exp_nivel_actual = 1800;
+        break;
+        case 7 : limite_exp_nivel_actual = 2400;
+    }
+    let porcentaje_exp_arquero = ((Arquero.exp * 100) / limite_exp_nivel_actual);
+    let cantidad_actual_exp_barra = ((porcentaje_exp_arquero*cantidad_barra_exp) / 100);
+   
     if (Arquero.exp > 0) {
     context.beginPath();
-    context.rect(76, 70, barra_exp_width, 4);
+    context.rect(76, 70, cantidad_actual_exp_barra, 4);
     context.lineWidth = "13";
     context.strokeStyle = "orange";
     context.stroke();
@@ -2125,7 +2140,7 @@ switch (Arquero.nivel) {
         }
         
 
-       
+       droppedObjects(context);
 
 
       

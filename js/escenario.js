@@ -95,11 +95,39 @@ let Escenarios = {
 
 
 
-function droppedObjects(context, droppedObject , posX, posY) {
+// function droppedObjects(context, droppedObject , posX, posY) {
+    function droppedObjects(context) {
+        //recorrer el array de objetos droppeados si pos 0 no es nulla
+
+        if (Escenarios.escenario_3.dropped_items[0]!= null){
+
+            for (let i = 0 ; i < Escenarios.escenario_3.dropped_items.length; i ++){
+
+                var resto = i % 3; 
+                if (Escenarios.escenario_3.dropped_items[i]!= null && resto == 0 || i == 0 ) {
+                      
+                    // if ( resto == 0 ){
+                    // alert("multiplo");
+                    // }
+                    context.drawImage(Escenarios.escenario_3.dropped_items[i].imagen,Escenarios.escenario_3.dropped_items[i+1] ,Escenarios.escenario_3.dropped_items[i+2]); 
+
+                }
+                
+            }
+
+        }
 
 
-    context.drawImage(droppedObject.imagen,posX ,posY);     
-}
+        //si se encuentra un objeto no null  => dibujarlo en su respectiva pos xy
+
+        
+
+        //context.drawImage(droppedObject.imagen,posX ,posY); 
+
+    }
+
+        
+
 
 
 

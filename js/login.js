@@ -147,8 +147,8 @@ function getUsersInformation(){
 
 
                 //   //guardado por intervalos
-                setInterval(function () {
-                  sendData(cuentas[1]['login'])}, 20000);
+                // setInterval(function () {
+                //   sendData(cuentas[1]['login'])}, 20000);
 
 
 
@@ -189,8 +189,8 @@ function getUsersInformation(){
               Arquero.puntos_aumento_restante = cuentas[2]['puntos_restantes'];
               
               // //guardado por intervalos
-              setInterval(function () {
-                sendData(cuentas[2]['login'])}, 20000);
+                // setInterval(function () {
+                //   sendData(cuentas[2]['login'])}, 20000);
 
 
 
@@ -255,8 +255,8 @@ function getUsersInformation(){
             Arquero.puntos_aumento_restante = cuentas[3]['puntos_restantes'];
             
             //guardado por intervalos
-            setInterval(function () {
-              sendData(cuentas[3]['login'])}, 20000);
+              // setInterval(function () {
+              //   sendData(cuentas[3]['login'])}, 20000);
 
 
 
