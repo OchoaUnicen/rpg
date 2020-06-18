@@ -13,6 +13,8 @@ let tecla = {
 
     "barra_espaciadora": 32,
 
+    "letra_z": 90,
+
 "flecha_izq": 37,
 "flecha_der" :39,
 "flecha_abajo": 40,

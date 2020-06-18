@@ -131,6 +131,26 @@ function cargar_game_js() {
         
         if (Interfaz.mod == "coop" || Interfaz.mod == "single" ) {
 
+            if (Teclas[tecla.letra_z] && Arquero.muerto == false && Arquero.posicion_x < Npcs.x + 20
+                && Arquero.posicion_x > Npcs.x - 60 && Escenarios.escenario_actual == "escenario_2" ) {
+                    switch(Npcs.dialogos.dialogo_actual) {
+
+
+                        case "dialogo_0": Npcs.dialogos.dialogo_actual = "dialogo_1";
+                        break;
+                        case "dialogo_1": Npcs.dialogos.dialogo_actual = "dialogo_2";
+                        break;
+                        case "dialogo_2": Npcs.dialogos.dialogo_actual = "dialogo_3";
+                        break;
+                        case "dialogo_3": Npcs.dialogos.dialogo_actual = "dialogo_4";
+                         
+
+                    }
+                    console.log("z");
+
+            }
+
+
 
 
             
@@ -2159,6 +2179,13 @@ switch (Arquero.nivel) {
 
 
         drawLaser();
+
+
+
+        mostrarInteraccionesQuests(context);
+
+
+
         
         // console.log(Arquero.cooldown_recoger_objeto);
         if (Arquero.cooldown_recoger_objeto > 0) {
