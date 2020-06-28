@@ -35,7 +35,7 @@ let Npcs = {
 
 
 
-function mostrarInteraccionesQuests(context){
+function mostrarInteraccionesMalcom(context){
 
     if ((Interfaz.mod == "single" || Interfaz.mod == "coop") && Arquero.posicion_x < Npcs.x + 20
     && Arquero.posicion_x > Npcs.x - 60 && Escenarios.escenario_actual == "escenario_2" && Npcs.dialogos.dialogo_actual == "dialogo_0") {
@@ -62,18 +62,54 @@ function mostrarInteraccionesQuests(context){
 
         switch(Npcs.dialogos.dialogo_actual) {
 
-            case "dialogo_1":  context.drawImage(Npcs.dialogos.dialogo_1, Npcs.x - 82, Npcs.y + 95, 310, 150, Npcs.x-42, Npcs.y-86, 270, 150);
+            case "dialogo_1": context.drawImage(Npcs.dialogos.dialogo_1, Npcs.x - 82, Npcs.y + 95, 310, 150, Npcs.x-42, Npcs.y-86, 270, 150);
+            context.fillText("z", 610, 294);
             console.log("dibja dialogo");
             break;
 
             case "dialogo_2": context.drawImage(Npcs.dialogos.dialogo_1, Npcs.x - 420, Npcs.y + 284, 310, 150, Npcs.x-42, Npcs.y-86, 270, 150);
+            context.fillText("z", 610, 294);
             break;
 
             case "dialogo_3": context.drawImage(Npcs.dialogos.dialogo_1, Npcs.x - 82, Npcs.y + 284, 310, 150, Npcs.x-42, Npcs.y-86, 270, 150);
+            context.fillText("z", 610, 294);
             break;
 
             case "dialogo_4": context.drawImage(Npcs.dialogos.dialogo_1, Npcs.x - 420, Npcs.y + 456, 310, 150, Npcs.x-42, Npcs.y-86, 270, 150);
+            context.fillText("Aceptar    z", 542, 302);
             break;
+
+            //aca se dibuja lo concerniente a la tienda del mercader
+            case "dialogo_5": context.drawImage(Npcs.dialogos.dialogo_1, Npcs.x - 420, Npcs.y + 100, 310, 150, Npcs.x-42, Npcs.y-86, 270, 150);
+
+            context.fillText("Quests", 480, 250);
+            context.fillText("Tienda", 480, 290);
+            break;
+
+            case "quests": context.drawImage(Npcs.dialogos.dialogo_1, Npcs.x - 420, Npcs.y + 100, 310, 150, Npcs.x-42, Npcs.y-86, 270, 150);
+
+            context.fillText("Debes matar arañas",480,240);
+            context.fillText("en las cercanicas",480,245);
+            context.fillText("Has matado 0 Arañas" ,480,250);
+
+
+
+
+            //mostrar quests
+
+            break;
+
+
+            
+
+
+            case "tienda":
+            break;
+
+
+
+            
+            
         }
 
 

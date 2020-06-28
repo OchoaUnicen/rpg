@@ -143,6 +143,9 @@ function cargar_game_js() {
                         case "dialogo_2": Npcs.dialogos.dialogo_actual = "dialogo_3";
                         break;
                         case "dialogo_3": Npcs.dialogos.dialogo_actual = "dialogo_4";
+                        break
+                        case "dialogo_4": Npcs.dialogos.dialogo_actual = "dialogo_5";
+                        break;
                          
 
                     }
@@ -702,22 +705,50 @@ function cargar_game_js() {
 
 */  if(!Arquero.muerto && Arquero.estado == "funcional"){
         
-    if (Teclas[tecla.letra_d] == true && Arquero.posicion_x < LIMITE_DERECHO) {
+    if (Teclas[tecla.letra_d] == true) {
         // Derecha
+        // && Arquero.posicion_x  < LIMITE_DERECHO
 
-        direccion = "derecha";
-        //console.log("derecha true");
+        if (Escenarios.escenario_actual_tipo == "corto" && Arquero.posicion_x  < LIMITE_DERECHO
+            ||  Escenarios.escenario_actual_tipo == "largo" && (Arquero.posicion_x  <= canvas.width/2 ||
+                (Escenarios.escenario_4.fondo_x <= -3500 && Arquero.posicion_x  < LIMITE_DERECHO))) {
+                direccion = "derecha";
 
-        //console.log(Arquero.posicion_x);
+            if (velocidad < limite_aceleracion) {
 
-        //console.log(Arquero.posicion_x);
-        if (velocidad < limite_aceleracion) {
+                velocidad = velocidad + 1;
 
-            velocidad = velocidad + 1;
+            }
+
+            Arquero.posicion_x += velocidad;
 
         }
 
-        Arquero.posicion_x += velocidad;
+        if (Escenarios.escenario_actual_tipo == "largo" && Arquero.posicion_x >= canvas.width/2 && Escenarios.escenario_4.fondo_x > -3500) {
+            
+        console.log("entraaa mover fondo");
+        console.log("fondo x" + Escenarios.escenario_4.fondo_x);
+       
+            direccion = "derecha";
+
+            if (velocidad < limite_aceleracion) {
+
+                velocidad = velocidad + 1;
+
+            }
+
+         
+            
+            
+            Escenarios.escenario_4.fondo_x -= velocidad;
+
+        }
+
+        //si es un mapa corto  => Arquero.posicion_x  < LIMITE_DERECHO
+        //si es un mapa largo Escenarios.escenario_actual_x -= velocidad
+
+
+        
 
     }
 
@@ -2182,7 +2213,7 @@ switch (Arquero.nivel) {
 
 
 
-        mostrarInteraccionesQuests(context);
+        mostrarInteraccionesMalcom(context);
 
 
 

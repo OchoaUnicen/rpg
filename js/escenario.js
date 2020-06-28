@@ -51,11 +51,19 @@ let imagen_escenario_shop = new Image();
 imagen_escenario_shop.src = "./img/fondo/imagen_escenario_shop.png";
 //console.log(imagen_escenario_shop);
 
+let fondo_largo = new Image();
+fondo_largo.src = "./img/fondo_largo.png";
+
+
+
 
 let Escenarios = {
     "escenario_actual": "escenario_1",
+    "escenario_actual_tipo" : "corto" ,
     "escenario_1": escenario_1 =    {
         "nombre": "Lobby",
+        "tipo": "corto" ,
+        //corto - largo - largo_alto - alto
         "imagen": fondo,  
         "misc": {
             "imagen_cartel": imagen_cartel,
@@ -66,12 +74,14 @@ let Escenarios = {
     },
     "escenario_2": escenario_2 =    {
         "nombre": "Shop",
+        "tipo": "corto" ,
         "dropped_items": [],
         "imagen": imagen_escenario_shop,        
     },
 
     "escenario_3": escenario_3 =    {
         "nombre": "Bosque Spider",
+        "tipo": "corto" ,
         "imagen": fondo,
         "dropped_items": [],
         "escalera" : {
@@ -90,7 +100,24 @@ let Escenarios = {
             h: 100
 
         }
+    },
+
+
+    "escenario_4": escenario_4 = {
+        "nombre": "fondo_largo",
+        "tipo": "largo" ,
+        "dropped_items": [],
+        "imagen": fondo_largo,
+        
+        
+        fondo_x: 0,
+        fondo_y: 0,
+        fondo_w: 5000,
+        fondo_h: 500
+
+       
     }
+
 
 
 }
@@ -153,30 +180,49 @@ function cambiarMapa() {
     const LIMITE_IZQUIERDO = 0;
     let trayecto = "ida";
 
-    
+
+    // if Escenarios.escenario_actual.TIPO
+
+    if (Escenarios.escenario_actual_tipo == "corto") {
+
+
+ 
+
+
+
     if ((Arquero.posicion_x >= LIMITE_DERECHO - Arquero.w) && Interfaz.mod == "single") {      
        
            trayecto = "ida";
        
        switch (Escenarios.escenario_actual) {       
 
-       case "escenario_1" :
-           cambiarFondo(Escenarios.escenario_actual, trayecto);
-           Escenarios.escenario_actual = "escenario_2";
-           Arquero.posicion_x = 50;
-         
-       break;       
-
-
-       case "escenario_2" :
-           cambiarFondo(Escenarios.escenario_actual, trayecto);
-           Escenarios.escenario_actual = "escenario_3";
-           Arquero.posicion_x = 50;
+        case "escenario_1" :
+            cambiarFondo(Escenarios.escenario_actual, trayecto);
+            Escenarios.escenario_actual = "escenario_2";
           
-       break;    
+            Arquero.posicion_x = 50;
+            
+        break;       
+
+
+        case "escenario_2" :
+            cambiarFondo(Escenarios.escenario_actual, trayecto);
+            Escenarios.escenario_actual = "escenario_3";
+          
+            Arquero.posicion_x = 50;
+            
+        break;    
+
+        case "escenario_3" :
+            cambiarFondo(Escenarios.escenario_actual, trayecto);
+            Escenarios.escenario_actual = "escenario_4";
+            Escenarios.escenario_actual_tipo = "largo";
+            Arquero.posicion_x = 50;
+            
+        break; 
            
 
-   }
+        }
 
    }
 
@@ -277,6 +323,8 @@ function cambiarMapa() {
 
     }
 
+
+    }   
   
 
 
@@ -313,7 +361,17 @@ function cambiarFondo(escenario_fondo, trayecto) {
 
 
 function dibujarEscenario(context)  {
-        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight);   
+
+    if (Escenarios.escenario_actual_tipo == "corto") {
+
+        context.drawImage(fondo, 0, 0, fondo.naturalWidth, fondo.naturalHeight); 
+    }
+
+    else if (Escenarios.escenario_actual_tipo == "largo") {
+
+        context.drawImage(fondo_largo, Escenarios.escenario_4.fondo_x,Escenarios.escenario_4.fondo_y, fondo_largo.naturalWidth, fondo_largo.naturalHeight);
+    }
+     
 }
 
 
