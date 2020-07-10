@@ -710,7 +710,8 @@ function cargar_game_js() {
         // && Arquero.posicion_x  < LIMITE_DERECHO
 
         if (Escenarios.escenario_actual_tipo == "corto" && Arquero.posicion_x  < LIMITE_DERECHO
-            ||  Escenarios.escenario_actual_tipo == "largo" && (Arquero.posicion_x  <= canvas.width/2 ||
+            ||  Escenarios.escenario_actual_tipo == "largo" && 
+            (Arquero.posicion_x  <= canvas.width/2 || 
                 (Escenarios.escenario_4.fondo_x <= -3500 && Arquero.posicion_x  < LIMITE_DERECHO))) {
                 direccion = "derecha";
 
@@ -724,7 +725,7 @@ function cargar_game_js() {
 
         }
 
-        if (Escenarios.escenario_actual_tipo == "largo" && Arquero.posicion_x >= canvas.width/2 && Escenarios.escenario_4.fondo_x > -3500) {
+        if (Escenarios.escenario_actual_tipo == "largo" && (Arquero.posicion_x >= canvas.width/2) && Escenarios.escenario_4.fondo_x > -3500) {
             
         console.log("entraaa mover fondo");
         console.log("fondo x" + Escenarios.escenario_4.fondo_x);
@@ -752,32 +753,135 @@ function cargar_game_js() {
 
     }
 
-    if (Teclas[tecla.letra_a] == true &&  Arquero.posicion_x > LIMITE_IZQUIERDO) {
+    if (Teclas[tecla.letra_a] == true) {
         //Izquierda
 
-        direccion = "izquierda";
-        //console.log(direccion);
 
-        if (velocidad < limite_aceleracion) {
 
-            velocidad = velocidad + 1;
 
-        }
-        Arquero.posicion_x -= velocidad;
+        // (Arquero.posicion_x  <= canvas.width/2 ||
+        //     (Escenarios.escenario_4.fondo_x <= -3500 && Arquero.posicion_x  < LIMITE_DERECHO))
+
+        // (Escenarios.escenario_actual_tipo == "corto" && Arquero.posicion_x  < LIMITE_DERECHO
+        // ||  Escenarios.escenario_actual_tipo == "largo" && (Arquero.posicion_x  <= canvas.width/2 ||
+        //     (Escenarios.escenario_4.fondo_x <= -3500 && Arquero.posicion_x  < LIMITE_DERECHO)))
+
+
+
+
+
+
+        if (Escenarios.escenario_actual_tipo == "corto" && Arquero.posicion_x  > LIMITE_IZQUIERDO
+            || ( Escenarios.escenario_actual_tipo == "largo" && 
+            (Arquero.posicion_x  > canvas.width/2 && Escenarios.escenario_4.fondo_x >= -10)
+             || (Arquero.posicion_x  < canvas.width/2)) && Arquero.posicion_x  > LIMITE_IZQUIERDO ) {
+                // || Escenarios.escenario_4.fondo_x > -3490 && Arquero.posicion_x > canvas.width/2
+
+
+
+
+
+
+
+                direccion = "izquierda";
+                //console.log(direccion);
+        
+                if (velocidad < limite_aceleracion) {
+        
+                    velocidad = velocidad + 1;
+        
+                }
+                Arquero.posicion_x -= velocidad;
+
+
+
+         }
+
+
+
+        //  
+                if (Escenarios.escenario_actual_tipo == "largo" && (Arquero.posicion_x >= canvas.width/2)
+                 && Escenarios.escenario_4.fondo_x <= 0
+                 //&& Escenarios.escenario_4.fondo_x > -3490
+                 ) {
+                   
+                    console.log("entraaa mover fondo");
+                    console.log("fondo x" + Escenarios.escenario_4.fondo_x);
+                   
+                        direccion = "izquierda";
+            
+                        if (velocidad < limite_aceleracion) {
+            
+                            velocidad = velocidad + 1;
+            
+                        }
+            
+                     
+                        
+                        
+                        Escenarios.escenario_4.fondo_x += velocidad;
+            
+                }
+
+
+
+
+
+
+
+       
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     if (Teclas[tecla.letra_w] == true) {
         //Tecla W - Saltar
         if (Arquero.posicion_y == LIMITE_INFERIOR || gravedad_arquero_off == true) {
 
-            Arquero.posicion_y -= 50;
-            if (direccion == "derecha" && Arquero.posicion_x < LIMITE_DERECHO - 15) {
-                Arquero.posicion_x += 15
-            }
 
-            if (direccion == "izquierda" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
-                Arquero.posicion_x -= 15;
-            }
+            Arquero.posicion_y -= 50;
+
+
+
+
+            //dar un impulso al saltar
+
+            // if (direccion == "derecha" && Arquero.posicion_x < LIMITE_DERECHO - 15) {
+            //     Arquero.posicion_x += 15
+            // }
+
+            // if (direccion == "izquierda" && Arquero.posicion_x > LIMITE_IZQUIERDO + 15) {
+            //     Arquero.posicion_x -= 15;
+            // }
+
+
+
+
+
+
+
+
+
+
             //subir escalera
         }else if (Escenarios.escenario_actual == "escenario_3" && (Arquero.posicion_x >= Escenarios.escenario_3.escalera.posicion_x - 30 && Arquero.posicion_x <= Escenarios.escenario_3.escalera.posicion_x + Escenarios.escenario_3.escalera.w - 50
             && (Arquero.posicion_y <= Escenarios.escenario_3.escalera.posicion_y + Escenarios.escenario_3.escalera.h   && Arquero.posicion_y >= Escenarios.escenario_3.escalera.posicion_y - Arquero.h )) ) {
@@ -2149,7 +2253,7 @@ switch (Arquero.nivel) {
         // console.log("posicion_jugador_y : " + posicion_jugador_y);
         // console.log(tiempo);
 
-       // context.drawImage(Mago.imagen_derecha, Mago.posicion_x, Mago.posicion_y, Mago.imagen_derecha.naturalWidth, Mago.imagen_derecha.naturalHeight);
+       
 
 
 
@@ -2259,7 +2363,7 @@ switch (Arquero.nivel) {
 
 
         }
-
+//Dibuja la interfas de estadisticas
         if (Arquero.interfaz.estadisticas_abierto == true) {
 
             context.drawImage(Interfaz.imagen_equipamiento_stats.imagen,Interfaz.imagen_equipamiento_stats.posX, Interfaz.imagen_equipamiento_stats.posY);
@@ -2286,6 +2390,29 @@ switch (Arquero.nivel) {
             context.fillText(Arquero.defensa, 488, 153);
             context.fillText(Arquero.vida_maxima, 488, 172);
             context.fillText(Arquero.evasion, 488, 191);
+
+
+
+
+
+            //MOSTRAR OBJETOS EQUIPADOS en posiciones : ranuras x,y,w,h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
 
 

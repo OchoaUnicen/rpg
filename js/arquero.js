@@ -108,6 +108,7 @@ let Arquero = {
 
 
     "objetos_inventario": [],
+    "objetos_equipados": [],
 
     
     

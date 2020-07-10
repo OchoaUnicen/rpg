@@ -134,7 +134,44 @@ imagen_boton_agregar_puntos_onclick.src = "./img/interfaz/interfaz_personaje/bot
 
         "imagen": imagen_equipamiento_stats,
         posX: 100,
-        posY: 100
+        posY: 100,
+        "ranura_arma": {
+            "arma": "objeto en cuestion",
+            x: 100,
+            y: 100,
+            w: 100,
+            h: 100
+
+        },
+
+        "ranura_anillo": {
+            "anillo":  "objeto en cuestion",
+            x:100 ,
+            y:100,
+            w:100 ,
+            h:100 
+        },
+        "ranura_casco":  {
+            "casco":  "objeto en cuestion",
+            x:100 ,
+            y:100,
+            w:100 ,
+            h:100 
+        },
+        "ranura_amuleto":  {
+            "amuleto":  "objeto en cuestion",
+            x:100 ,
+            y:100,
+            w:100 ,
+            h:100 
+        },
+        "ranura_pechera":  {
+            "pechera":  "objeto en cuestion",
+            x:100 ,
+            y:100,
+            w:100 ,
+            h:100 
+        }
 
     },
 
@@ -181,6 +218,9 @@ imagen_boton_agregar_puntos_onclick.src = "./img/interfaz/interfaz_personaje/bot
         "sabiduria_posicion_y": 403,
 
     }
+
+
+
     
    
     

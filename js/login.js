@@ -140,6 +140,10 @@ function getUsersInformation(){
 
 
                 Arquero.puntos_aumento_restante = cuentas[1]['puntos_restantes'];
+
+
+
+                Arquero.objetos_equipados = cuentas[1]['equipamiento'];
                 
 
                 //setInterval(sendData(cuentas[1]['login']), 10000);
@@ -292,6 +296,55 @@ function getUsersInformation(){
 
 
         }
+
+
+      else if (input_login.value == cuentas[4]['login'] && input_password.value == cuentas[4]['password'] ) {
+
+                
+          console.log("usuario conectado");
+          alert("Bienvenido Gonza");
+
+          document.getElementById('id01').style.display='none';
+
+          user_loged_in = true;
+          //boton_login.style.display = 'none';
+          //cargar juego con datos del usuario
+
+          Arquero.nivel = cuentas[4]['nivel'];
+          Arquero.exp = cuentas[4]['exp'];
+          Arquero.gold = cuentas[4]['gold'];
+          Stats.arquero.fuerza = cuentas[4]['stats']['fuerza'];
+          Stats.arquero.agilidad = cuentas[4]['stats']['agilidad'];
+          Stats.arquero.vitalidad = cuentas[4]['stats']['vitalidad'];
+          Stats.arquero.energia = cuentas[4]['stats']['energia'];
+          Stats.arquero.sabiduria = cuentas[4]['stats']['sabiduria'];
+
+          Arquero.damage = Math.floor(base_damage + (3* Stats.arquero.agilidad));
+          Arquero.defensa = Math.floor(base_defensa_arquero + (1.25 * Stats.arquero.agilidad));
+
+
+          Arquero.puntos_aumento_restante = cuentas[4]['puntos_restantes'];
+
+
+
+          Arquero.objetos_equipados = cuentas[4]['equipamiento'];
+          
+
+          //setInterval(sendData(cuentas[1]['login']), 10000);
+
+
+
+          //   //guardado por intervalos
+          // setInterval(function () {
+          //   sendData(cuentas[4]['login'])}, 20000);
+
+
+
+
+
+
+
+      }
 
           else { 
 
