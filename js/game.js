@@ -325,6 +325,8 @@ function cargar_game_js() {
 
 
 
+
+
     function drawLaser() {
         for (var i = 0; i < lasers.length; i++) {
             //context.fillStyle = '#f00';
@@ -1179,15 +1181,12 @@ function cargar_game_js() {
 
         //console.log("x: " +mouseoverPos.x, "y: " + mouseoverPos.y);
 
-        if ((mouseoverPos.x <= 600 && mouseoverPos.x >=383) && mouseoverPos.y >= 160 && mouseoverPos.y <= 223 && Interfaz.estado === "visible" ) {
-            
+        if ((mouseoverPos.x <= 600 && mouseoverPos.x >=383) && mouseoverPos.y >= 160 && mouseoverPos.y <= 223 && Interfaz.estado === "visible" ) { 
            Interfaz.boton_1vs1.imagen.src = imagen_1vs1_mouse_over.src; 
         }
 
         else {
-
             Interfaz.boton_1vs1.imagen.src = "./img/interfaz/1vs1.png"
-
         }
 
         if ((mouseoverPos.x <= 603 && mouseoverPos.x >=383) && mouseoverPos.y >=250 && mouseoverPos.y <= 318  && Interfaz.estado === "visible" ) {
@@ -1195,11 +1194,11 @@ function cargar_game_js() {
             Interfaz.boton_coop.imagen.src = imagen_coop_mouse_over.src; 
          }
  
-         else {
- 
-             Interfaz.boton_coop.imagen.src = "./img/interfaz/coop.png"
- 
-         }
+        else {
+
+            Interfaz.boton_coop.imagen.src = "./img/interfaz/coop.png"
+
+        }
 
          if ((mouseoverPos.x <= 603 && mouseoverPos.x >=383) && mouseoverPos.y >=65 && mouseoverPos.y <= 123  && Interfaz.estado === "visible" ) {
             
@@ -1224,37 +1223,26 @@ function cargar_game_js() {
     let musica_turned_off = false;
     canvas.addEventListener("click", function (evt) {
         var mousePos = getMousePos(canvas, evt);
-
-
-
         if (Guerrero.muerto == false && Interfaz.estado !== "visible" && Interfaz.mod != "single") {
-
             if (cooldown_ataquebasico_hacha == 0) {
-
-
                 atacarHacha();
             }
         }
 
 
         if (background_music_isPlaying === false) {
-          
-         
-                backgroundMusic.play();
-           
+            backgroundMusic.play();
             if (musica_turned_off == false) {
                 background_music_isPlaying = true;
             }
-
-           
         }
 
         //console.log("x: "+mousePos.x, "y: "+ mousePos.y );
 
-        if ((mousePos.x <= 600 && mousePos.x >=383) && mousePos.y >= 160 && mousePos.y <= 223 && Interfaz.estado === "visible" ) {
-            
-                Interfaz.mod = "1vs1";
-                Interfaz.estado = "invisible";
+        if ((mousePos.x <= 600 && mousePos.x >= 383) && mousePos.y >= 160 && mousePos.y <= 223 && Interfaz.estado === "visible") {
+
+            Interfaz.mod = "1vs1";
+            Interfaz.estado = "invisible";
             // alert(mousePos.x + ',' + mousePos.y);
 
         }
@@ -1466,7 +1454,9 @@ function cargar_game_js() {
 
 
         
+        if (Interfaz.mod == "1vs1"){
 
+        }
 
 
 
@@ -1979,42 +1969,86 @@ if (mostrarBarras_exp) {
 
 
 
-context.fillText(Math.round(Arquero.vida) + "/" + Arquero.vida_maxima, Interfaz.imagen_barras_hp_mp.posX+ 175,Interfaz.imagen_barras_hp_mp.posY +34);
-context.fillText(Arquero.nivel,47,84);
+
 //context.fillText("Lvl " + Arquero.nivel, Arquero.posicion_x, Arquero.posicion_y - 40);
 
+if (Interfaz.mod == "coop"){
+    switch (Arquero.nivel) {
+        case 1:context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_1_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+        break;
+    
+        case 2: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_2_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+        break;
+    
+        case 3: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_3_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+        break;
+        //Arquero.posicion_x, Arquero.posicion_y - 20
+        case 4: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_4_max_exp, Arquero.posicion_x, Arquero.posicion_y - 20);
+        break;
+    
+        case 5: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_5_max_exp,  Arquero.posicion_x, Arquero.posicion_y - 20);
+        break;
+    
+        case 6: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_6_max_exp,  Arquero.posicion_x, Arquero.posicion_y - 20);
+        break;
+    
+        case 7: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_7_max_exp,  Arquero.posicion_x, Arquero.posicion_y - 20);
+        break;
+    
+        case 8: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_8_max_exp,  Arquero.posicion_x, Arquero.posicion_y - 20);
+        break;            
+    }
 
+    switch (Guerrero.nivel) {
+        case 1: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_1_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);          
+        break;
+        case 2: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_2_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+        break;
+        case 3: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_3_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+        break;
+        case 4: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_4_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+        break;
+        case 5: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_5_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+        break;
+        case 6: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_6_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+        break;
+        case 7: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_7_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+        break;
+        case 8: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_8_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
+        break;            
+    }
 
+}
 
+if (Interfaz.mod == "single"){
 
-
-
-
-
-switch (Arquero.nivel) {
-    case 1:context.fillText("Exp " + Arquero.exp + "/" + Levels.level_1_max_exp, 156, 76);
-    break;
-
-    case 2: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_2_max_exp, 156, 76);
-    break;
-
-    case 3: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_3_max_exp, 156, 76);
-    break;
-    //Arquero.posicion_x, Arquero.posicion_y - 20
-    case 4: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_4_max_exp, 156, 76);
-    break;
-
-    case 5: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_5_max_exp, 156, 76);
-    break;
-
-    case 6: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_6_max_exp, 156, 76);
-    break;
-
-    case 7: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_7_max_exp, 156, 76);
-    break;
-
-    case 8: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_8_max_exp, 156, 76);
-    break;            
+    context.fillText(Math.round(Arquero.vida) + "/" + Arquero.vida_maxima, Interfaz.imagen_barras_hp_mp.posX + 175, Interfaz.imagen_barras_hp_mp.posY + 34);
+    context.fillText(Arquero.nivel, 47, 84);
+    switch (Arquero.nivel) {
+        case 1:context.fillText("Exp " + Arquero.exp + "/" + Levels.level_1_max_exp, 156, 76);
+        break;
+    
+        case 2: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_2_max_exp, 156, 76);
+        break;
+    
+        case 3: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_3_max_exp, 156, 76);
+        break;
+        //Arquero.posicion_x, Arquero.posicion_y - 20
+        case 4: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_4_max_exp, 156, 76);
+        break;
+    
+        case 5: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_5_max_exp, 156, 76);
+        break;
+    
+        case 6: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_6_max_exp, 156, 76);
+        break;
+    
+        case 7: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_7_max_exp, 156, 76);
+        break;
+    
+        case 8: context.fillText("Exp: " + Arquero.exp + "/" + Levels.level_8_max_exp, 156, 76);
+        break;            
+    }
 }
 
 
@@ -2096,30 +2130,14 @@ switch (Arquero.nivel) {
 
         context.save();
         if (Interfaz.mod != "single") {
-
-            switch (Guerrero.nivel) {
-                case 1: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_1_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);          
-                break;
-                case 2: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_2_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-                break;
-                case 3: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_3_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-                break;
-                case 4: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_4_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-                break;
-                case 5: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_5_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-                break;
-                case 6: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_6_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-                break;
-                case 7: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_7_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-                break;
-                case 8: context.fillText("Exp: " + Guerrero.exp + "/" + Levels.level_8_max_exp, Guerrero.posicion_x, Guerrero.posicion_y - 20);
-                break;            
-            }
           
 
-            context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 30);
-            context.fillText("Lvl " + Guerrero.nivel, Guerrero.posicion_x, Guerrero.posicion_y - 40);
+            context.fillText("Guerrero Hp: " + Guerrero.vida, Guerrero.posicion_x, Guerrero.posicion_y - 35);
+            context.fillText("Lvl " + Guerrero.nivel, Guerrero.posicion_x, Guerrero.posicion_y - 50);
     
+
+            context.fillText("Arquero Hp: " + Arquero.vida, Arquero.posicion_x, Arquero.posicion_y - 35);
+            context.fillText("Lvl " + Arquero.nivel, Arquero.posicion_x, Arquero.posicion_y - 50);
 
         if (direccion_guerrero == "izquierda") {
             context.translate(Guerrero.posicion_x + (Guerrero.w - 20), Guerrero.posicion_y - 3);
